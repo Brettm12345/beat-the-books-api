@@ -1,7 +1,3 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
   test-and-lint:
@@ -25,6 +21,8 @@ jobs:
       - run:
           name: Test
           command: yarn test
+      - store_test_results:
+          path: test-results
   deploy:
     docker:
       - image: circleci/node:10.13.0
