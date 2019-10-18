@@ -16,7 +16,7 @@ jobs:
             - v1-dependencies-
       - run:
           name: Install dependencies
-          command:  yarn install
+          command: yarn install
       - save_cache:
           paths:
             - node_modules
@@ -30,16 +30,16 @@ jobs:
     deploy:
       docker:
         - image: circleci/node:10.13.0
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run:
-          name: Deploy
-          command: yarn deploy
+      working_directory: ~/repo
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - v1-dependencies-{{ checksum "package.json" }}
+              - v1-dependencies-
+        - run:
+            name: Deploy
+            command: yarn deploy
 workflows:
   version: 2
   beat-the-books:
