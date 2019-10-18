@@ -39,5 +39,6 @@ export const calculatePrice = async ({ id, expireAt }: OrderItem) => {
     .orderItem({ id })
     .package()
     .price();
-  return price * dayjs(expireAt).diff(dayjs(), 'day');
+  const days = dayjs(expireAt).diff(dayjs(), 'day');
+  return price * days;
 };
