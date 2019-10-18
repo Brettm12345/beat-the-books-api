@@ -1,16 +1,5 @@
 import gql from 'graphql-tag';
 
-interface User {
-  email: string;
-  phone: string;
-}
-
-export interface DeleteMeResult {
-  data: {
-    deleteMe: User;
-  };
-}
-
 export const DELETE_ME_MUTATION = gql`
   mutation {
     deleteMe {
@@ -20,10 +9,6 @@ export const DELETE_ME_MUTATION = gql`
   }
 `;
 
-type AuthPayload<Key extends string> = {
-  data: Record<Key, { user: User }>;
-};
-export type ChangePasswordResult = AuthPayload<'changePassword'>;
 export const CHANGE_PASSWORD_MUTATION = gql`
   mutation($newPassword: String!, $oldPassword: String!) {
     changePassword(newPassword: $newPassword, oldPassword: $oldPassword) {
@@ -35,7 +20,6 @@ export const CHANGE_PASSWORD_MUTATION = gql`
   }
 `;
 
-export type SignupResult = AuthPayload<'signup'>;
 export const SIGNUP_MUTATION = gql`
   mutation($email: String!, $phone: String!, $password: String!) {
     signup(email: $email, phone: $phone, password: $password) {
@@ -47,7 +31,6 @@ export const SIGNUP_MUTATION = gql`
   }
 `;
 
-export type LoginResult = AuthPayload<'login'>;
 export const LOGIN_MUTATION = gql`
   mutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
@@ -59,37 +42,16 @@ export const LOGIN_MUTATION = gql`
   }
 `;
 
-export interface AddToCartResult {
-  data: {
-    addToCart: {
-      price: number;
-      package: {
-        name: string;
-      };
-    };
-  };
-}
-
 export const ADD_TO_CART_MUTATION = gql`
   mutation($expireAt: String!, $packageName: String!) {
     addToCart(expireAt: $expireAt, packageName: $packageName) {
-      price
       package {
         name
+        price
       }
     }
   }
 `;
-
-type OrderStatus = 'SUBMITTED' | 'PAID' | 'PREPARED' | 'FAILED';
-export interface CreateOrderResult {
-  data: {
-    createOrder: {
-      status: OrderStatus;
-      totalPrice: number;
-    };
-  };
-}
 
 export const CREATE_ORDER_MUTATION = gql`
   mutation($stripeToken: String!) {
@@ -99,14 +61,6 @@ export const CREATE_ORDER_MUTATION = gql`
     }
   }
 `;
-
-export interface CreatePredictionResult {
-  data: {
-    createPrediction: {
-      id: string;
-    };
-  };
-}
 
 export const CREATE_PREDICTION_MUTATION = gql`
   mutation(

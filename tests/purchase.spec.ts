@@ -7,16 +7,15 @@ import {
   ADD_TO_CART_MUTATION,
   CREATE_ORDER_MUTATION,
   CREATE_PREDICTION_MUTATION,
-  CreatePredictionResult,
   UPDATE_PREDICTION_MUTATION
 } from './util/mutations';
 import { mutate } from './util/testClient';
 
 describe('Purchase', () => {
-  it('Adds an item to the cart', async () => {
+  it('Does not accept past dates', async () => {
     const expireAt = dayjs()
-      .add(5, 'day')
-      .toString();
+      .subtract(5, 'day')
+      .toISOString();
     const result = await mutate({
       mutation: ADD_TO_CART_MUTATION,
       variables: {
@@ -24,7 +23,23 @@ describe('Purchase', () => {
         expireAt
       }
     });
-    expect(result).toMatchSnapshot();
+    expect(result.errors).toBeDefined();
+  });
+  it('Adds an item to the cart', async () => {
+    const expireAt = dayjs()
+      .add(5, 'day')
+      .toISOString();
+    const result = await mutate({
+      mutation: ADD_TO_CART_MUTATION,
+      variables: {
+        packageName: footballPackage.name,
+        expireAt
+      }
+    });
+    expect(result).toHaveProperty(
+      ['data', 'addToCart', 0, 'package'],
+      footballPackage
+    );
   });
   it('Allows the user to create an order from cart', async () => {
     const { id: stripeToken } = await stripe.tokens.create({
@@ -41,7 +56,7 @@ describe('Purchase', () => {
       mutation: CREATE_ORDER_MUTATION,
       variables: { stripeToken }
     });
-    expect(result).toMatchSnapshot();
+    expect(result).toHaveProperty(['data', 'createOrder', 'status'], 'PAID');
   });
 });
 
@@ -55,7 +70,7 @@ describe('Notification', () => {
         packageName: footballPackage.name,
         startDate: dayjs()
           .add(5, 'day')
-          .toString(),
+          .toISOString(),
         home: teams[0].key,
         away: teams[1].key,
         winner: teams[0].key
@@ -64,7 +79,8 @@ describe('Notification', () => {
     await mutate({
       mutation: UPDATE_PREDICTION_MUTATION,
       variables: {
-        id: (result as CreatePredictionResult).data.createPrediction.id,
+        id: (result as { data: { createPrediction: { id: string } } }).data
+          .createPrediction.id,
         winner: teams[1].key
       }
     });
