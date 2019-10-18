@@ -1,19 +1,25 @@
-import { allow, or, shield } from 'graphql-shield';
+import { chain, shield } from 'graphql-shield';
 
+import {
+  addToCartInput,
+  createPredictionInput,
+  loginInput,
+  signupInput
+} from './inputRules';
 import { isAdmin, isAuthenticated, isEditor } from './rules';
 
 export const permissions = shield({
   Mutation: {
     '*': isAdmin,
-    addToCart: isAuthenticated,
+    addToCart: chain(isAuthenticated, addToCartInput),
     changePassword: isAuthenticated,
     createOrder: isAuthenticated,
-    createPrediction: or(isAdmin, isEditor),
+    createPrediction: chain(isEditor, createPredictionInput),
     deleteMe: isAuthenticated,
-    login: allow,
+    login: loginInput,
     removeFromCart: isAuthenticated,
-    signup: allow,
-    updatePrediction: or(isAdmin, isEditor)
+    signup: signupInput,
+    updatePrediction: isEditor
   },
   Query: {
     '*': isAuthenticated
