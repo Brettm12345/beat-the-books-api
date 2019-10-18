@@ -1,13 +1,12 @@
 import { AuthenticationError } from 'apollo-server';
 import { compare } from 'bcrypt';
-import { idArg, mutationField, stringArg } from 'nexus';
+import { mutationField, stringArg } from 'nexus';
 
 import { getAuthPayload } from '@util/auth';
 
 export const Login = mutationField('login', {
   type: 'AuthPayload',
   args: {
-    id: idArg({ nullable: true }),
     email: stringArg({ nullable: true }),
     phone: stringArg({ nullable: true }),
     password: stringArg()
