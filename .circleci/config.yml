@@ -27,7 +27,7 @@ jobs:
           path: test-results
       - run:
           name: Save Coverage
-          command: codecov
+          command: yarn codecov
   deploy:
     docker:
       - image: circleci/node:10.13.0
