@@ -55,6 +55,7 @@
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "apollo-server": "^2.9.6",
+    "codecov": "^3.6.1",
     "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",

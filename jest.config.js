@@ -6,6 +6,7 @@ const { compilerOptions } = require('./tsconfig.json');
 require('dotenv').config({ path: '.env.test' });
 
 module.exports = {
+  collectCoverage: true,
   globalSetup: './jest.setup.ts',
   globalTeardown: './jest.teardown.ts',
   moduleFileExtensions: ['js', 'ts'],
