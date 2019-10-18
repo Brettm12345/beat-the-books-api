@@ -42,7 +42,8 @@ type Package {
   price: Float!
   image: String
   league: League! @relation(name: "LeaguePackage", onDelete: SET_NULL)
-  orderItems: [OrderItem!] @relation(name: "OrderItemPackage")
+  orderItems: [OrderItem!]
+    @relation(name: "OrderItemPackage", onDelete: CASCADE)
   predictions: [Prediction!]
     @relation(name: "PackagePredictions", onDelete: CASCADE)
 }

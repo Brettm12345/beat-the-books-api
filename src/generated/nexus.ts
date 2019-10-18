@@ -3,102 +3,89 @@
  * Do not make changes to this file directly
  */
 
-import * as ctx from '../context';
+import * as ctx from "../context"
+
 
 declare global {
   interface NexusGen extends NexusGenTypes {}
 }
 
 export interface NexusGenInputs {
-  LeagueCreateInput: {
-    // input type
+  LeagueCreateInput: { // input type
     id?: string | null; // ID
     name: string; // String!
     packages?: NexusGenInputs['PackageCreateManyWithoutLeagueInput'] | null; // PackageCreateManyWithoutLeagueInput
     seasonEndDate: any; // DateTime!
     sport: string; // String!
     teams?: NexusGenInputs['TeamCreateManyWithoutLeagueInput'] | null; // TeamCreateManyWithoutLeagueInput
-  };
-  LeagueCreateOneWithoutPackagesInput: {
-    // input type
+  }
+  LeagueCreateOneWithoutPackagesInput: { // input type
     connect?: NexusGenInputs['LeagueWhereUniqueInput'] | null; // LeagueWhereUniqueInput
     create?: NexusGenInputs['LeagueCreateWithoutPackagesInput'] | null; // LeagueCreateWithoutPackagesInput
-  };
-  LeagueCreateOneWithoutTeamsInput: {
-    // input type
+  }
+  LeagueCreateOneWithoutTeamsInput: { // input type
     connect?: NexusGenInputs['LeagueWhereUniqueInput'] | null; // LeagueWhereUniqueInput
     create?: NexusGenInputs['LeagueCreateWithoutTeamsInput'] | null; // LeagueCreateWithoutTeamsInput
-  };
-  LeagueCreateWithoutPackagesInput: {
-    // input type
+  }
+  LeagueCreateWithoutPackagesInput: { // input type
     id?: string | null; // ID
     name: string; // String!
     seasonEndDate: any; // DateTime!
     sport: string; // String!
     teams?: NexusGenInputs['TeamCreateManyWithoutLeagueInput'] | null; // TeamCreateManyWithoutLeagueInput
-  };
-  LeagueCreateWithoutTeamsInput: {
-    // input type
+  }
+  LeagueCreateWithoutTeamsInput: { // input type
     id?: string | null; // ID
     name: string; // String!
     packages?: NexusGenInputs['PackageCreateManyWithoutLeagueInput'] | null; // PackageCreateManyWithoutLeagueInput
     seasonEndDate: any; // DateTime!
     sport: string; // String!
-  };
-  LeagueUpdateInput: {
-    // input type
+  }
+  LeagueUpdateInput: { // input type
     name?: string | null; // String
     packages?: NexusGenInputs['PackageUpdateManyWithoutLeagueInput'] | null; // PackageUpdateManyWithoutLeagueInput
     seasonEndDate?: any | null; // DateTime
     sport?: string | null; // String
     teams?: NexusGenInputs['TeamUpdateManyWithoutLeagueInput'] | null; // TeamUpdateManyWithoutLeagueInput
-  };
-  LeagueUpdateManyMutationInput: {
-    // input type
+  }
+  LeagueUpdateManyMutationInput: { // input type
     name?: string | null; // String
     seasonEndDate?: any | null; // DateTime
     sport?: string | null; // String
-  };
-  LeagueUpdateOneRequiredWithoutPackagesInput: {
-    // input type
+  }
+  LeagueUpdateOneRequiredWithoutPackagesInput: { // input type
     connect?: NexusGenInputs['LeagueWhereUniqueInput'] | null; // LeagueWhereUniqueInput
     create?: NexusGenInputs['LeagueCreateWithoutPackagesInput'] | null; // LeagueCreateWithoutPackagesInput
     update?: NexusGenInputs['LeagueUpdateWithoutPackagesDataInput'] | null; // LeagueUpdateWithoutPackagesDataInput
     upsert?: NexusGenInputs['LeagueUpsertWithoutPackagesInput'] | null; // LeagueUpsertWithoutPackagesInput
-  };
-  LeagueUpdateOneRequiredWithoutTeamsInput: {
-    // input type
+  }
+  LeagueUpdateOneRequiredWithoutTeamsInput: { // input type
     connect?: NexusGenInputs['LeagueWhereUniqueInput'] | null; // LeagueWhereUniqueInput
     create?: NexusGenInputs['LeagueCreateWithoutTeamsInput'] | null; // LeagueCreateWithoutTeamsInput
     update?: NexusGenInputs['LeagueUpdateWithoutTeamsDataInput'] | null; // LeagueUpdateWithoutTeamsDataInput
     upsert?: NexusGenInputs['LeagueUpsertWithoutTeamsInput'] | null; // LeagueUpsertWithoutTeamsInput
-  };
-  LeagueUpdateWithoutPackagesDataInput: {
-    // input type
+  }
+  LeagueUpdateWithoutPackagesDataInput: { // input type
     name?: string | null; // String
     seasonEndDate?: any | null; // DateTime
     sport?: string | null; // String
     teams?: NexusGenInputs['TeamUpdateManyWithoutLeagueInput'] | null; // TeamUpdateManyWithoutLeagueInput
-  };
-  LeagueUpdateWithoutTeamsDataInput: {
-    // input type
+  }
+  LeagueUpdateWithoutTeamsDataInput: { // input type
     name?: string | null; // String
     packages?: NexusGenInputs['PackageUpdateManyWithoutLeagueInput'] | null; // PackageUpdateManyWithoutLeagueInput
     seasonEndDate?: any | null; // DateTime
     sport?: string | null; // String
-  };
-  LeagueUpsertWithoutPackagesInput: {
-    // input type
+  }
+  LeagueUpsertWithoutPackagesInput: { // input type
     create: NexusGenInputs['LeagueCreateWithoutPackagesInput']; // LeagueCreateWithoutPackagesInput!
     update: NexusGenInputs['LeagueUpdateWithoutPackagesDataInput']; // LeagueUpdateWithoutPackagesDataInput!
-  };
-  LeagueUpsertWithoutTeamsInput: {
-    // input type
+  }
+  LeagueUpsertWithoutTeamsInput: { // input type
     create: NexusGenInputs['LeagueCreateWithoutTeamsInput']; // LeagueCreateWithoutTeamsInput!
     update: NexusGenInputs['LeagueUpdateWithoutTeamsDataInput']; // LeagueUpdateWithoutTeamsDataInput!
-  };
-  LeagueWhereInput: {
-    // input type
+  }
+  LeagueWhereInput: { // input type
     AND?: NexusGenInputs['LeagueWhereInput'][] | null; // [LeagueWhereInput!]
     id?: string | null; // ID
     id_contains?: string | null; // ID
@@ -158,50 +145,35 @@ export interface NexusGenInputs {
     teams_every?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
     teams_none?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
     teams_some?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-  };
-  LeagueWhereUniqueInput: {
-    // input type
+  }
+  LeagueWhereUniqueInput: { // input type
     id?: string | null; // ID
     name?: string | null; // String
-  };
-  NotificationSettingsCreateOneWithoutUserInput: {
-    // input type
+  }
+  NotificationSettingsCreateOneWithoutUserInput: { // input type
     connect?: NexusGenInputs['NotificationSettingsWhereUniqueInput'] | null; // NotificationSettingsWhereUniqueInput
-    create?:
-      | NexusGenInputs['NotificationSettingsCreateWithoutUserInput']
-      | null; // NotificationSettingsCreateWithoutUserInput
-  };
-  NotificationSettingsCreateWithoutUserInput: {
-    // input type
+    create?: NexusGenInputs['NotificationSettingsCreateWithoutUserInput'] | null; // NotificationSettingsCreateWithoutUserInput
+  }
+  NotificationSettingsCreateWithoutUserInput: { // input type
     email?: boolean | null; // Boolean
     id?: string | null; // ID
     phone?: boolean | null; // Boolean
-  };
-  NotificationSettingsUpdateOneRequiredWithoutUserInput: {
-    // input type
+  }
+  NotificationSettingsUpdateOneRequiredWithoutUserInput: { // input type
     connect?: NexusGenInputs['NotificationSettingsWhereUniqueInput'] | null; // NotificationSettingsWhereUniqueInput
-    create?:
-      | NexusGenInputs['NotificationSettingsCreateWithoutUserInput']
-      | null; // NotificationSettingsCreateWithoutUserInput
-    update?:
-      | NexusGenInputs['NotificationSettingsUpdateWithoutUserDataInput']
-      | null; // NotificationSettingsUpdateWithoutUserDataInput
-    upsert?:
-      | NexusGenInputs['NotificationSettingsUpsertWithoutUserInput']
-      | null; // NotificationSettingsUpsertWithoutUserInput
-  };
-  NotificationSettingsUpdateWithoutUserDataInput: {
-    // input type
+    create?: NexusGenInputs['NotificationSettingsCreateWithoutUserInput'] | null; // NotificationSettingsCreateWithoutUserInput
+    update?: NexusGenInputs['NotificationSettingsUpdateWithoutUserDataInput'] | null; // NotificationSettingsUpdateWithoutUserDataInput
+    upsert?: NexusGenInputs['NotificationSettingsUpsertWithoutUserInput'] | null; // NotificationSettingsUpsertWithoutUserInput
+  }
+  NotificationSettingsUpdateWithoutUserDataInput: { // input type
     email?: boolean | null; // Boolean
     phone?: boolean | null; // Boolean
-  };
-  NotificationSettingsUpsertWithoutUserInput: {
-    // input type
+  }
+  NotificationSettingsUpsertWithoutUserInput: { // input type
     create: NexusGenInputs['NotificationSettingsCreateWithoutUserInput']; // NotificationSettingsCreateWithoutUserInput!
     update: NexusGenInputs['NotificationSettingsUpdateWithoutUserDataInput']; // NotificationSettingsUpdateWithoutUserDataInput!
-  };
-  NotificationSettingsWhereInput: {
-    // input type
+  }
+  NotificationSettingsWhereInput: { // input type
     AND?: NexusGenInputs['NotificationSettingsWhereInput'][] | null; // [NotificationSettingsWhereInput!]
     email?: boolean | null; // Boolean
     email_not?: boolean | null; // Boolean
@@ -224,77 +196,65 @@ export interface NexusGenInputs {
     phone?: boolean | null; // Boolean
     phone_not?: boolean | null; // Boolean
     user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-  };
-  NotificationSettingsWhereUniqueInput: {
-    // input type
+  }
+  NotificationSettingsWhereUniqueInput: { // input type
     id?: string | null; // ID
-  };
-  OrderCreateManyWithoutOwnerInput: {
-    // input type
+  }
+  OrderCreateManyWithoutOwnerInput: { // input type
     connect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
     create?: NexusGenInputs['OrderCreateWithoutOwnerInput'][] | null; // [OrderCreateWithoutOwnerInput!]
-  };
-  OrderCreateOneWithoutItemsInput: {
-    // input type
+  }
+  OrderCreateOneWithoutItemsInput: { // input type
     connect?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
     create?: NexusGenInputs['OrderCreateWithoutItemsInput'] | null; // OrderCreateWithoutItemsInput
-  };
-  OrderCreateWithoutItemsInput: {
-    // input type
+  }
+  OrderCreateWithoutItemsInput: { // input type
     id?: string | null; // ID
     owner: NexusGenInputs['UserCreateOneWithoutOrdersInput']; // UserCreateOneWithoutOrdersInput!
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
     totalTax: number; // Float!
-  };
-  OrderCreateWithoutOwnerInput: {
-    // input type
+  }
+  OrderCreateWithoutOwnerInput: { // input type
     id?: string | null; // ID
     items?: NexusGenInputs['OrderItemCreateManyWithoutOrderInput'] | null; // OrderItemCreateManyWithoutOrderInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
     totalTax: number; // Float!
-  };
-  OrderItemCreateManyWithoutOrderInput: {
-    // input type
+  }
+  OrderItemCreateManyWithoutOrderInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutOrderInput'][] | null; // [OrderItemCreateWithoutOrderInput!]
-  };
-  OrderItemCreateManyWithoutOwnerInput: {
-    // input type
+  }
+  OrderItemCreateManyWithoutOwnerInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutOwnerInput'][] | null; // [OrderItemCreateWithoutOwnerInput!]
-  };
-  OrderItemCreateManyWithoutPackageInput: {
-    // input type
+  }
+  OrderItemCreateManyWithoutPackageInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutPackageInput'][] | null; // [OrderItemCreateWithoutPackageInput!]
-  };
-  OrderItemCreateWithoutOrderInput: {
-    // input type
+  }
+  OrderItemCreateWithoutOrderInput: { // input type
     expireAt: any; // DateTime!
     id?: string | null; // ID
     owner?: NexusGenInputs['UserCreateOneWithoutCartInput'] | null; // UserCreateOneWithoutCartInput
     package: NexusGenInputs['PackageCreateOneWithoutOrderItemsInput']; // PackageCreateOneWithoutOrderItemsInput!
-  };
-  OrderItemCreateWithoutOwnerInput: {
-    // input type
+  }
+  OrderItemCreateWithoutOwnerInput: { // input type
     expireAt: any; // DateTime!
     id?: string | null; // ID
     order?: NexusGenInputs['OrderCreateOneWithoutItemsInput'] | null; // OrderCreateOneWithoutItemsInput
     package: NexusGenInputs['PackageCreateOneWithoutOrderItemsInput']; // PackageCreateOneWithoutOrderItemsInput!
-  };
-  OrderItemCreateWithoutPackageInput: {
-    // input type
+  }
+  OrderItemCreateWithoutPackageInput: { // input type
     expireAt: any; // DateTime!
     id?: string | null; // ID
     order?: NexusGenInputs['OrderCreateOneWithoutItemsInput'] | null; // OrderCreateOneWithoutItemsInput
     owner?: NexusGenInputs['UserCreateOneWithoutCartInput'] | null; // UserCreateOneWithoutCartInput
-  };
-  OrderItemScalarWhereInput: {
-    // input type
+  }
+  OrderItemScalarWhereInput: { // input type
     AND?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
     expireAt?: any | null; // DateTime
     expireAt_gt?: any | null; // DateTime
@@ -320,127 +280,90 @@ export interface NexusGenInputs {
     id_starts_with?: string | null; // ID
     NOT?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
     OR?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
-  };
-  OrderItemUpdateManyDataInput: {
-    // input type
+  }
+  OrderItemUpdateManyDataInput: { // input type
     expireAt?: any | null; // DateTime
-  };
-  OrderItemUpdateManyWithWhereNestedInput: {
-    // input type
+  }
+  OrderItemUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['OrderItemUpdateManyDataInput']; // OrderItemUpdateManyDataInput!
     where: NexusGenInputs['OrderItemScalarWhereInput']; // OrderItemScalarWhereInput!
-  };
-  OrderItemUpdateManyWithoutOrderInput: {
-    // input type
+  }
+  OrderItemUpdateManyWithoutOrderInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutOrderInput'][] | null; // [OrderItemCreateWithoutOrderInput!]
     delete?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     deleteMany?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
     disconnect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     set?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutOrderInput'][]
-      | null; // [OrderItemUpdateWithWhereUniqueWithoutOrderInput!]
-    updateMany?:
-      | NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][]
-      | null; // [OrderItemUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutOrderInput'][]
-      | null; // [OrderItemUpsertWithWhereUniqueWithoutOrderInput!]
-  };
-  OrderItemUpdateManyWithoutOwnerInput: {
-    // input type
+    update?: NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutOrderInput'][] | null; // [OrderItemUpdateWithWhereUniqueWithoutOrderInput!]
+    updateMany?: NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][] | null; // [OrderItemUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutOrderInput'][] | null; // [OrderItemUpsertWithWhereUniqueWithoutOrderInput!]
+  }
+  OrderItemUpdateManyWithoutOwnerInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutOwnerInput'][] | null; // [OrderItemCreateWithoutOwnerInput!]
     delete?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     deleteMany?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
     disconnect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     set?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutOwnerInput'][]
-      | null; // [OrderItemUpdateWithWhereUniqueWithoutOwnerInput!]
-    updateMany?:
-      | NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][]
-      | null; // [OrderItemUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutOwnerInput'][]
-      | null; // [OrderItemUpsertWithWhereUniqueWithoutOwnerInput!]
-  };
-  OrderItemUpdateManyWithoutPackageInput: {
-    // input type
+    update?: NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutOwnerInput'][] | null; // [OrderItemUpdateWithWhereUniqueWithoutOwnerInput!]
+    updateMany?: NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][] | null; // [OrderItemUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutOwnerInput'][] | null; // [OrderItemUpsertWithWhereUniqueWithoutOwnerInput!]
+  }
+  OrderItemUpdateManyWithoutPackageInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     create?: NexusGenInputs['OrderItemCreateWithoutPackageInput'][] | null; // [OrderItemCreateWithoutPackageInput!]
     delete?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     deleteMany?: NexusGenInputs['OrderItemScalarWhereInput'][] | null; // [OrderItemScalarWhereInput!]
     disconnect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
     set?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutPackageInput'][]
-      | null; // [OrderItemUpdateWithWhereUniqueWithoutPackageInput!]
-    updateMany?:
-      | NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][]
-      | null; // [OrderItemUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutPackageInput'][]
-      | null; // [OrderItemUpsertWithWhereUniqueWithoutPackageInput!]
-  };
-  OrderItemUpdateWithWhereUniqueWithoutOrderInput: {
-    // input type
+    update?: NexusGenInputs['OrderItemUpdateWithWhereUniqueWithoutPackageInput'][] | null; // [OrderItemUpdateWithWhereUniqueWithoutPackageInput!]
+    updateMany?: NexusGenInputs['OrderItemUpdateManyWithWhereNestedInput'][] | null; // [OrderItemUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['OrderItemUpsertWithWhereUniqueWithoutPackageInput'][] | null; // [OrderItemUpsertWithWhereUniqueWithoutPackageInput!]
+  }
+  OrderItemUpdateWithWhereUniqueWithoutOrderInput: { // input type
     data: NexusGenInputs['OrderItemUpdateWithoutOrderDataInput']; // OrderItemUpdateWithoutOrderDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemUpdateWithWhereUniqueWithoutOwnerInput: {
-    // input type
+  }
+  OrderItemUpdateWithWhereUniqueWithoutOwnerInput: { // input type
     data: NexusGenInputs['OrderItemUpdateWithoutOwnerDataInput']; // OrderItemUpdateWithoutOwnerDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemUpdateWithWhereUniqueWithoutPackageInput: {
-    // input type
+  }
+  OrderItemUpdateWithWhereUniqueWithoutPackageInput: { // input type
     data: NexusGenInputs['OrderItemUpdateWithoutPackageDataInput']; // OrderItemUpdateWithoutPackageDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemUpdateWithoutOrderDataInput: {
-    // input type
+  }
+  OrderItemUpdateWithoutOrderDataInput: { // input type
     expireAt?: any | null; // DateTime
     owner?: NexusGenInputs['UserUpdateOneWithoutCartInput'] | null; // UserUpdateOneWithoutCartInput
-    package?:
-      | NexusGenInputs['PackageUpdateOneRequiredWithoutOrderItemsInput']
-      | null; // PackageUpdateOneRequiredWithoutOrderItemsInput
-  };
-  OrderItemUpdateWithoutOwnerDataInput: {
-    // input type
+    package?: NexusGenInputs['PackageUpdateOneRequiredWithoutOrderItemsInput'] | null; // PackageUpdateOneRequiredWithoutOrderItemsInput
+  }
+  OrderItemUpdateWithoutOwnerDataInput: { // input type
     expireAt?: any | null; // DateTime
     order?: NexusGenInputs['OrderUpdateOneWithoutItemsInput'] | null; // OrderUpdateOneWithoutItemsInput
-    package?:
-      | NexusGenInputs['PackageUpdateOneRequiredWithoutOrderItemsInput']
-      | null; // PackageUpdateOneRequiredWithoutOrderItemsInput
-  };
-  OrderItemUpdateWithoutPackageDataInput: {
-    // input type
+    package?: NexusGenInputs['PackageUpdateOneRequiredWithoutOrderItemsInput'] | null; // PackageUpdateOneRequiredWithoutOrderItemsInput
+  }
+  OrderItemUpdateWithoutPackageDataInput: { // input type
     expireAt?: any | null; // DateTime
     order?: NexusGenInputs['OrderUpdateOneWithoutItemsInput'] | null; // OrderUpdateOneWithoutItemsInput
     owner?: NexusGenInputs['UserUpdateOneWithoutCartInput'] | null; // UserUpdateOneWithoutCartInput
-  };
-  OrderItemUpsertWithWhereUniqueWithoutOrderInput: {
-    // input type
+  }
+  OrderItemUpsertWithWhereUniqueWithoutOrderInput: { // input type
     create: NexusGenInputs['OrderItemCreateWithoutOrderInput']; // OrderItemCreateWithoutOrderInput!
     update: NexusGenInputs['OrderItemUpdateWithoutOrderDataInput']; // OrderItemUpdateWithoutOrderDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemUpsertWithWhereUniqueWithoutOwnerInput: {
-    // input type
+  }
+  OrderItemUpsertWithWhereUniqueWithoutOwnerInput: { // input type
     create: NexusGenInputs['OrderItemCreateWithoutOwnerInput']; // OrderItemCreateWithoutOwnerInput!
     update: NexusGenInputs['OrderItemUpdateWithoutOwnerDataInput']; // OrderItemUpdateWithoutOwnerDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemUpsertWithWhereUniqueWithoutPackageInput: {
-    // input type
+  }
+  OrderItemUpsertWithWhereUniqueWithoutPackageInput: { // input type
     create: NexusGenInputs['OrderItemCreateWithoutPackageInput']; // OrderItemCreateWithoutPackageInput!
     update: NexusGenInputs['OrderItemUpdateWithoutPackageDataInput']; // OrderItemUpdateWithoutPackageDataInput!
     where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-  };
-  OrderItemWhereInput: {
-    // input type
+  }
+  OrderItemWhereInput: { // input type
     AND?: NexusGenInputs['OrderItemWhereInput'][] | null; // [OrderItemWhereInput!]
     expireAt?: any | null; // DateTime
     expireAt_gt?: any | null; // DateTime
@@ -469,13 +392,11 @@ export interface NexusGenInputs {
     order?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
     owner?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     package?: NexusGenInputs['PackageWhereInput'] | null; // PackageWhereInput
-  };
-  OrderItemWhereUniqueInput: {
-    // input type
+  }
+  OrderItemWhereUniqueInput: { // input type
     id?: string | null; // ID
-  };
-  OrderScalarWhereInput: {
-    // input type
+  }
+  OrderScalarWhereInput: { // input type
     AND?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
@@ -537,78 +458,64 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-  };
-  OrderUpdateManyDataInput: {
-    // input type
+  }
+  OrderUpdateManyDataInput: { // input type
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
     totalTax?: number | null; // Float
-  };
-  OrderUpdateManyWithWhereNestedInput: {
-    // input type
+  }
+  OrderUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['OrderUpdateManyDataInput']; // OrderUpdateManyDataInput!
     where: NexusGenInputs['OrderScalarWhereInput']; // OrderScalarWhereInput!
-  };
-  OrderUpdateManyWithoutOwnerInput: {
-    // input type
+  }
+  OrderUpdateManyWithoutOwnerInput: { // input type
     connect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
     create?: NexusGenInputs['OrderCreateWithoutOwnerInput'][] | null; // [OrderCreateWithoutOwnerInput!]
     delete?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
     deleteMany?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
     disconnect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
     set?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['OrderUpdateWithWhereUniqueWithoutOwnerInput'][]
-      | null; // [OrderUpdateWithWhereUniqueWithoutOwnerInput!]
+    update?: NexusGenInputs['OrderUpdateWithWhereUniqueWithoutOwnerInput'][] | null; // [OrderUpdateWithWhereUniqueWithoutOwnerInput!]
     updateMany?: NexusGenInputs['OrderUpdateManyWithWhereNestedInput'][] | null; // [OrderUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['OrderUpsertWithWhereUniqueWithoutOwnerInput'][]
-      | null; // [OrderUpsertWithWhereUniqueWithoutOwnerInput!]
-  };
-  OrderUpdateOneWithoutItemsInput: {
-    // input type
+    upsert?: NexusGenInputs['OrderUpsertWithWhereUniqueWithoutOwnerInput'][] | null; // [OrderUpsertWithWhereUniqueWithoutOwnerInput!]
+  }
+  OrderUpdateOneWithoutItemsInput: { // input type
     connect?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
     create?: NexusGenInputs['OrderCreateWithoutItemsInput'] | null; // OrderCreateWithoutItemsInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
     update?: NexusGenInputs['OrderUpdateWithoutItemsDataInput'] | null; // OrderUpdateWithoutItemsDataInput
     upsert?: NexusGenInputs['OrderUpsertWithoutItemsInput'] | null; // OrderUpsertWithoutItemsInput
-  };
-  OrderUpdateWithWhereUniqueWithoutOwnerInput: {
-    // input type
+  }
+  OrderUpdateWithWhereUniqueWithoutOwnerInput: { // input type
     data: NexusGenInputs['OrderUpdateWithoutOwnerDataInput']; // OrderUpdateWithoutOwnerDataInput!
     where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
-  };
-  OrderUpdateWithoutItemsDataInput: {
-    // input type
+  }
+  OrderUpdateWithoutItemsDataInput: { // input type
     owner?: NexusGenInputs['UserUpdateOneRequiredWithoutOrdersInput'] | null; // UserUpdateOneRequiredWithoutOrdersInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
     totalTax?: number | null; // Float
-  };
-  OrderUpdateWithoutOwnerDataInput: {
-    // input type
+  }
+  OrderUpdateWithoutOwnerDataInput: { // input type
     items?: NexusGenInputs['OrderItemUpdateManyWithoutOrderInput'] | null; // OrderItemUpdateManyWithoutOrderInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
     totalTax?: number | null; // Float
-  };
-  OrderUpsertWithWhereUniqueWithoutOwnerInput: {
-    // input type
+  }
+  OrderUpsertWithWhereUniqueWithoutOwnerInput: { // input type
     create: NexusGenInputs['OrderCreateWithoutOwnerInput']; // OrderCreateWithoutOwnerInput!
     update: NexusGenInputs['OrderUpdateWithoutOwnerDataInput']; // OrderUpdateWithoutOwnerDataInput!
     where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
-  };
-  OrderUpsertWithoutItemsInput: {
-    // input type
+  }
+  OrderUpsertWithoutItemsInput: { // input type
     create: NexusGenInputs['OrderCreateWithoutItemsInput']; // OrderCreateWithoutItemsInput!
     update: NexusGenInputs['OrderUpdateWithoutItemsDataInput']; // OrderUpdateWithoutItemsDataInput!
-  };
-  OrderWhereInput: {
-    // input type
+  }
+  OrderWhereInput: { // input type
     AND?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
@@ -674,49 +581,37 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-  };
-  OrderWhereUniqueInput: {
-    // input type
+  }
+  OrderWhereUniqueInput: { // input type
     id?: string | null; // ID
-  };
-  PackageCreateManyWithoutLeagueInput: {
-    // input type
+  }
+  PackageCreateManyWithoutLeagueInput: { // input type
     connect?: NexusGenInputs['PackageWhereUniqueInput'][] | null; // [PackageWhereUniqueInput!]
     create?: NexusGenInputs['PackageCreateWithoutLeagueInput'][] | null; // [PackageCreateWithoutLeagueInput!]
-  };
-  PackageCreateOneWithoutOrderItemsInput: {
-    // input type
+  }
+  PackageCreateOneWithoutOrderItemsInput: { // input type
     connect?: NexusGenInputs['PackageWhereUniqueInput'] | null; // PackageWhereUniqueInput
     create?: NexusGenInputs['PackageCreateWithoutOrderItemsInput'] | null; // PackageCreateWithoutOrderItemsInput
-  };
-  PackageCreateWithoutLeagueInput: {
-    // input type
+  }
+  PackageCreateWithoutLeagueInput: { // input type
     description?: string | null; // String
     id?: string | null; // ID
     image?: string | null; // String
     name: string; // String!
-    orderItems?:
-      | NexusGenInputs['OrderItemCreateManyWithoutPackageInput']
-      | null; // OrderItemCreateManyWithoutPackageInput
-    predictions?:
-      | NexusGenInputs['PredictionCreateManyWithoutPackageInput']
-      | null; // PredictionCreateManyWithoutPackageInput
+    orderItems?: NexusGenInputs['OrderItemCreateManyWithoutPackageInput'] | null; // OrderItemCreateManyWithoutPackageInput
+    predictions?: NexusGenInputs['PredictionCreateManyWithoutPackageInput'] | null; // PredictionCreateManyWithoutPackageInput
     price: number; // Float!
-  };
-  PackageCreateWithoutOrderItemsInput: {
-    // input type
+  }
+  PackageCreateWithoutOrderItemsInput: { // input type
     description?: string | null; // String
     id?: string | null; // ID
     image?: string | null; // String
     league: NexusGenInputs['LeagueCreateOneWithoutPackagesInput']; // LeagueCreateOneWithoutPackagesInput!
     name: string; // String!
-    predictions?:
-      | NexusGenInputs['PredictionCreateManyWithoutPackageInput']
-      | null; // PredictionCreateManyWithoutPackageInput
+    predictions?: NexusGenInputs['PredictionCreateManyWithoutPackageInput'] | null; // PredictionCreateManyWithoutPackageInput
     price: number; // Float!
-  };
-  PackageScalarWhereInput: {
-    // input type
+  }
+  PackageScalarWhereInput: { // input type
     AND?: NexusGenInputs['PackageScalarWhereInput'][] | null; // [PackageScalarWhereInput!]
     description?: string | null; // String
     description_contains?: string | null; // String
@@ -784,88 +679,64 @@ export interface NexusGenInputs {
     price_lte?: number | null; // Float
     price_not?: number | null; // Float
     price_not_in?: number[] | null; // [Float!]
-  };
-  PackageUpdateManyDataInput: {
-    // input type
+  }
+  PackageUpdateManyDataInput: { // input type
     description?: string | null; // String
     image?: string | null; // String
     name?: string | null; // String
     price?: number | null; // Float
-  };
-  PackageUpdateManyWithWhereNestedInput: {
-    // input type
+  }
+  PackageUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['PackageUpdateManyDataInput']; // PackageUpdateManyDataInput!
     where: NexusGenInputs['PackageScalarWhereInput']; // PackageScalarWhereInput!
-  };
-  PackageUpdateManyWithoutLeagueInput: {
-    // input type
+  }
+  PackageUpdateManyWithoutLeagueInput: { // input type
     connect?: NexusGenInputs['PackageWhereUniqueInput'][] | null; // [PackageWhereUniqueInput!]
     create?: NexusGenInputs['PackageCreateWithoutLeagueInput'][] | null; // [PackageCreateWithoutLeagueInput!]
     delete?: NexusGenInputs['PackageWhereUniqueInput'][] | null; // [PackageWhereUniqueInput!]
     deleteMany?: NexusGenInputs['PackageScalarWhereInput'][] | null; // [PackageScalarWhereInput!]
     disconnect?: NexusGenInputs['PackageWhereUniqueInput'][] | null; // [PackageWhereUniqueInput!]
     set?: NexusGenInputs['PackageWhereUniqueInput'][] | null; // [PackageWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['PackageUpdateWithWhereUniqueWithoutLeagueInput'][]
-      | null; // [PackageUpdateWithWhereUniqueWithoutLeagueInput!]
-    updateMany?:
-      | NexusGenInputs['PackageUpdateManyWithWhereNestedInput'][]
-      | null; // [PackageUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['PackageUpsertWithWhereUniqueWithoutLeagueInput'][]
-      | null; // [PackageUpsertWithWhereUniqueWithoutLeagueInput!]
-  };
-  PackageUpdateOneRequiredWithoutOrderItemsInput: {
-    // input type
+    update?: NexusGenInputs['PackageUpdateWithWhereUniqueWithoutLeagueInput'][] | null; // [PackageUpdateWithWhereUniqueWithoutLeagueInput!]
+    updateMany?: NexusGenInputs['PackageUpdateManyWithWhereNestedInput'][] | null; // [PackageUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['PackageUpsertWithWhereUniqueWithoutLeagueInput'][] | null; // [PackageUpsertWithWhereUniqueWithoutLeagueInput!]
+  }
+  PackageUpdateOneRequiredWithoutOrderItemsInput: { // input type
     connect?: NexusGenInputs['PackageWhereUniqueInput'] | null; // PackageWhereUniqueInput
     create?: NexusGenInputs['PackageCreateWithoutOrderItemsInput'] | null; // PackageCreateWithoutOrderItemsInput
     update?: NexusGenInputs['PackageUpdateWithoutOrderItemsDataInput'] | null; // PackageUpdateWithoutOrderItemsDataInput
     upsert?: NexusGenInputs['PackageUpsertWithoutOrderItemsInput'] | null; // PackageUpsertWithoutOrderItemsInput
-  };
-  PackageUpdateWithWhereUniqueWithoutLeagueInput: {
-    // input type
+  }
+  PackageUpdateWithWhereUniqueWithoutLeagueInput: { // input type
     data: NexusGenInputs['PackageUpdateWithoutLeagueDataInput']; // PackageUpdateWithoutLeagueDataInput!
     where: NexusGenInputs['PackageWhereUniqueInput']; // PackageWhereUniqueInput!
-  };
-  PackageUpdateWithoutLeagueDataInput: {
-    // input type
+  }
+  PackageUpdateWithoutLeagueDataInput: { // input type
     description?: string | null; // String
     image?: string | null; // String
     name?: string | null; // String
-    orderItems?:
-      | NexusGenInputs['OrderItemUpdateManyWithoutPackageInput']
-      | null; // OrderItemUpdateManyWithoutPackageInput
-    predictions?:
-      | NexusGenInputs['PredictionUpdateManyWithoutPackageInput']
-      | null; // PredictionUpdateManyWithoutPackageInput
+    orderItems?: NexusGenInputs['OrderItemUpdateManyWithoutPackageInput'] | null; // OrderItemUpdateManyWithoutPackageInput
+    predictions?: NexusGenInputs['PredictionUpdateManyWithoutPackageInput'] | null; // PredictionUpdateManyWithoutPackageInput
     price?: number | null; // Float
-  };
-  PackageUpdateWithoutOrderItemsDataInput: {
-    // input type
+  }
+  PackageUpdateWithoutOrderItemsDataInput: { // input type
     description?: string | null; // String
     image?: string | null; // String
-    league?:
-      | NexusGenInputs['LeagueUpdateOneRequiredWithoutPackagesInput']
-      | null; // LeagueUpdateOneRequiredWithoutPackagesInput
+    league?: NexusGenInputs['LeagueUpdateOneRequiredWithoutPackagesInput'] | null; // LeagueUpdateOneRequiredWithoutPackagesInput
     name?: string | null; // String
-    predictions?:
-      | NexusGenInputs['PredictionUpdateManyWithoutPackageInput']
-      | null; // PredictionUpdateManyWithoutPackageInput
+    predictions?: NexusGenInputs['PredictionUpdateManyWithoutPackageInput'] | null; // PredictionUpdateManyWithoutPackageInput
     price?: number | null; // Float
-  };
-  PackageUpsertWithWhereUniqueWithoutLeagueInput: {
-    // input type
+  }
+  PackageUpsertWithWhereUniqueWithoutLeagueInput: { // input type
     create: NexusGenInputs['PackageCreateWithoutLeagueInput']; // PackageCreateWithoutLeagueInput!
     update: NexusGenInputs['PackageUpdateWithoutLeagueDataInput']; // PackageUpdateWithoutLeagueDataInput!
     where: NexusGenInputs['PackageWhereUniqueInput']; // PackageWhereUniqueInput!
-  };
-  PackageUpsertWithoutOrderItemsInput: {
-    // input type
+  }
+  PackageUpsertWithoutOrderItemsInput: { // input type
     create: NexusGenInputs['PackageCreateWithoutOrderItemsInput']; // PackageCreateWithoutOrderItemsInput!
     update: NexusGenInputs['PackageUpdateWithoutOrderItemsDataInput']; // PackageUpdateWithoutOrderItemsDataInput!
-  };
-  PackageWhereInput: {
-    // input type
+  }
+  PackageWhereInput: { // input type
     AND?: NexusGenInputs['PackageWhereInput'][] | null; // [PackageWhereInput!]
     description?: string | null; // String
     description_contains?: string | null; // String
@@ -940,28 +811,24 @@ export interface NexusGenInputs {
     price_lte?: number | null; // Float
     price_not?: number | null; // Float
     price_not_in?: number[] | null; // [Float!]
-  };
-  PackageWhereUniqueInput: {
-    // input type
+  }
+  PackageWhereUniqueInput: { // input type
     id?: string | null; // ID
     name?: string | null; // String
-  };
-  PredictionCreateManyWithoutPackageInput: {
-    // input type
+  }
+  PredictionCreateManyWithoutPackageInput: { // input type
     connect?: NexusGenInputs['PredictionWhereUniqueInput'][] | null; // [PredictionWhereUniqueInput!]
     create?: NexusGenInputs['PredictionCreateWithoutPackageInput'][] | null; // [PredictionCreateWithoutPackageInput!]
-  };
-  PredictionCreateWithoutPackageInput: {
-    // input type
+  }
+  PredictionCreateWithoutPackageInput: { // input type
     away: NexusGenInputs['TeamCreateOneInput']; // TeamCreateOneInput!
     home: NexusGenInputs['TeamCreateOneInput']; // TeamCreateOneInput!
     id?: string | null; // ID
     name: string; // String!
     startDate: any; // DateTime!
     winner: NexusGenInputs['TeamCreateOneInput']; // TeamCreateOneInput!
-  };
-  PredictionScalarWhereInput: {
-    // input type
+  }
+  PredictionScalarWhereInput: { // input type
     AND?: NexusGenInputs['PredictionScalarWhereInput'][] | null; // [PredictionScalarWhereInput!]
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
@@ -1017,56 +884,43 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-  };
-  PredictionUpdateManyDataInput: {
-    // input type
+  }
+  PredictionUpdateManyDataInput: { // input type
     name?: string | null; // String
     startDate?: any | null; // DateTime
-  };
-  PredictionUpdateManyWithWhereNestedInput: {
-    // input type
+  }
+  PredictionUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['PredictionUpdateManyDataInput']; // PredictionUpdateManyDataInput!
     where: NexusGenInputs['PredictionScalarWhereInput']; // PredictionScalarWhereInput!
-  };
-  PredictionUpdateManyWithoutPackageInput: {
-    // input type
+  }
+  PredictionUpdateManyWithoutPackageInput: { // input type
     connect?: NexusGenInputs['PredictionWhereUniqueInput'][] | null; // [PredictionWhereUniqueInput!]
     create?: NexusGenInputs['PredictionCreateWithoutPackageInput'][] | null; // [PredictionCreateWithoutPackageInput!]
     delete?: NexusGenInputs['PredictionWhereUniqueInput'][] | null; // [PredictionWhereUniqueInput!]
     deleteMany?: NexusGenInputs['PredictionScalarWhereInput'][] | null; // [PredictionScalarWhereInput!]
     disconnect?: NexusGenInputs['PredictionWhereUniqueInput'][] | null; // [PredictionWhereUniqueInput!]
     set?: NexusGenInputs['PredictionWhereUniqueInput'][] | null; // [PredictionWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['PredictionUpdateWithWhereUniqueWithoutPackageInput'][]
-      | null; // [PredictionUpdateWithWhereUniqueWithoutPackageInput!]
-    updateMany?:
-      | NexusGenInputs['PredictionUpdateManyWithWhereNestedInput'][]
-      | null; // [PredictionUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['PredictionUpsertWithWhereUniqueWithoutPackageInput'][]
-      | null; // [PredictionUpsertWithWhereUniqueWithoutPackageInput!]
-  };
-  PredictionUpdateWithWhereUniqueWithoutPackageInput: {
-    // input type
+    update?: NexusGenInputs['PredictionUpdateWithWhereUniqueWithoutPackageInput'][] | null; // [PredictionUpdateWithWhereUniqueWithoutPackageInput!]
+    updateMany?: NexusGenInputs['PredictionUpdateManyWithWhereNestedInput'][] | null; // [PredictionUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['PredictionUpsertWithWhereUniqueWithoutPackageInput'][] | null; // [PredictionUpsertWithWhereUniqueWithoutPackageInput!]
+  }
+  PredictionUpdateWithWhereUniqueWithoutPackageInput: { // input type
     data: NexusGenInputs['PredictionUpdateWithoutPackageDataInput']; // PredictionUpdateWithoutPackageDataInput!
     where: NexusGenInputs['PredictionWhereUniqueInput']; // PredictionWhereUniqueInput!
-  };
-  PredictionUpdateWithoutPackageDataInput: {
-    // input type
+  }
+  PredictionUpdateWithoutPackageDataInput: { // input type
     away?: NexusGenInputs['TeamUpdateOneRequiredInput'] | null; // TeamUpdateOneRequiredInput
     home?: NexusGenInputs['TeamUpdateOneRequiredInput'] | null; // TeamUpdateOneRequiredInput
     name?: string | null; // String
     startDate?: any | null; // DateTime
     winner?: NexusGenInputs['TeamUpdateOneRequiredInput'] | null; // TeamUpdateOneRequiredInput
-  };
-  PredictionUpsertWithWhereUniqueWithoutPackageInput: {
-    // input type
+  }
+  PredictionUpsertWithWhereUniqueWithoutPackageInput: { // input type
     create: NexusGenInputs['PredictionCreateWithoutPackageInput']; // PredictionCreateWithoutPackageInput!
     update: NexusGenInputs['PredictionUpdateWithoutPackageDataInput']; // PredictionUpdateWithoutPackageDataInput!
     where: NexusGenInputs['PredictionWhereUniqueInput']; // PredictionWhereUniqueInput!
-  };
-  PredictionWhereInput: {
-    // input type
+  }
+  PredictionWhereInput: { // input type
     AND?: NexusGenInputs['PredictionWhereInput'][] | null; // [PredictionWhereInput!]
     away?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
     createdAt?: any | null; // DateTime
@@ -1126,36 +980,30 @@ export interface NexusGenInputs {
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
     winner?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-  };
-  PredictionWhereUniqueInput: {
-    // input type
+  }
+  PredictionWhereUniqueInput: { // input type
     id?: string | null; // ID
-  };
-  TeamCreateInput: {
-    // input type
+  }
+  TeamCreateInput: { // input type
     id?: string | null; // ID
     key: string; // String!
     league: NexusGenInputs['LeagueCreateOneWithoutTeamsInput']; // LeagueCreateOneWithoutTeamsInput!
     name: string; // String!
-  };
-  TeamCreateManyWithoutLeagueInput: {
-    // input type
+  }
+  TeamCreateManyWithoutLeagueInput: { // input type
     connect?: NexusGenInputs['TeamWhereUniqueInput'][] | null; // [TeamWhereUniqueInput!]
     create?: NexusGenInputs['TeamCreateWithoutLeagueInput'][] | null; // [TeamCreateWithoutLeagueInput!]
-  };
-  TeamCreateOneInput: {
-    // input type
+  }
+  TeamCreateOneInput: { // input type
     connect?: NexusGenInputs['TeamWhereUniqueInput'] | null; // TeamWhereUniqueInput
     create?: NexusGenInputs['TeamCreateInput'] | null; // TeamCreateInput
-  };
-  TeamCreateWithoutLeagueInput: {
-    // input type
+  }
+  TeamCreateWithoutLeagueInput: { // input type
     id?: string | null; // ID
     key: string; // String!
     name: string; // String!
-  };
-  TeamScalarWhereInput: {
-    // input type
+  }
+  TeamScalarWhereInput: { // input type
     AND?: NexusGenInputs['TeamScalarWhereInput'][] | null; // [TeamScalarWhereInput!]
     id?: string | null; // ID
     id_contains?: string | null; // ID
@@ -1201,80 +1049,64 @@ export interface NexusGenInputs {
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['TeamScalarWhereInput'][] | null; // [TeamScalarWhereInput!]
     OR?: NexusGenInputs['TeamScalarWhereInput'][] | null; // [TeamScalarWhereInput!]
-  };
-  TeamUpdateDataInput: {
-    // input type
+  }
+  TeamUpdateDataInput: { // input type
     key?: string | null; // String
     league?: NexusGenInputs['LeagueUpdateOneRequiredWithoutTeamsInput'] | null; // LeagueUpdateOneRequiredWithoutTeamsInput
     name?: string | null; // String
-  };
-  TeamUpdateInput: {
-    // input type
+  }
+  TeamUpdateInput: { // input type
     key?: string | null; // String
     league?: NexusGenInputs['LeagueUpdateOneRequiredWithoutTeamsInput'] | null; // LeagueUpdateOneRequiredWithoutTeamsInput
     name?: string | null; // String
-  };
-  TeamUpdateManyDataInput: {
-    // input type
+  }
+  TeamUpdateManyDataInput: { // input type
     key?: string | null; // String
     name?: string | null; // String
-  };
-  TeamUpdateManyMutationInput: {
-    // input type
+  }
+  TeamUpdateManyMutationInput: { // input type
     key?: string | null; // String
     name?: string | null; // String
-  };
-  TeamUpdateManyWithWhereNestedInput: {
-    // input type
+  }
+  TeamUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['TeamUpdateManyDataInput']; // TeamUpdateManyDataInput!
     where: NexusGenInputs['TeamScalarWhereInput']; // TeamScalarWhereInput!
-  };
-  TeamUpdateManyWithoutLeagueInput: {
-    // input type
+  }
+  TeamUpdateManyWithoutLeagueInput: { // input type
     connect?: NexusGenInputs['TeamWhereUniqueInput'][] | null; // [TeamWhereUniqueInput!]
     create?: NexusGenInputs['TeamCreateWithoutLeagueInput'][] | null; // [TeamCreateWithoutLeagueInput!]
     delete?: NexusGenInputs['TeamWhereUniqueInput'][] | null; // [TeamWhereUniqueInput!]
     deleteMany?: NexusGenInputs['TeamScalarWhereInput'][] | null; // [TeamScalarWhereInput!]
     disconnect?: NexusGenInputs['TeamWhereUniqueInput'][] | null; // [TeamWhereUniqueInput!]
     set?: NexusGenInputs['TeamWhereUniqueInput'][] | null; // [TeamWhereUniqueInput!]
-    update?:
-      | NexusGenInputs['TeamUpdateWithWhereUniqueWithoutLeagueInput'][]
-      | null; // [TeamUpdateWithWhereUniqueWithoutLeagueInput!]
+    update?: NexusGenInputs['TeamUpdateWithWhereUniqueWithoutLeagueInput'][] | null; // [TeamUpdateWithWhereUniqueWithoutLeagueInput!]
     updateMany?: NexusGenInputs['TeamUpdateManyWithWhereNestedInput'][] | null; // [TeamUpdateManyWithWhereNestedInput!]
-    upsert?:
-      | NexusGenInputs['TeamUpsertWithWhereUniqueWithoutLeagueInput'][]
-      | null; // [TeamUpsertWithWhereUniqueWithoutLeagueInput!]
-  };
-  TeamUpdateOneRequiredInput: {
-    // input type
+    upsert?: NexusGenInputs['TeamUpsertWithWhereUniqueWithoutLeagueInput'][] | null; // [TeamUpsertWithWhereUniqueWithoutLeagueInput!]
+  }
+  TeamUpdateOneRequiredInput: { // input type
     connect?: NexusGenInputs['TeamWhereUniqueInput'] | null; // TeamWhereUniqueInput
     create?: NexusGenInputs['TeamCreateInput'] | null; // TeamCreateInput
     update?: NexusGenInputs['TeamUpdateDataInput'] | null; // TeamUpdateDataInput
     upsert?: NexusGenInputs['TeamUpsertNestedInput'] | null; // TeamUpsertNestedInput
-  };
-  TeamUpdateWithWhereUniqueWithoutLeagueInput: {
-    // input type
+  }
+  TeamUpdateWithWhereUniqueWithoutLeagueInput: { // input type
     data: NexusGenInputs['TeamUpdateWithoutLeagueDataInput']; // TeamUpdateWithoutLeagueDataInput!
     where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-  };
-  TeamUpdateWithoutLeagueDataInput: {
-    // input type
+  }
+  TeamUpdateWithoutLeagueDataInput: { // input type
     key?: string | null; // String
     name?: string | null; // String
-  };
-  TeamUpsertNestedInput: {
-    // input type
+  }
+  TeamUpsertNestedInput: { // input type
     create: NexusGenInputs['TeamCreateInput']; // TeamCreateInput!
     update: NexusGenInputs['TeamUpdateDataInput']; // TeamUpdateDataInput!
-  };
-  TeamUpsertWithWhereUniqueWithoutLeagueInput: {
-    // input type
+  }
+  TeamUpsertWithWhereUniqueWithoutLeagueInput: { // input type
     create: NexusGenInputs['TeamCreateWithoutLeagueInput']; // TeamCreateWithoutLeagueInput!
     update: NexusGenInputs['TeamUpdateWithoutLeagueDataInput']; // TeamUpdateWithoutLeagueDataInput!
     where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-  };
-  TeamWhereInput: {
-    // input type
+  }
+  TeamWhereInput: { // input type
     AND?: NexusGenInputs['TeamWhereInput'][] | null; // [TeamWhereInput!]
     id?: string | null; // ID
     id_contains?: string | null; // ID
@@ -1321,25 +1153,21 @@ export interface NexusGenInputs {
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['TeamWhereInput'][] | null; // [TeamWhereInput!]
     OR?: NexusGenInputs['TeamWhereInput'][] | null; // [TeamWhereInput!]
-  };
-  TeamWhereUniqueInput: {
-    // input type
+  }
+  TeamWhereUniqueInput: { // input type
     id?: string | null; // ID
     key?: string | null; // String
     name?: string | null; // String
-  };
-  UserCreateOneWithoutCartInput: {
-    // input type
+  }
+  UserCreateOneWithoutCartInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutCartInput'] | null; // UserCreateWithoutCartInput
-  };
-  UserCreateOneWithoutOrdersInput: {
-    // input type
+  }
+  UserCreateOneWithoutOrdersInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutOrdersInput'] | null; // UserCreateWithoutOrdersInput
-  };
-  UserCreateWithoutCartInput: {
-    // input type
+  }
+  UserCreateWithoutCartInput: { // input type
     email: string; // String!
     id?: string | null; // ID
     notificationSettings: NexusGenInputs['NotificationSettingsCreateOneWithoutUserInput']; // NotificationSettingsCreateOneWithoutUserInput!
@@ -1347,9 +1175,8 @@ export interface NexusGenInputs {
     password: string; // String!
     phone: string; // String!
     role?: NexusGenEnums['Role'] | null; // Role
-  };
-  UserCreateWithoutOrdersInput: {
-    // input type
+  }
+  UserCreateWithoutOrdersInput: { // input type
     cart?: NexusGenInputs['OrderItemCreateManyWithoutOwnerInput'] | null; // OrderItemCreateManyWithoutOwnerInput
     email: string; // String!
     id?: string | null; // ID
@@ -1357,57 +1184,46 @@ export interface NexusGenInputs {
     password: string; // String!
     phone: string; // String!
     role?: NexusGenEnums['Role'] | null; // Role
-  };
-  UserUpdateOneRequiredWithoutOrdersInput: {
-    // input type
+  }
+  UserUpdateOneRequiredWithoutOrdersInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutOrdersInput'] | null; // UserCreateWithoutOrdersInput
     update?: NexusGenInputs['UserUpdateWithoutOrdersDataInput'] | null; // UserUpdateWithoutOrdersDataInput
     upsert?: NexusGenInputs['UserUpsertWithoutOrdersInput'] | null; // UserUpsertWithoutOrdersInput
-  };
-  UserUpdateOneWithoutCartInput: {
-    // input type
+  }
+  UserUpdateOneWithoutCartInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutCartInput'] | null; // UserCreateWithoutCartInput
     delete?: boolean | null; // Boolean
     disconnect?: boolean | null; // Boolean
     update?: NexusGenInputs['UserUpdateWithoutCartDataInput'] | null; // UserUpdateWithoutCartDataInput
     upsert?: NexusGenInputs['UserUpsertWithoutCartInput'] | null; // UserUpsertWithoutCartInput
-  };
-  UserUpdateWithoutCartDataInput: {
-    // input type
+  }
+  UserUpdateWithoutCartDataInput: { // input type
     email?: string | null; // String
-    notificationSettings?:
-      | NexusGenInputs['NotificationSettingsUpdateOneRequiredWithoutUserInput']
-      | null; // NotificationSettingsUpdateOneRequiredWithoutUserInput
+    notificationSettings?: NexusGenInputs['NotificationSettingsUpdateOneRequiredWithoutUserInput'] | null; // NotificationSettingsUpdateOneRequiredWithoutUserInput
     orders?: NexusGenInputs['OrderUpdateManyWithoutOwnerInput'] | null; // OrderUpdateManyWithoutOwnerInput
     password?: string | null; // String
     phone?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
-  };
-  UserUpdateWithoutOrdersDataInput: {
-    // input type
+  }
+  UserUpdateWithoutOrdersDataInput: { // input type
     cart?: NexusGenInputs['OrderItemUpdateManyWithoutOwnerInput'] | null; // OrderItemUpdateManyWithoutOwnerInput
     email?: string | null; // String
-    notificationSettings?:
-      | NexusGenInputs['NotificationSettingsUpdateOneRequiredWithoutUserInput']
-      | null; // NotificationSettingsUpdateOneRequiredWithoutUserInput
+    notificationSettings?: NexusGenInputs['NotificationSettingsUpdateOneRequiredWithoutUserInput'] | null; // NotificationSettingsUpdateOneRequiredWithoutUserInput
     password?: string | null; // String
     phone?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
-  };
-  UserUpsertWithoutCartInput: {
-    // input type
+  }
+  UserUpsertWithoutCartInput: { // input type
     create: NexusGenInputs['UserCreateWithoutCartInput']; // UserCreateWithoutCartInput!
     update: NexusGenInputs['UserUpdateWithoutCartDataInput']; // UserUpdateWithoutCartDataInput!
-  };
-  UserUpsertWithoutOrdersInput: {
-    // input type
+  }
+  UserUpsertWithoutOrdersInput: { // input type
     create: NexusGenInputs['UserCreateWithoutOrdersInput']; // UserCreateWithoutOrdersInput!
     update: NexusGenInputs['UserUpdateWithoutOrdersDataInput']; // UserUpdateWithoutOrdersDataInput!
-  };
-  UserWhereInput: {
-    // input type
+  }
+  UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     cart_every?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
     cart_none?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
@@ -1441,9 +1257,7 @@ export interface NexusGenInputs {
     id_not_starts_with?: string | null; // ID
     id_starts_with?: string | null; // ID
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    notificationSettings?:
-      | NexusGenInputs['NotificationSettingsWhereInput']
-      | null; // NotificationSettingsWhereInput
+    notificationSettings?: NexusGenInputs['NotificationSettingsWhereInput'] | null; // NotificationSettingsWhereInput
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     orders_every?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
     orders_none?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
@@ -1480,198 +1294,88 @@ export interface NexusGenInputs {
     role_in?: NexusGenEnums['Role'][] | null; // [Role!]
     role_not?: NexusGenEnums['Role'] | null; // Role
     role_not_in?: NexusGenEnums['Role'][] | null; // [Role!]
-  };
-  UserWhereUniqueInput: {
-    // input type
+  }
+  UserWhereUniqueInput: { // input type
     email?: string | null; // String
     id?: string | null; // ID
     phone?: string | null; // String
-  };
+  }
 }
 
 export interface NexusGenEnums {
-  LeagueOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'seasonEndDate_ASC'
-    | 'seasonEndDate_DESC'
-    | 'sport_ASC'
-    | 'sport_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  NotificationSettingsOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'email_ASC'
-    | 'email_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'phone_ASC'
-    | 'phone_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  OrderItemOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'expireAt_ASC'
-    | 'expireAt_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  OrderOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'status_ASC'
-    | 'status_DESC'
-    | 'totalPrice_ASC'
-    | 'totalPrice_DESC'
-    | 'totalRefunded_ASC'
-    | 'totalRefunded_DESC'
-    | 'totalTax_ASC'
-    | 'totalTax_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  OrderStatus: 'FAILED' | 'PAID' | 'PREPARED' | 'SUBMITTED';
-  PackageOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'description_ASC'
-    | 'description_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'image_ASC'
-    | 'image_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'price_ASC'
-    | 'price_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  PredictionOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'startDate_ASC'
-    | 'startDate_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  Role: 'ADMIN' | 'EDITOR' | 'USER';
-  TeamOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'key_ASC'
-    | 'key_DESC'
-    | 'name_ASC'
-    | 'name_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
-  UserOrderByInput:
-    | 'createdAt_ASC'
-    | 'createdAt_DESC'
-    | 'email_ASC'
-    | 'email_DESC'
-    | 'id_ASC'
-    | 'id_DESC'
-    | 'password_ASC'
-    | 'password_DESC'
-    | 'phone_ASC'
-    | 'phone_DESC'
-    | 'role_ASC'
-    | 'role_DESC'
-    | 'updatedAt_ASC'
-    | 'updatedAt_DESC';
+  LeagueOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "seasonEndDate_ASC" | "seasonEndDate_DESC" | "sport_ASC" | "sport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  NotificationSettingsOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "phone_ASC" | "phone_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrderItemOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "expireAt_ASC" | "expireAt_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "totalPrice_ASC" | "totalPrice_DESC" | "totalRefunded_ASC" | "totalRefunded_DESC" | "totalTax_ASC" | "totalTax_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrderStatus: "FAILED" | "PAID" | "PREPARED" | "SUBMITTED"
+  PackageOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  PredictionOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "startDate_ASC" | "startDate_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  Role: "ADMIN" | "EDITOR" | "USER"
+  TeamOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "password_ASC" | "password_DESC" | "phone_ASC" | "phone_DESC" | "role_ASC" | "role_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
-  AggregateLeague: {
-    // root type
+  AggregateLeague: { // root type
     count: number; // Int!
-  };
-  AggregateNotificationSettings: {
-    // root type
+  }
+  AggregateNotificationSettings: { // root type
     count: number; // Int!
-  };
-  AggregateOrder: {
-    // root type
+  }
+  AggregateOrder: { // root type
     count: number; // Int!
-  };
-  AggregateOrderItem: {
-    // root type
+  }
+  AggregateOrderItem: { // root type
     count: number; // Int!
-  };
-  AggregatePackage: {
-    // root type
+  }
+  AggregatePackage: { // root type
     count: number; // Int!
-  };
-  AggregatePrediction: {
-    // root type
+  }
+  AggregatePrediction: { // root type
     count: number; // Int!
-  };
-  AggregateTeam: {
-    // root type
+  }
+  AggregateTeam: { // root type
     count: number; // Int!
-  };
-  AggregateUser: {
-    // root type
+  }
+  AggregateUser: { // root type
     count: number; // Int!
-  };
-  AuthPayload: {
-    // root type
+  }
+  AuthPayload: { // root type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
-  };
-  BatchPayload: {
-    // root type
+  }
+  BatchPayload: { // root type
     count: any; // Long!
-  };
-  League: {
-    // root type
+  }
+  League: { // root type
     id: string; // ID!
     name: string; // String!
     seasonEndDate: any; // DateTime!
     sport: string; // String!
-  };
-  LeagueConnection: {
-    // root type
+  }
+  LeagueConnection: { // root type
     edges: NexusGenRootTypes['LeagueEdge'][]; // [LeagueEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  LeagueEdge: {
-    // root type
+  }
+  LeagueEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['League']; // League!
-  };
+  }
   Mutation: {};
-  NotificationSettings: {
-    // root type
+  NotificationSettings: { // root type
     email: boolean; // Boolean!
     id: string; // ID!
     phone: boolean; // Boolean!
-  };
-  NotificationSettingsConnection: {
-    // root type
+  }
+  NotificationSettingsConnection: { // root type
     edges: NexusGenRootTypes['NotificationSettingsEdge'][]; // [NotificationSettingsEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  NotificationSettingsEdge: {
-    // root type
+  }
+  NotificationSettingsEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['NotificationSettings']; // NotificationSettings!
-  };
-  Order: {
-    // root type
+  }
+  Order: { // root type
     createdAt: any; // DateTime!
     id: string; // ID!
     status: NexusGenEnums['OrderStatus']; // OrderStatus!
@@ -1679,108 +1383,90 @@ export interface NexusGenRootTypes {
     totalRefunded: number; // Float!
     totalTax: number; // Float!
     updatedAt: any; // DateTime!
-  };
-  OrderConnection: {
-    // root type
+  }
+  OrderConnection: { // root type
     edges: NexusGenRootTypes['OrderEdge'][]; // [OrderEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  OrderEdge: {
-    // root type
+  }
+  OrderEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Order']; // Order!
-  };
-  OrderItem: {
-    // root type
+  }
+  OrderItem: { // root type
     expireAt: any; // DateTime!
     id: string; // ID!
-  };
-  OrderItemConnection: {
-    // root type
+  }
+  OrderItemConnection: { // root type
     edges: NexusGenRootTypes['OrderItemEdge'][]; // [OrderItemEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  OrderItemEdge: {
-    // root type
+  }
+  OrderItemEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['OrderItem']; // OrderItem!
-  };
-  Package: {
-    // root type
+  }
+  Package: { // root type
     description?: string | null; // String
     id: string; // ID!
     image?: string | null; // String
     name: string; // String!
-  };
-  PackageConnection: {
-    // root type
+  }
+  PackageConnection: { // root type
     edges: NexusGenRootTypes['PackageEdge'][]; // [PackageEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  PackageEdge: {
-    // root type
+  }
+  PackageEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Package']; // Package!
-  };
-  PageInfo: {
-    // root type
+  }
+  PageInfo: { // root type
     endCursor?: string | null; // String
     hasNextPage: boolean; // Boolean!
     hasPreviousPage: boolean; // Boolean!
     startCursor?: string | null; // String
-  };
-  Prediction: {
-    // root type
+  }
+  Prediction: { // root type
     createdAt: any; // DateTime!
     id: string; // ID!
     name: string; // String!
     startDate: any; // DateTime!
     updatedAt: any; // DateTime!
-  };
-  PredictionConnection: {
-    // root type
+  }
+  PredictionConnection: { // root type
     edges: NexusGenRootTypes['PredictionEdge'][]; // [PredictionEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  PredictionEdge: {
-    // root type
+  }
+  PredictionEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Prediction']; // Prediction!
-  };
+  }
   Query: {};
-  Team: {
-    // root type
+  Team: { // root type
     id: string; // ID!
     key: string; // String!
     name: string; // String!
-  };
-  TeamConnection: {
-    // root type
+  }
+  TeamConnection: { // root type
     edges: NexusGenRootTypes['TeamEdge'][]; // [TeamEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  TeamEdge: {
-    // root type
+  }
+  TeamEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['Team']; // Team!
-  };
-  User: {
-    // root type
+  }
+  User: { // root type
     email: string; // String!
     id: string; // ID!
     phone: string; // String!
     role?: NexusGenEnums['Role'] | null; // Role
-  };
-  UserConnection: {
-    // root type
+  }
+  UserConnection: { // root type
     edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  UserEdge: {
-    // root type
+  }
+  UserEdge: { // root type
     cursor: string; // String!
     node: NexusGenRootTypes['User']; // User!
-  };
+  }
   String: string;
   Int: number;
   Float: number;
@@ -1922,69 +1608,55 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 }
 
 export interface NexusGenFieldTypes {
-  AggregateLeague: {
-    // field return type
+  AggregateLeague: { // field return type
     count: number; // Int!
-  };
-  AggregateNotificationSettings: {
-    // field return type
+  }
+  AggregateNotificationSettings: { // field return type
     count: number; // Int!
-  };
-  AggregateOrder: {
-    // field return type
+  }
+  AggregateOrder: { // field return type
     count: number; // Int!
-  };
-  AggregateOrderItem: {
-    // field return type
+  }
+  AggregateOrderItem: { // field return type
     count: number; // Int!
-  };
-  AggregatePackage: {
-    // field return type
+  }
+  AggregatePackage: { // field return type
     count: number; // Int!
-  };
-  AggregatePrediction: {
-    // field return type
+  }
+  AggregatePrediction: { // field return type
     count: number; // Int!
-  };
-  AggregateTeam: {
-    // field return type
+  }
+  AggregateTeam: { // field return type
     count: number; // Int!
-  };
-  AggregateUser: {
-    // field return type
+  }
+  AggregateUser: { // field return type
     count: number; // Int!
-  };
-  AuthPayload: {
-    // field return type
+  }
+  AuthPayload: { // field return type
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
-  };
-  BatchPayload: {
-    // field return type
+  }
+  BatchPayload: { // field return type
     count: any; // Long!
-  };
-  League: {
-    // field return type
+  }
+  League: { // field return type
     id: string; // ID!
     name: string; // String!
     packages: NexusGenRootTypes['Package'][] | null; // [Package!]
     seasonEndDate: any; // DateTime!
     sport: string; // String!
     teams: NexusGenRootTypes['Team'][] | null; // [Team!]
-  };
-  LeagueConnection: {
-    // field return type
+  }
+  LeagueConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateLeague']; // AggregateLeague!
     edges: NexusGenRootTypes['LeagueEdge'][]; // [LeagueEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  LeagueEdge: {
-    // field return type
+  }
+  LeagueEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['League']; // League!
-  };
-  Mutation: {
-    // field return type
+  }
+  Mutation: { // field return type
     addToCart: NexusGenRootTypes['OrderItem'][]; // [OrderItem!]!
     changePassword: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     createLeague: NexusGenRootTypes['League']; // League!
@@ -2008,27 +1680,23 @@ export interface NexusGenFieldTypes {
     updateTeam: NexusGenRootTypes['Team'] | null; // Team
     upsertLeague: NexusGenRootTypes['League']; // League!
     upsertTeam: NexusGenRootTypes['Team']; // Team!
-  };
-  NotificationSettings: {
-    // field return type
+  }
+  NotificationSettings: { // field return type
     email: boolean; // Boolean!
     id: string; // ID!
     phone: boolean; // Boolean!
     user: NexusGenRootTypes['User'] | null; // User
-  };
-  NotificationSettingsConnection: {
-    // field return type
+  }
+  NotificationSettingsConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateNotificationSettings']; // AggregateNotificationSettings!
     edges: NexusGenRootTypes['NotificationSettingsEdge'][]; // [NotificationSettingsEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  NotificationSettingsEdge: {
-    // field return type
+  }
+  NotificationSettingsEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['NotificationSettings']; // NotificationSettings!
-  };
-  Order: {
-    // field return type
+  }
+  Order: { // field return type
     createdAt: any; // DateTime!
     id: string; // ID!
     items: NexusGenRootTypes['OrderItem'][] | null; // [OrderItem!]
@@ -2038,40 +1706,34 @@ export interface NexusGenFieldTypes {
     totalRefunded: number; // Float!
     totalTax: number; // Float!
     updatedAt: any; // DateTime!
-  };
-  OrderConnection: {
-    // field return type
+  }
+  OrderConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateOrder']; // AggregateOrder!
     edges: NexusGenRootTypes['OrderEdge'][]; // [OrderEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  OrderEdge: {
-    // field return type
+  }
+  OrderEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Order']; // Order!
-  };
-  OrderItem: {
-    // field return type
+  }
+  OrderItem: { // field return type
     expireAt: any; // DateTime!
     id: string; // ID!
     order: NexusGenRootTypes['Order'] | null; // Order
     owner: NexusGenRootTypes['User'] | null; // User
     package: NexusGenRootTypes['Package']; // Package!
     price: number; // Float!
-  };
-  OrderItemConnection: {
-    // field return type
+  }
+  OrderItemConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateOrderItem']; // AggregateOrderItem!
     edges: NexusGenRootTypes['OrderItemEdge'][]; // [OrderItemEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  OrderItemEdge: {
-    // field return type
+  }
+  OrderItemEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['OrderItem']; // OrderItem!
-  };
-  Package: {
-    // field return type
+  }
+  Package: { // field return type
     description: string | null; // String
     id: string; // ID!
     image: string | null; // String
@@ -2080,27 +1742,23 @@ export interface NexusGenFieldTypes {
     orderItems: NexusGenRootTypes['OrderItem'][] | null; // [OrderItem!]
     predictions: NexusGenRootTypes['Prediction'][] | null; // [Prediction!]
     price: number; // Float!
-  };
-  PackageConnection: {
-    // field return type
+  }
+  PackageConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregatePackage']; // AggregatePackage!
     edges: NexusGenRootTypes['PackageEdge'][]; // [PackageEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  PackageEdge: {
-    // field return type
+  }
+  PackageEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Package']; // Package!
-  };
-  PageInfo: {
-    // field return type
+  }
+  PageInfo: { // field return type
     endCursor: string | null; // String
     hasNextPage: boolean; // Boolean!
     hasPreviousPage: boolean; // Boolean!
     startCursor: string | null; // String
-  };
-  Prediction: {
-    // field return type
+  }
+  Prediction: { // field return type
     away: NexusGenRootTypes['Team']; // Team!
     createdAt: any; // DateTime!
     home: NexusGenRootTypes['Team']; // Team!
@@ -2110,20 +1768,17 @@ export interface NexusGenFieldTypes {
     startDate: any; // DateTime!
     updatedAt: any; // DateTime!
     winner: NexusGenRootTypes['Team']; // Team!
-  };
-  PredictionConnection: {
-    // field return type
+  }
+  PredictionConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregatePrediction']; // AggregatePrediction!
     edges: NexusGenRootTypes['PredictionEdge'][]; // [PredictionEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  PredictionEdge: {
-    // field return type
+  }
+  PredictionEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Prediction']; // Prediction!
-  };
-  Query: {
-    // field return type
+  }
+  Query: { // field return type
     league: NexusGenRootTypes['League'] | null; // League
     leagues: NexusGenRootTypes['League'][]; // [League!]!
     leaguesConnection: NexusGenRootTypes['LeagueConnection']; // LeagueConnection!
@@ -2149,51 +1804,44 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][]; // [User!]!
     usersConnection: NexusGenRootTypes['UserConnection']; // UserConnection!
-  };
-  Team: {
-    // field return type
+  }
+  Team: { // field return type
     id: string; // ID!
     key: string; // String!
     league: NexusGenRootTypes['League']; // League!
     name: string; // String!
-  };
-  TeamConnection: {
-    // field return type
+  }
+  TeamConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateTeam']; // AggregateTeam!
     edges: NexusGenRootTypes['TeamEdge'][]; // [TeamEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  TeamEdge: {
-    // field return type
+  }
+  TeamEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['Team']; // Team!
-  };
-  User: {
-    // field return type
+  }
+  User: { // field return type
     cart: NexusGenRootTypes['OrderItem'][] | null; // [OrderItem!]
     email: string; // String!
     id: string; // ID!
     notificationSettings: NexusGenRootTypes['NotificationSettings']; // NotificationSettings!
     phone: string; // String!
     role: NexusGenEnums['Role'] | null; // Role
-  };
-  UserConnection: {
-    // field return type
+  }
+  UserConnection: { // field return type
     aggregate: NexusGenRootTypes['AggregateUser']; // AggregateUser!
     edges: NexusGenRootTypes['UserEdge'][]; // [UserEdge!]!
     pageInfo: NexusGenRootTypes['PageInfo']; // PageInfo!
-  };
-  UserEdge: {
-    // field return type
+  }
+  UserEdge: { // field return type
     cursor: string; // String!
     node: NexusGenRootTypes['User']; // User!
-  };
+  }
 }
 
 export interface NexusGenArgTypes {
   League: {
-    packages: {
-      // args
+    packages: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2201,9 +1849,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PackageOrderByInput'] | null; // PackageOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PackageWhereInput'] | null; // PackageWhereInput
-    };
-    teams: {
-      // args
+    }
+    teams: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2211,121 +1858,96 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['TeamOrderByInput'] | null; // TeamOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-    };
-  };
+    }
+  }
   Mutation: {
-    addToCart: {
-      // args
+    addToCart: { // args
       expireAt: string; // String!
       packageName: string; // String!
-    };
-    changePassword: {
-      // args
+    }
+    changePassword: { // args
       newPassword: string; // String!
       oldPassword: string; // String!
-    };
-    createLeague: {
-      // args
+    }
+    createLeague: { // args
       data: NexusGenInputs['LeagueCreateInput']; // LeagueCreateInput!
-    };
-    createOrder: {
-      // args
+    }
+    createOrder: { // args
       stripeToken: string; // String!
-    };
-    createPrediction: {
-      // args
+    }
+    createPrediction: { // args
       away: string; // String!
       home: string; // String!
       name: string; // String!
       packageName: string; // String!
       startDate: string; // String!
       winner: string; // String!
-    };
-    createTeam: {
-      // args
+    }
+    createTeam: { // args
       data: NexusGenInputs['TeamCreateInput']; // TeamCreateInput!
-    };
-    deleteLeague: {
-      // args
+    }
+    deleteLeague: { // args
       where: NexusGenInputs['LeagueWhereUniqueInput']; // LeagueWhereUniqueInput!
-    };
-    deleteManyLeagues: {
-      // args
+    }
+    deleteManyLeagues: { // args
       where?: NexusGenInputs['LeagueWhereInput'] | null; // LeagueWhereInput
-    };
-    deleteManyTeams: {
-      // args
+    }
+    deleteManyTeams: { // args
       where?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-    };
-    deleteOrder: {
-      // args
+    }
+    deleteOrder: { // args
       where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
-    };
-    deleteTeam: {
-      // args
+    }
+    deleteTeam: { // args
       where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-    };
-    login: {
-      // args
+    }
+    login: { // args
       email?: string | null; // String
-      id?: string | null; // ID
       password: string; // String!
       phone?: string | null; // String
-    };
-    removeFromCart: {
-      // args
+    }
+    removeFromCart: { // args
       id: string; // ID!
-    };
-    signup: {
-      // args
+    }
+    signup: { // args
       email: string; // String!
-      notificationSettings?:
-        | NexusGenInputs['NotificationSettingsCreateWithoutUserInput']
-        | null; // NotificationSettingsCreateWithoutUserInput
+      notificationSettings?: NexusGenInputs['NotificationSettingsCreateWithoutUserInput'] | null; // NotificationSettingsCreateWithoutUserInput
       password: string; // String!
       phone: string; // String!
-    };
-    updateLeague: {
-      // args
+    }
+    updateLeague: { // args
       data: NexusGenInputs['LeagueUpdateInput']; // LeagueUpdateInput!
       where: NexusGenInputs['LeagueWhereUniqueInput']; // LeagueWhereUniqueInput!
-    };
-    updateManyLeagues: {
-      // args
+    }
+    updateManyLeagues: { // args
       data: NexusGenInputs['LeagueUpdateManyMutationInput']; // LeagueUpdateManyMutationInput!
       where?: NexusGenInputs['LeagueWhereInput'] | null; // LeagueWhereInput
-    };
-    updateManyTeams: {
-      // args
+    }
+    updateManyTeams: { // args
       data: NexusGenInputs['TeamUpdateManyMutationInput']; // TeamUpdateManyMutationInput!
       where?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-    };
-    updatePrediction: {
-      // args
+    }
+    updatePrediction: { // args
       id: string; // ID!
       winner: string; // String!
-    };
-    updateTeam: {
-      // args
+    }
+    updateTeam: { // args
       data: NexusGenInputs['TeamUpdateInput']; // TeamUpdateInput!
       where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-    };
-    upsertLeague: {
-      // args
+    }
+    upsertLeague: { // args
       create: NexusGenInputs['LeagueCreateInput']; // LeagueCreateInput!
       update: NexusGenInputs['LeagueUpdateInput']; // LeagueUpdateInput!
       where: NexusGenInputs['LeagueWhereUniqueInput']; // LeagueWhereUniqueInput!
-    };
-    upsertTeam: {
-      // args
+    }
+    upsertTeam: { // args
       create: NexusGenInputs['TeamCreateInput']; // TeamCreateInput!
       update: NexusGenInputs['TeamUpdateInput']; // TeamUpdateInput!
       where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-    };
-  };
+    }
+  }
   Order: {
-    items: {
-      // args
+    items: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2333,11 +1955,10 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderItemOrderByInput'] | null; // OrderItemOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
-    };
-  };
+    }
+  }
   Package: {
-    orderItems: {
-      // args
+    orderItems: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2345,9 +1966,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderItemOrderByInput'] | null; // OrderItemOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
-    };
-    predictions: {
-      // args
+    }
+    predictions: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2355,19 +1975,16 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PredictionOrderByInput'] | null; // PredictionOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PredictionWhereInput'] | null; // PredictionWhereInput
-    };
-    price: {
-      // args
+    }
+    price: { // args
       toDate?: any | null; // DateTime
-    };
-  };
+    }
+  }
   Query: {
-    league: {
-      // args
+    league: { // args
       where: NexusGenInputs['LeagueWhereUniqueInput']; // LeagueWhereUniqueInput!
-    };
-    leagues: {
-      // args
+    }
+    leagues: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2375,9 +1992,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['LeagueOrderByInput'] | null; // LeagueOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['LeagueWhereInput'] | null; // LeagueWhereInput
-    };
-    leaguesConnection: {
-      // args
+    }
+    leaguesConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2385,13 +2001,11 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['LeagueOrderByInput'] | null; // LeagueOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['LeagueWhereInput'] | null; // LeagueWhereInput
-    };
-    notificationSettings: {
-      // args
+    }
+    notificationSettings: { // args
       where: NexusGenInputs['NotificationSettingsWhereUniqueInput']; // NotificationSettingsWhereUniqueInput!
-    };
-    notificationSettingses: {
-      // args
+    }
+    notificationSettingses: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2399,9 +2013,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['NotificationSettingsOrderByInput'] | null; // NotificationSettingsOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['NotificationSettingsWhereInput'] | null; // NotificationSettingsWhereInput
-    };
-    notificationSettingsesConnection: {
-      // args
+    }
+    notificationSettingsesConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2409,17 +2022,14 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['NotificationSettingsOrderByInput'] | null; // NotificationSettingsOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['NotificationSettingsWhereInput'] | null; // NotificationSettingsWhereInput
-    };
-    order: {
-      // args
+    }
+    order: { // args
       where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
-    };
-    orderItem: {
-      // args
+    }
+    orderItem: { // args
       where: NexusGenInputs['OrderItemWhereUniqueInput']; // OrderItemWhereUniqueInput!
-    };
-    orderItems: {
-      // args
+    }
+    orderItems: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2427,9 +2037,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderItemOrderByInput'] | null; // OrderItemOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
-    };
-    orderItemsConnection: {
-      // args
+    }
+    orderItemsConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2437,9 +2046,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderItemOrderByInput'] | null; // OrderItemOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
-    };
-    orders: {
-      // args
+    }
+    orders: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2447,9 +2055,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderOrderByInput'] | null; // OrderOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
-    };
-    ordersConnection: {
-      // args
+    }
+    ordersConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2457,13 +2064,11 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderOrderByInput'] | null; // OrderOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
-    };
-    package: {
-      // args
+    }
+    package: { // args
       where: NexusGenInputs['PackageWhereUniqueInput']; // PackageWhereUniqueInput!
-    };
-    packages: {
-      // args
+    }
+    packages: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2471,9 +2076,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PackageOrderByInput'] | null; // PackageOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PackageWhereInput'] | null; // PackageWhereInput
-    };
-    packagesConnection: {
-      // args
+    }
+    packagesConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2481,13 +2085,11 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PackageOrderByInput'] | null; // PackageOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PackageWhereInput'] | null; // PackageWhereInput
-    };
-    prediction: {
-      // args
+    }
+    prediction: { // args
       where: NexusGenInputs['PredictionWhereUniqueInput']; // PredictionWhereUniqueInput!
-    };
-    predictions: {
-      // args
+    }
+    predictions: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2495,9 +2097,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PredictionOrderByInput'] | null; // PredictionOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PredictionWhereInput'] | null; // PredictionWhereInput
-    };
-    predictionsConnection: {
-      // args
+    }
+    predictionsConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2505,13 +2106,11 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['PredictionOrderByInput'] | null; // PredictionOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PredictionWhereInput'] | null; // PredictionWhereInput
-    };
-    team: {
-      // args
+    }
+    team: { // args
       where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
-    };
-    teams: {
-      // args
+    }
+    teams: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2519,9 +2118,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['TeamOrderByInput'] | null; // TeamOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-    };
-    teamsConnection: {
-      // args
+    }
+    teamsConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2529,13 +2127,11 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['TeamOrderByInput'] | null; // TeamOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['TeamWhereInput'] | null; // TeamWhereInput
-    };
-    user: {
-      // args
+    }
+    user: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
-    };
-    users: {
-      // args
+    }
+    users: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2543,9 +2139,8 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    };
-    usersConnection: {
-      // args
+    }
+    usersConnection: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2553,11 +2148,10 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
-    };
-  };
+    }
+  }
   User: {
-    cart: {
-      // args
+    cart: { // args
       after?: string | null; // String
       before?: string | null; // String
       first?: number | null; // Int
@@ -2565,195 +2159,24 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenEnums['OrderItemOrderByInput'] | null; // OrderItemOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['OrderItemWhereInput'] | null; // OrderItemWhereInput
-    };
-  };
+    }
+  }
 }
 
-export interface NexusGenAbstractResolveReturnTypes {}
+export interface NexusGenAbstractResolveReturnTypes {
+}
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames =
-  | 'AggregateLeague'
-  | 'AggregateNotificationSettings'
-  | 'AggregateOrder'
-  | 'AggregateOrderItem'
-  | 'AggregatePackage'
-  | 'AggregatePrediction'
-  | 'AggregateTeam'
-  | 'AggregateUser'
-  | 'AuthPayload'
-  | 'BatchPayload'
-  | 'League'
-  | 'LeagueConnection'
-  | 'LeagueEdge'
-  | 'Mutation'
-  | 'NotificationSettings'
-  | 'NotificationSettingsConnection'
-  | 'NotificationSettingsEdge'
-  | 'Order'
-  | 'OrderConnection'
-  | 'OrderEdge'
-  | 'OrderItem'
-  | 'OrderItemConnection'
-  | 'OrderItemEdge'
-  | 'Package'
-  | 'PackageConnection'
-  | 'PackageEdge'
-  | 'PageInfo'
-  | 'Prediction'
-  | 'PredictionConnection'
-  | 'PredictionEdge'
-  | 'Query'
-  | 'Team'
-  | 'TeamConnection'
-  | 'TeamEdge'
-  | 'User'
-  | 'UserConnection'
-  | 'UserEdge';
+export type NexusGenObjectNames = "AggregateLeague" | "AggregateNotificationSettings" | "AggregateOrder" | "AggregateOrderItem" | "AggregatePackage" | "AggregatePrediction" | "AggregateTeam" | "AggregateUser" | "AuthPayload" | "BatchPayload" | "League" | "LeagueConnection" | "LeagueEdge" | "Mutation" | "NotificationSettings" | "NotificationSettingsConnection" | "NotificationSettingsEdge" | "Order" | "OrderConnection" | "OrderEdge" | "OrderItem" | "OrderItemConnection" | "OrderItemEdge" | "Package" | "PackageConnection" | "PackageEdge" | "PageInfo" | "Prediction" | "PredictionConnection" | "PredictionEdge" | "Query" | "Team" | "TeamConnection" | "TeamEdge" | "User" | "UserConnection" | "UserEdge";
 
-export type NexusGenInputNames =
-  | 'LeagueCreateInput'
-  | 'LeagueCreateOneWithoutPackagesInput'
-  | 'LeagueCreateOneWithoutTeamsInput'
-  | 'LeagueCreateWithoutPackagesInput'
-  | 'LeagueCreateWithoutTeamsInput'
-  | 'LeagueUpdateInput'
-  | 'LeagueUpdateManyMutationInput'
-  | 'LeagueUpdateOneRequiredWithoutPackagesInput'
-  | 'LeagueUpdateOneRequiredWithoutTeamsInput'
-  | 'LeagueUpdateWithoutPackagesDataInput'
-  | 'LeagueUpdateWithoutTeamsDataInput'
-  | 'LeagueUpsertWithoutPackagesInput'
-  | 'LeagueUpsertWithoutTeamsInput'
-  | 'LeagueWhereInput'
-  | 'LeagueWhereUniqueInput'
-  | 'NotificationSettingsCreateOneWithoutUserInput'
-  | 'NotificationSettingsCreateWithoutUserInput'
-  | 'NotificationSettingsUpdateOneRequiredWithoutUserInput'
-  | 'NotificationSettingsUpdateWithoutUserDataInput'
-  | 'NotificationSettingsUpsertWithoutUserInput'
-  | 'NotificationSettingsWhereInput'
-  | 'NotificationSettingsWhereUniqueInput'
-  | 'OrderCreateManyWithoutOwnerInput'
-  | 'OrderCreateOneWithoutItemsInput'
-  | 'OrderCreateWithoutItemsInput'
-  | 'OrderCreateWithoutOwnerInput'
-  | 'OrderItemCreateManyWithoutOrderInput'
-  | 'OrderItemCreateManyWithoutOwnerInput'
-  | 'OrderItemCreateManyWithoutPackageInput'
-  | 'OrderItemCreateWithoutOrderInput'
-  | 'OrderItemCreateWithoutOwnerInput'
-  | 'OrderItemCreateWithoutPackageInput'
-  | 'OrderItemScalarWhereInput'
-  | 'OrderItemUpdateManyDataInput'
-  | 'OrderItemUpdateManyWithWhereNestedInput'
-  | 'OrderItemUpdateManyWithoutOrderInput'
-  | 'OrderItemUpdateManyWithoutOwnerInput'
-  | 'OrderItemUpdateManyWithoutPackageInput'
-  | 'OrderItemUpdateWithWhereUniqueWithoutOrderInput'
-  | 'OrderItemUpdateWithWhereUniqueWithoutOwnerInput'
-  | 'OrderItemUpdateWithWhereUniqueWithoutPackageInput'
-  | 'OrderItemUpdateWithoutOrderDataInput'
-  | 'OrderItemUpdateWithoutOwnerDataInput'
-  | 'OrderItemUpdateWithoutPackageDataInput'
-  | 'OrderItemUpsertWithWhereUniqueWithoutOrderInput'
-  | 'OrderItemUpsertWithWhereUniqueWithoutOwnerInput'
-  | 'OrderItemUpsertWithWhereUniqueWithoutPackageInput'
-  | 'OrderItemWhereInput'
-  | 'OrderItemWhereUniqueInput'
-  | 'OrderScalarWhereInput'
-  | 'OrderUpdateManyDataInput'
-  | 'OrderUpdateManyWithWhereNestedInput'
-  | 'OrderUpdateManyWithoutOwnerInput'
-  | 'OrderUpdateOneWithoutItemsInput'
-  | 'OrderUpdateWithWhereUniqueWithoutOwnerInput'
-  | 'OrderUpdateWithoutItemsDataInput'
-  | 'OrderUpdateWithoutOwnerDataInput'
-  | 'OrderUpsertWithWhereUniqueWithoutOwnerInput'
-  | 'OrderUpsertWithoutItemsInput'
-  | 'OrderWhereInput'
-  | 'OrderWhereUniqueInput'
-  | 'PackageCreateManyWithoutLeagueInput'
-  | 'PackageCreateOneWithoutOrderItemsInput'
-  | 'PackageCreateWithoutLeagueInput'
-  | 'PackageCreateWithoutOrderItemsInput'
-  | 'PackageScalarWhereInput'
-  | 'PackageUpdateManyDataInput'
-  | 'PackageUpdateManyWithWhereNestedInput'
-  | 'PackageUpdateManyWithoutLeagueInput'
-  | 'PackageUpdateOneRequiredWithoutOrderItemsInput'
-  | 'PackageUpdateWithWhereUniqueWithoutLeagueInput'
-  | 'PackageUpdateWithoutLeagueDataInput'
-  | 'PackageUpdateWithoutOrderItemsDataInput'
-  | 'PackageUpsertWithWhereUniqueWithoutLeagueInput'
-  | 'PackageUpsertWithoutOrderItemsInput'
-  | 'PackageWhereInput'
-  | 'PackageWhereUniqueInput'
-  | 'PredictionCreateManyWithoutPackageInput'
-  | 'PredictionCreateWithoutPackageInput'
-  | 'PredictionScalarWhereInput'
-  | 'PredictionUpdateManyDataInput'
-  | 'PredictionUpdateManyWithWhereNestedInput'
-  | 'PredictionUpdateManyWithoutPackageInput'
-  | 'PredictionUpdateWithWhereUniqueWithoutPackageInput'
-  | 'PredictionUpdateWithoutPackageDataInput'
-  | 'PredictionUpsertWithWhereUniqueWithoutPackageInput'
-  | 'PredictionWhereInput'
-  | 'PredictionWhereUniqueInput'
-  | 'TeamCreateInput'
-  | 'TeamCreateManyWithoutLeagueInput'
-  | 'TeamCreateOneInput'
-  | 'TeamCreateWithoutLeagueInput'
-  | 'TeamScalarWhereInput'
-  | 'TeamUpdateDataInput'
-  | 'TeamUpdateInput'
-  | 'TeamUpdateManyDataInput'
-  | 'TeamUpdateManyMutationInput'
-  | 'TeamUpdateManyWithWhereNestedInput'
-  | 'TeamUpdateManyWithoutLeagueInput'
-  | 'TeamUpdateOneRequiredInput'
-  | 'TeamUpdateWithWhereUniqueWithoutLeagueInput'
-  | 'TeamUpdateWithoutLeagueDataInput'
-  | 'TeamUpsertNestedInput'
-  | 'TeamUpsertWithWhereUniqueWithoutLeagueInput'
-  | 'TeamWhereInput'
-  | 'TeamWhereUniqueInput'
-  | 'UserCreateOneWithoutCartInput'
-  | 'UserCreateOneWithoutOrdersInput'
-  | 'UserCreateWithoutCartInput'
-  | 'UserCreateWithoutOrdersInput'
-  | 'UserUpdateOneRequiredWithoutOrdersInput'
-  | 'UserUpdateOneWithoutCartInput'
-  | 'UserUpdateWithoutCartDataInput'
-  | 'UserUpdateWithoutOrdersDataInput'
-  | 'UserUpsertWithoutCartInput'
-  | 'UserUpsertWithoutOrdersInput'
-  | 'UserWhereInput'
-  | 'UserWhereUniqueInput';
+export type NexusGenInputNames = "LeagueCreateInput" | "LeagueCreateOneWithoutPackagesInput" | "LeagueCreateOneWithoutTeamsInput" | "LeagueCreateWithoutPackagesInput" | "LeagueCreateWithoutTeamsInput" | "LeagueUpdateInput" | "LeagueUpdateManyMutationInput" | "LeagueUpdateOneRequiredWithoutPackagesInput" | "LeagueUpdateOneRequiredWithoutTeamsInput" | "LeagueUpdateWithoutPackagesDataInput" | "LeagueUpdateWithoutTeamsDataInput" | "LeagueUpsertWithoutPackagesInput" | "LeagueUpsertWithoutTeamsInput" | "LeagueWhereInput" | "LeagueWhereUniqueInput" | "NotificationSettingsCreateOneWithoutUserInput" | "NotificationSettingsCreateWithoutUserInput" | "NotificationSettingsUpdateOneRequiredWithoutUserInput" | "NotificationSettingsUpdateWithoutUserDataInput" | "NotificationSettingsUpsertWithoutUserInput" | "NotificationSettingsWhereInput" | "NotificationSettingsWhereUniqueInput" | "OrderCreateManyWithoutOwnerInput" | "OrderCreateOneWithoutItemsInput" | "OrderCreateWithoutItemsInput" | "OrderCreateWithoutOwnerInput" | "OrderItemCreateManyWithoutOrderInput" | "OrderItemCreateManyWithoutOwnerInput" | "OrderItemCreateManyWithoutPackageInput" | "OrderItemCreateWithoutOrderInput" | "OrderItemCreateWithoutOwnerInput" | "OrderItemCreateWithoutPackageInput" | "OrderItemScalarWhereInput" | "OrderItemUpdateManyDataInput" | "OrderItemUpdateManyWithWhereNestedInput" | "OrderItemUpdateManyWithoutOrderInput" | "OrderItemUpdateManyWithoutOwnerInput" | "OrderItemUpdateManyWithoutPackageInput" | "OrderItemUpdateWithWhereUniqueWithoutOrderInput" | "OrderItemUpdateWithWhereUniqueWithoutOwnerInput" | "OrderItemUpdateWithWhereUniqueWithoutPackageInput" | "OrderItemUpdateWithoutOrderDataInput" | "OrderItemUpdateWithoutOwnerDataInput" | "OrderItemUpdateWithoutPackageDataInput" | "OrderItemUpsertWithWhereUniqueWithoutOrderInput" | "OrderItemUpsertWithWhereUniqueWithoutOwnerInput" | "OrderItemUpsertWithWhereUniqueWithoutPackageInput" | "OrderItemWhereInput" | "OrderItemWhereUniqueInput" | "OrderScalarWhereInput" | "OrderUpdateManyDataInput" | "OrderUpdateManyWithWhereNestedInput" | "OrderUpdateManyWithoutOwnerInput" | "OrderUpdateOneWithoutItemsInput" | "OrderUpdateWithWhereUniqueWithoutOwnerInput" | "OrderUpdateWithoutItemsDataInput" | "OrderUpdateWithoutOwnerDataInput" | "OrderUpsertWithWhereUniqueWithoutOwnerInput" | "OrderUpsertWithoutItemsInput" | "OrderWhereInput" | "OrderWhereUniqueInput" | "PackageCreateManyWithoutLeagueInput" | "PackageCreateOneWithoutOrderItemsInput" | "PackageCreateWithoutLeagueInput" | "PackageCreateWithoutOrderItemsInput" | "PackageScalarWhereInput" | "PackageUpdateManyDataInput" | "PackageUpdateManyWithWhereNestedInput" | "PackageUpdateManyWithoutLeagueInput" | "PackageUpdateOneRequiredWithoutOrderItemsInput" | "PackageUpdateWithWhereUniqueWithoutLeagueInput" | "PackageUpdateWithoutLeagueDataInput" | "PackageUpdateWithoutOrderItemsDataInput" | "PackageUpsertWithWhereUniqueWithoutLeagueInput" | "PackageUpsertWithoutOrderItemsInput" | "PackageWhereInput" | "PackageWhereUniqueInput" | "PredictionCreateManyWithoutPackageInput" | "PredictionCreateWithoutPackageInput" | "PredictionScalarWhereInput" | "PredictionUpdateManyDataInput" | "PredictionUpdateManyWithWhereNestedInput" | "PredictionUpdateManyWithoutPackageInput" | "PredictionUpdateWithWhereUniqueWithoutPackageInput" | "PredictionUpdateWithoutPackageDataInput" | "PredictionUpsertWithWhereUniqueWithoutPackageInput" | "PredictionWhereInput" | "PredictionWhereUniqueInput" | "TeamCreateInput" | "TeamCreateManyWithoutLeagueInput" | "TeamCreateOneInput" | "TeamCreateWithoutLeagueInput" | "TeamScalarWhereInput" | "TeamUpdateDataInput" | "TeamUpdateInput" | "TeamUpdateManyDataInput" | "TeamUpdateManyMutationInput" | "TeamUpdateManyWithWhereNestedInput" | "TeamUpdateManyWithoutLeagueInput" | "TeamUpdateOneRequiredInput" | "TeamUpdateWithWhereUniqueWithoutLeagueInput" | "TeamUpdateWithoutLeagueDataInput" | "TeamUpsertNestedInput" | "TeamUpsertWithWhereUniqueWithoutLeagueInput" | "TeamWhereInput" | "TeamWhereUniqueInput" | "UserCreateOneWithoutCartInput" | "UserCreateOneWithoutOrdersInput" | "UserCreateWithoutCartInput" | "UserCreateWithoutOrdersInput" | "UserUpdateOneRequiredWithoutOrdersInput" | "UserUpdateOneWithoutCartInput" | "UserUpdateWithoutCartDataInput" | "UserUpdateWithoutOrdersDataInput" | "UserUpsertWithoutCartInput" | "UserUpsertWithoutOrdersInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames =
-  | 'LeagueOrderByInput'
-  | 'NotificationSettingsOrderByInput'
-  | 'OrderItemOrderByInput'
-  | 'OrderOrderByInput'
-  | 'OrderStatus'
-  | 'PackageOrderByInput'
-  | 'PredictionOrderByInput'
-  | 'Role'
-  | 'TeamOrderByInput'
-  | 'UserOrderByInput';
+export type NexusGenEnumNames = "LeagueOrderByInput" | "NotificationSettingsOrderByInput" | "OrderItemOrderByInput" | "OrderOrderByInput" | "OrderStatus" | "PackageOrderByInput" | "PredictionOrderByInput" | "Role" | "TeamOrderByInput" | "UserOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames =
-  | 'Boolean'
-  | 'DateTime'
-  | 'Float'
-  | 'ID'
-  | 'Int'
-  | 'Long'
-  | 'String';
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "Long" | "String";
 
 export type NexusGenUnionNames = never;
 
@@ -2771,19 +2194,9 @@ export interface NexusGenTypes {
   interfaceNames: NexusGenInterfaceNames;
   scalarNames: NexusGenScalarNames;
   unionNames: NexusGenUnionNames;
-  allInputTypes:
-    | NexusGenTypes['inputNames']
-    | NexusGenTypes['enumNames']
-    | NexusGenTypes['scalarNames'];
-  allOutputTypes:
-    | NexusGenTypes['objectNames']
-    | NexusGenTypes['enumNames']
-    | NexusGenTypes['unionNames']
-    | NexusGenTypes['interfaceNames']
-    | NexusGenTypes['scalarNames'];
-  allNamedTypes:
-    | NexusGenTypes['allInputTypes']
-    | NexusGenTypes['allOutputTypes'];
+  allInputTypes: NexusGenTypes['inputNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['scalarNames'];
+  allOutputTypes: NexusGenTypes['objectNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['unionNames'] | NexusGenTypes['interfaceNames'] | NexusGenTypes['scalarNames'];
+  allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes']
   abstractTypes: NexusGenTypes['interfaceNames'] | NexusGenTypes['unionNames'];
   abstractResolveReturn: NexusGenAbstractResolveReturnTypes;
 }
