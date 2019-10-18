@@ -5,7 +5,7 @@
     "build": "sls package",
     "start": "sls offline",
     "deploy": "sls offline",
-    "lint": "eslint --ext .ts ./src",
+    "lint": "eslint --ext .ts ./src ./tests",
     "lint:fix": "yarn -s lint --fix",
     "generate": "prisma generate && npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma",
     "test": "jest",
