@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "lib": ["esnext", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@generated/*": ["src/generated/*"],
+      "@util/*": ["src/util/*"],
+      "@context": ["src/context.ts"]
+    }
+  },
+  "exclude": ["node_modules", "prisma/seed.ts"],
+  "include": ["src/**/*.ts"]
+}

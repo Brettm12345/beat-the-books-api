@@ -1,0 +1,99 @@
+scalar DateTime
+
+enum SubscriptionPeriod {
+  WEEKLY
+  MONTHLY
+  ANUALLY
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  USER
+}
+
+enum OrderStatus {
+  SUBMITTED
+  PAID
+  PREPARED
+  FAILED
+}
+
+type League {
+  id: ID! @id
+  name: String! @unique
+  sport: String!
+  seasonEndDate: DateTime!
+  packages: [Package!] @relation(name: "LeaguePackage", onDelete: CASCADE)
+  teams: [Team!] @relation(name: "LeagueTeams", onDelete: CASCADE)
+}
+
+type Team {
+  id: ID! @id
+  name: String! @unique
+  key: String! @unique
+  league: League! @relation(name: "LeagueTeams")
+}
+
+type Package {
+  id: ID! @id
+  name: String! @unique
+  description: String
+  price: Float!
+  image: String
+  league: League! @relation(name: "LeaguePackage", onDelete: SET_NULL)
+  orderItems: [OrderItem!] @relation(name: "OrderItemPackage")
+  predictions: [Prediction!]
+    @relation(name: "PackagePredictions", onDelete: CASCADE)
+}
+
+type Order {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  owner: User! @relation(name: "UserOrders")
+  items: [OrderItem!] @relation(name: "OrderItem")
+  status: OrderStatus! @default(value: PREPARED)
+  totalPrice: Float!
+  totalRefunded: Float!
+  totalTax: Float!
+}
+
+type OrderItem {
+  id: ID! @id
+  expireAt: DateTime!
+  owner: User @relation(name: "UserCart")
+  order: Order @relation(name: "OrderItem")
+  package: Package! @relation(name: "OrderItemPackage")
+}
+
+type User {
+  id: ID! @id
+  email: String! @unique
+  phone: String! @unique
+  password: String!
+  cart: [OrderItem!] @relation(name: "UserCart", onDelete: CASCADE)
+  orders: [Order!] @relation(name: "UserOrders", onDelete: CASCADE)
+  role: Role @default(value: USER)
+  notificationSettings: NotificationSettings!
+    @relation(name: "UserNotificationSettings", onDelete: CASCADE, link: INLINE)
+}
+
+type NotificationSettings {
+  id: ID! @id
+  email: Boolean! @default(value: false)
+  phone: Boolean! @default(value: false)
+  user: User @relation(name: "UserNotificationSettings")
+}
+
+type Prediction {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+  startDate: DateTime!
+  package: Package! @relation(name: "PackagePredictions")
+  name: String!
+  home: Team! @relation(name: "HomeGames", onDelete: SET_NULL)
+  away: Team! @relation(name: "AwayGames", onDelete: SET_NULL)
+  winner: Team! @relation(name: "WinningGames", onDelete: SET_NULL)
+}
