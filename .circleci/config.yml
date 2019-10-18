@@ -42,6 +42,7 @@ workflows:
   version: 2
   beat-the-books:
     jobs:
+      - install-dependencies
       - test-and-lint:
           context: test
           requires:
