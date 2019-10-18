@@ -20,6 +20,7 @@ module.exports = {
     '/tests/util/queries.ts',
     '/tests/util/testClient.ts'
   ],
+  reporters: ["default", "jest-junit"],
   transform: tsjPreset.transform,
   watchPlugins: [
     'jest-watch-typeahead/filename',
