@@ -102,9 +102,6 @@ public
 
 # Typescript build output
 .build/
-dist/
-*.js
-*.js.map
 
 # Configuration
 config/*.json

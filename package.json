@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "build": "sls package",
+    "start": "sls offline",
+    "deploy": "sls offline",
     "lint": "eslint --ext .ts ./src",
     "lint:fix": "yarn -s lint --fix",
-    "start": "sls offline",
     "generate": "prisma generate && npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma",
     "test": "jest",
     "test:watch": "jest --watch"
