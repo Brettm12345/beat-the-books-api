@@ -4,12 +4,28 @@ import twilio from 'twilio';
 
 import { Prediction, User, prisma } from '@generated/prisma-client';
 
-import config from './config';
 import { PredictionResults, predictionResults } from './fragments';
 
-const twilioClient = twilio(config.twilio.accountSid, config.twilio.authToken);
+const {
+  TWILIO_ACCOUNT_SID,
+  TWILIO_AUTH_TOKEN,
+  EMAIL_HOST,
+  EMAIL_PORT,
+  EMAIL_USER,
+  EMAIL_PASS,
+  TWILIO_PHONE_NUMBER
+} = process.env as Record<string, string>;
 
-const transporter = nodemailer.createTransport(config.email);
+const twilioClient = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+
+const transporter = nodemailer.createTransport({
+  host: EMAIL_HOST,
+  port: (EMAIL_PORT as unknown) as number,
+  auth: {
+    user: EMAIL_USER,
+    pass: EMAIL_PASS
+  }
+});
 
 export const notify = (message: string, subject: string) => async ({
   id,
@@ -27,7 +43,7 @@ export const notify = (message: string, subject: string) => async ({
   if (settings.phone)
     await twilioClient.messages.create({
       to: phone,
-      from: config.twilio.phoneNumber,
+      from: TWILIO_PHONE_NUMBER,
       body: message
     });
 };

@@ -1,20 +1,25 @@
-import { ApolloServer } from 'apollo-server';
+import 'module-alias/register';
+
+import { ApolloServer } from 'apollo-server-lambda';
 
 import { prisma } from './generated/prisma-client';
 import schema from './schema';
 import { getUser } from './util/auth';
 
-export const server = new ApolloServer({
+const server = new ApolloServer({
   schema,
-  context: ({ req }) => ({
+  context: ({ event: { headers } }) => ({
     prisma,
-    user: getUser(req)
+    user: getUser(headers)
   }),
   introspection: true,
   playground: true,
   tracing: true
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+export const graphqlHandler = server.createHandler({
+  cors: {
+    credentials: true,
+    origin: '*'
+  }
 });

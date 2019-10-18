@@ -22,7 +22,6 @@ const schema = makePrismaSchema({
     ],
     contextType: 'ctx.Context'
   },
-  prettierConfig: join(__dirname, '../.prettierrc'),
   shouldGenerateArtifacts: process.env.NODE_ENV === 'development',
   outputs: {
     schema: join(__dirname, './generated/schema.graphql'),

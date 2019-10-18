@@ -1,5 +1,5 @@
-import { Request } from 'express';
 import { sign, verify } from 'jsonwebtoken';
+import { prop } from 'ramda';
 
 import { User, prisma } from '@generated/prisma-client';
 
@@ -14,8 +14,8 @@ export interface AuthPayload {
   user: User;
 }
 
-const getUserId = (req: Request) => {
-  const Authorization = req.get('Authorization');
+const getUserId = (headers: any) => {
+  const Authorization = prop('Authorization', headers);
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
     const verifiedToken = verify(token, APP_SECRET) as Token;
@@ -29,7 +29,7 @@ export const getAuthPayload = (user: User): AuthPayload => ({
   token: sign({ userId: user.id }, APP_SECRET)
 });
 
-export const getUser = async (req: Request | undefined) => {
-  const id = req && getUserId(req);
+export const getUser = async (headers: any) => {
+  const id = headers && getUserId(headers);
   return id && prisma.user({ id });
 };

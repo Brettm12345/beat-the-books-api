@@ -1,4 +1,4 @@
-import { AuthenticationError } from 'apollo-server';
+import { AuthenticationError } from 'apollo-server-errors';
 import { compare, hash } from 'bcrypt';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { stringArg } from 'nexus';

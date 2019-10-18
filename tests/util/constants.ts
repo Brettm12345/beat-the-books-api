@@ -1,6 +1,6 @@
 export const league = {
-  name: 'NFL',
-  sport: 'Football',
+  name: 'TST',
+  sport: 'Test',
   seasonEndDate: new Date('December 29, 2019')
 };
 
@@ -23,6 +23,11 @@ export const footballPackage = {
 export const user = {
   email: 'test@example.com',
   phone: '+12038854723'
+};
+
+export const user2 = {
+  email: 'test1@example.com',
+  phone: '5552225555'
 };
 
 export const password = 'test';

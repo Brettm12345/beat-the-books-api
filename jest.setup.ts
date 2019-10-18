@@ -7,7 +7,8 @@ import {
   league,
   password,
   teams,
-  user
+  user,
+  user2
 } from './tests/util/constants';
 
 const setup = async () => {
@@ -31,9 +32,8 @@ const setup = async () => {
       }
     }
   });
-  const user2 = await prisma.createUser({
-    email: 'test1@example.com',
-    phone: '5552225555',
+  const { id: userId } = await prisma.createUser({
+    ...user2,
     password: await hash('test', 10),
     notificationSettings: {
       create: {
@@ -48,7 +48,7 @@ const setup = async () => {
     totalRefunded: 0,
     totalTax: 0,
     owner: {
-      connect: { id: user2.id }
+      connect: { id: userId }
     },
     items: {
       create: {

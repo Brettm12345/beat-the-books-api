@@ -101,7 +101,8 @@ public
 .tern-port
 
 # Typescript build output
-dist
+.build/
+dist/
 *.js
 *.js.map
 

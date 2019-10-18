@@ -3,9 +3,7 @@ import Stripe from 'stripe';
 
 import { OrderItem, prisma } from '@generated/prisma-client';
 
-import config from './config';
-
-export const stripe = new Stripe(config.stripe.apiKey);
+export const stripe = new Stripe(process.env.STRIPE_API_KEY as string);
 
 const currency = 'usd';
 

@@ -52,7 +52,7 @@ type Order {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
   owner: User! @relation(name: "UserOrders")
-  items: [OrderItem!] @relation(name: "OrderItem")
+  items: [OrderItem!] @relation(name: "OrderItem", onDelete: CASCADE)
   status: OrderStatus! @default(value: PREPARED)
   totalPrice: Float!
   totalRefunded: Float!
