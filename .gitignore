@@ -102,6 +102,7 @@ public
 
 # Typescript build output
 .build/
+.webpack/
 
 # Configuration
 config/*.json

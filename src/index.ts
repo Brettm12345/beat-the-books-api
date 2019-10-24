@@ -1,5 +1,3 @@
-import 'module-alias/register';
-
 import { ApolloServer } from 'apollo-server-lambda';
 
 import { prisma } from './generated/prisma-client';

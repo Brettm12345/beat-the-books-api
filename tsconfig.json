@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
+    "typeRoots": ["node_modules/@types", "types/"],
     "paths": {
       "@generated/*": ["src/generated/*"],
       "@util/*": ["src/util/*"],
@@ -16,5 +17,5 @@
     }
   },
   "exclude": ["node_modules", "prisma/seed.ts"],
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", ".webpack/*.ts"]
 }

@@ -7,8 +7,22 @@ package:
     - src/**
 plugins:
   - serverless-dotenv-plugin
-  - serverless-plugin-typescript
+  - serverless-webpack
   - serverless-offline
+  - serverless-prune-plugin
+
+custom:
+  prune:
+    automatic: true
+    number: 5
+  serverless-offline:
+    port: 4000
+  webpack:
+    webpackConfig: 'webpack.config.js' # Name of webpack configuration file
+    includeModules: true # Node modules configuration for packaging
+    packager: 'yarn' # Reserved for future use. Any other values will not work right now.
+    packExternalModulesMaxBuffer: 204800 # Size of stdio buffers for spawned child processes
+
 provider:
   name: aws
   runtime: nodejs10.x
