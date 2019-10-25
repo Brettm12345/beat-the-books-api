@@ -1,4 +1,7 @@
-const { CheckerPlugin } = require('awesome-typescript-loader');
+const {
+  CheckerPlugin,
+  TsConfigPathsPlugin
+} = require('awesome-typescript-loader');
 const slsw = require('serverless-webpack');
 const { join } = require('path');
 const nodeExternals = require('webpack-node-externals');
@@ -7,11 +10,7 @@ module.exports = {
   entry: slsw.lib.entries,
   resolve: {
     extensions: ['.ts', '.js', '.mjs', '.json'],
-    alias: {
-      '@generated': join(__dirname, '/src', 'generated'),
-      '@util': join(__dirname, '/src', 'util'),
-      '@context': join(__dirname, '/src', 'context.ts')
-    }
+    plugins: [new TsConfigPathsPlugin()]
   },
   output: {
     libraryTarget: 'commonjs',
