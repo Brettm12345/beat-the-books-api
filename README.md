@@ -1,5 +1,4 @@
-# Beat the Books GraphQL API
-[![CircleCI](https://circleci.com/gh/Brettm12345/beat-the-books-api.svg?style=svg)](https://circleci.com/gh/Brettm12345/beat-the-books-api) [![codecov](https://codecov.io/gh/Brettm12345/beat-the-books-api/branch/master/graph/badge.svg)](https://codecov.io/gh/Brettm12345/beat-the-books-api)
+# Beat the Books GraphQL API [![CircleCI](https://circleci.com/gh/Brettm12345/beat-the-books-api.svg?style=svg)](https://circleci.com/gh/Brettm12345/beat-the-books-api) [![codecov](https://codecov.io/gh/Brettm12345/beat-the-books-api/branch/master/graph/badge.svg)](https://codecov.io/gh/Brettm12345/beat-the-books-api) [![Maintainability](https://api.codeclimate.com/v1/badges/ce5e462e454bbb30f2d9/maintainability)](https://codeclimate.com/github/Brettm12345/beat-the-books-api/maintainability)
 
 GraphQL Api for Beat the Books
 
