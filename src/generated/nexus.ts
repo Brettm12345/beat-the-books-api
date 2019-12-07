@@ -212,17 +212,17 @@ export interface NexusGenInputs {
     id?: string | null; // ID
     owner: NexusGenInputs['UserCreateOneWithoutOrdersInput']; // UserCreateOneWithoutOrdersInput!
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
+    stripeId: string; // String!
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
-    totalTax: number; // Float!
   }
   OrderCreateWithoutOwnerInput: { // input type
     id?: string | null; // ID
     items?: NexusGenInputs['OrderItemCreateManyWithoutOrderInput'] | null; // OrderItemCreateManyWithoutOrderInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
+    stripeId: string; // String!
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
-    totalTax: number; // Float!
   }
   OrderItemCreateManyWithoutOrderInput: { // input type
     connect?: NexusGenInputs['OrderItemWhereUniqueInput'][] | null; // [OrderItemWhereUniqueInput!]
@@ -426,6 +426,20 @@ export interface NexusGenInputs {
     status_in?: NexusGenEnums['OrderStatus'][] | null; // [OrderStatus!]
     status_not?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     status_not_in?: NexusGenEnums['OrderStatus'][] | null; // [OrderStatus!]
+    stripeId?: string | null; // String
+    stripeId_contains?: string | null; // String
+    stripeId_ends_with?: string | null; // String
+    stripeId_gt?: string | null; // String
+    stripeId_gte?: string | null; // String
+    stripeId_in?: string[] | null; // [String!]
+    stripeId_lt?: string | null; // String
+    stripeId_lte?: string | null; // String
+    stripeId_not?: string | null; // String
+    stripeId_not_contains?: string | null; // String
+    stripeId_not_ends_with?: string | null; // String
+    stripeId_not_in?: string[] | null; // [String!]
+    stripeId_not_starts_with?: string | null; // String
+    stripeId_starts_with?: string | null; // String
     totalPrice?: number | null; // Float
     totalPrice_gt?: number | null; // Float
     totalPrice_gte?: number | null; // Float
@@ -442,14 +456,6 @@ export interface NexusGenInputs {
     totalRefunded_lte?: number | null; // Float
     totalRefunded_not?: number | null; // Float
     totalRefunded_not_in?: number[] | null; // [Float!]
-    totalTax?: number | null; // Float
-    totalTax_gt?: number | null; // Float
-    totalTax_gte?: number | null; // Float
-    totalTax_in?: number[] | null; // [Float!]
-    totalTax_lt?: number | null; // Float
-    totalTax_lte?: number | null; // Float
-    totalTax_not?: number | null; // Float
-    totalTax_not_in?: number[] | null; // [Float!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -461,9 +467,9 @@ export interface NexusGenInputs {
   }
   OrderUpdateManyDataInput: { // input type
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
+    stripeId?: string | null; // String
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
-    totalTax?: number | null; // Float
   }
   OrderUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['OrderUpdateManyDataInput']; // OrderUpdateManyDataInput!
@@ -495,16 +501,16 @@ export interface NexusGenInputs {
   OrderUpdateWithoutItemsDataInput: { // input type
     owner?: NexusGenInputs['UserUpdateOneRequiredWithoutOrdersInput'] | null; // UserUpdateOneRequiredWithoutOrdersInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
+    stripeId?: string | null; // String
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
-    totalTax?: number | null; // Float
   }
   OrderUpdateWithoutOwnerDataInput: { // input type
     items?: NexusGenInputs['OrderItemUpdateManyWithoutOrderInput'] | null; // OrderItemUpdateManyWithoutOrderInput
     status?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
+    stripeId?: string | null; // String
     totalPrice?: number | null; // Float
     totalRefunded?: number | null; // Float
-    totalTax?: number | null; // Float
   }
   OrderUpsertWithWhereUniqueWithoutOwnerInput: { // input type
     create: NexusGenInputs['OrderCreateWithoutOwnerInput']; // OrderCreateWithoutOwnerInput!
@@ -549,6 +555,20 @@ export interface NexusGenInputs {
     status_in?: NexusGenEnums['OrderStatus'][] | null; // [OrderStatus!]
     status_not?: NexusGenEnums['OrderStatus'] | null; // OrderStatus
     status_not_in?: NexusGenEnums['OrderStatus'][] | null; // [OrderStatus!]
+    stripeId?: string | null; // String
+    stripeId_contains?: string | null; // String
+    stripeId_ends_with?: string | null; // String
+    stripeId_gt?: string | null; // String
+    stripeId_gte?: string | null; // String
+    stripeId_in?: string[] | null; // [String!]
+    stripeId_lt?: string | null; // String
+    stripeId_lte?: string | null; // String
+    stripeId_not?: string | null; // String
+    stripeId_not_contains?: string | null; // String
+    stripeId_not_ends_with?: string | null; // String
+    stripeId_not_in?: string[] | null; // [String!]
+    stripeId_not_starts_with?: string | null; // String
+    stripeId_starts_with?: string | null; // String
     totalPrice?: number | null; // Float
     totalPrice_gt?: number | null; // Float
     totalPrice_gte?: number | null; // Float
@@ -565,14 +585,6 @@ export interface NexusGenInputs {
     totalRefunded_lte?: number | null; // Float
     totalRefunded_not?: number | null; // Float
     totalRefunded_not_in?: number[] | null; // [Float!]
-    totalTax?: number | null; // Float
-    totalTax_gt?: number | null; // Float
-    totalTax_gte?: number | null; // Float
-    totalTax_in?: number[] | null; // [Float!]
-    totalTax_lt?: number | null; // Float
-    totalTax_lte?: number | null; // Float
-    totalTax_not?: number | null; // Float
-    totalTax_not_in?: number[] | null; // [Float!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -1174,6 +1186,7 @@ export interface NexusGenInputs {
     orders?: NexusGenInputs['OrderCreateManyWithoutOwnerInput'] | null; // OrderCreateManyWithoutOwnerInput
     password: string; // String!
     phone: string; // String!
+    resetToken?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserCreateWithoutOrdersInput: { // input type
@@ -1183,6 +1196,7 @@ export interface NexusGenInputs {
     notificationSettings: NexusGenInputs['NotificationSettingsCreateOneWithoutUserInput']; // NotificationSettingsCreateOneWithoutUserInput!
     password: string; // String!
     phone: string; // String!
+    resetToken?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserUpdateOneRequiredWithoutOrdersInput: { // input type
@@ -1205,6 +1219,7 @@ export interface NexusGenInputs {
     orders?: NexusGenInputs['OrderUpdateManyWithoutOwnerInput'] | null; // OrderUpdateManyWithoutOwnerInput
     password?: string | null; // String
     phone?: string | null; // String
+    resetToken?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserUpdateWithoutOrdersDataInput: { // input type
@@ -1213,6 +1228,7 @@ export interface NexusGenInputs {
     notificationSettings?: NexusGenInputs['NotificationSettingsUpdateOneRequiredWithoutUserInput'] | null; // NotificationSettingsUpdateOneRequiredWithoutUserInput
     password?: string | null; // String
     phone?: string | null; // String
+    resetToken?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserUpsertWithoutCartInput: { // input type
@@ -1290,6 +1306,20 @@ export interface NexusGenInputs {
     phone_not_in?: string[] | null; // [String!]
     phone_not_starts_with?: string | null; // String
     phone_starts_with?: string | null; // String
+    resetToken?: string | null; // String
+    resetToken_contains?: string | null; // String
+    resetToken_ends_with?: string | null; // String
+    resetToken_gt?: string | null; // String
+    resetToken_gte?: string | null; // String
+    resetToken_in?: string[] | null; // [String!]
+    resetToken_lt?: string | null; // String
+    resetToken_lte?: string | null; // String
+    resetToken_not?: string | null; // String
+    resetToken_not_contains?: string | null; // String
+    resetToken_not_ends_with?: string | null; // String
+    resetToken_not_in?: string[] | null; // [String!]
+    resetToken_not_starts_with?: string | null; // String
+    resetToken_starts_with?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
     role_in?: NexusGenEnums['Role'][] | null; // [Role!]
     role_not?: NexusGenEnums['Role'] | null; // Role
@@ -1306,13 +1336,13 @@ export interface NexusGenEnums {
   LeagueOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "seasonEndDate_ASC" | "seasonEndDate_DESC" | "sport_ASC" | "sport_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   NotificationSettingsOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "phone_ASC" | "phone_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   OrderItemOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "expireAt_ASC" | "expireAt_DESC" | "id_ASC" | "id_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "totalPrice_ASC" | "totalPrice_DESC" | "totalRefunded_ASC" | "totalRefunded_DESC" | "totalTax_ASC" | "totalTax_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  OrderStatus: "FAILED" | "PAID" | "PREPARED" | "SUBMITTED"
+  OrderOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "status_ASC" | "status_DESC" | "stripeId_ASC" | "stripeId_DESC" | "totalPrice_ASC" | "totalPrice_DESC" | "totalRefunded_ASC" | "totalRefunded_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  OrderStatus: "FAILED" | "PAID" | "PREPARED" | "REFUNDED" | "SUBMITTED"
   PackageOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "description_ASC" | "description_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "name_ASC" | "name_DESC" | "price_ASC" | "price_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   PredictionOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "startDate_ASC" | "startDate_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   Role: "ADMIN" | "EDITOR" | "USER"
   TeamOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "key_ASC" | "key_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "password_ASC" | "password_DESC" | "phone_ASC" | "phone_DESC" | "role_ASC" | "role_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  UserOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "email_ASC" | "email_DESC" | "id_ASC" | "id_DESC" | "password_ASC" | "password_DESC" | "phone_ASC" | "phone_DESC" | "resetToken_ASC" | "resetToken_DESC" | "role_ASC" | "role_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -1379,9 +1409,9 @@ export interface NexusGenRootTypes {
     createdAt: any; // DateTime!
     id: string; // ID!
     status: NexusGenEnums['OrderStatus']; // OrderStatus!
+    stripeId: string; // String!
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
-    totalTax: number; // Float!
     updatedAt: any; // DateTime!
   }
   OrderConnection: { // root type
@@ -1457,6 +1487,7 @@ export interface NexusGenRootTypes {
     email: string; // String!
     id: string; // ID!
     phone: string; // String!
+    resetToken?: string | null; // String
     role?: NexusGenEnums['Role'] | null; // Role
   }
   UserConnection: { // root type
@@ -1670,6 +1701,7 @@ export interface NexusGenFieldTypes {
     deleteOrder: NexusGenRootTypes['Order'] | null; // Order
     deleteTeam: NexusGenRootTypes['Team'] | null; // Team
     emptyCart: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    forgotPassword: boolean; // Boolean!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     removeFromCart: NexusGenRootTypes['OrderItem'][] | null; // [OrderItem!]
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
@@ -1702,9 +1734,9 @@ export interface NexusGenFieldTypes {
     items: NexusGenRootTypes['OrderItem'][] | null; // [OrderItem!]
     owner: NexusGenRootTypes['User']; // User!
     status: NexusGenEnums['OrderStatus']; // OrderStatus!
+    stripeId: string; // String!
     totalPrice: number; // Float!
     totalRefunded: number; // Float!
-    totalTax: number; // Float!
     updatedAt: any; // DateTime!
   }
   OrderConnection: { // field return type
@@ -1826,6 +1858,7 @@ export interface NexusGenFieldTypes {
     id: string; // ID!
     notificationSettings: NexusGenRootTypes['NotificationSettings']; // NotificationSettings!
     phone: string; // String!
+    resetToken: string | null; // String
     role: NexusGenEnums['Role'] | null; // Role
   }
   UserConnection: { // field return type
@@ -1866,8 +1899,8 @@ export interface NexusGenArgTypes {
       packageName: string; // String!
     }
     changePassword: { // args
-      newPassword: string; // String!
-      oldPassword: string; // String!
+      password: string; // String!
+      token: string; // String!
     }
     createLeague: { // args
       data: NexusGenInputs['LeagueCreateInput']; // LeagueCreateInput!
@@ -1900,6 +1933,9 @@ export interface NexusGenArgTypes {
     }
     deleteTeam: { // args
       where: NexusGenInputs['TeamWhereUniqueInput']; // TeamWhereUniqueInput!
+    }
+    forgotPassword: { // args
+      email: string; // String!
     }
     login: { // args
       email?: string | null; // String

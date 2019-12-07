@@ -1,4 +1,4 @@
-import { newPassword, password as oldPassword, user } from './util/constants';
+import { newPassword, user } from './util/constants';
 import { CHANGE_PASSWORD_MUTATION, LOGIN_MUTATION } from './util/mutations';
 import { ME_QUERY } from './util/queries';
 import { mutate, query } from './util/testClient';
@@ -12,7 +12,7 @@ describe('User', () => {
   it('Should allow the user to change their password', async () => {
     const result = await mutate({
       mutation: CHANGE_PASSWORD_MUTATION,
-      variables: { oldPassword, newPassword }
+      variables: { password: newPassword }
     });
     expect(result).toHaveProperty(['data', 'changePassword', 'user'], user);
   });

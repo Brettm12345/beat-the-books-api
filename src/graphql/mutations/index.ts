@@ -22,6 +22,7 @@ export { AddToCart } from './addToCart';
 export { CreateOrder } from './createOrder';
 export { EmptyCart } from './emptyCart';
 export { DeleteMe } from './deleteMe';
+export { ForgotPassword } from './forgotPassword';
 export { ChangePassword } from './changePassword';
 export { Signup } from './signup';
 export { Login } from './login';

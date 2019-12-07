@@ -17,6 +17,7 @@ enum OrderStatus {
   PAID
   PREPARED
   FAILED
+  REFUNDED
 }
 
 type League {
@@ -54,10 +55,10 @@ type Order {
   updatedAt: DateTime! @updatedAt
   owner: User! @relation(name: "UserOrders")
   items: [OrderItem!] @relation(name: "OrderItem", onDelete: CASCADE)
+  stripeId: String!
   status: OrderStatus! @default(value: PREPARED)
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 type OrderItem {
@@ -76,6 +77,7 @@ type User {
   cart: [OrderItem!] @relation(name: "UserCart", onDelete: CASCADE)
   orders: [Order!] @relation(name: "UserOrders", onDelete: CASCADE)
   role: Role @default(value: USER)
+  resetToken: String
   notificationSettings: NotificationSettings!
     @relation(name: "UserNotificationSettings", onDelete: CASCADE, link: INLINE)
 }

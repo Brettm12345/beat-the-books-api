@@ -1,7 +1,7 @@
 import { map } from 'blend-promise-utils';
+import { fold, monoidSum } from 'fp-ts/lib/Monoid';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { stringArg } from 'nexus';
-import { add, reduce } from 'ramda';
 
 import { prismaMutationField } from '@util/nexus';
 import { connect } from '@util/prisma';
@@ -17,11 +17,8 @@ export const CreateOrder = prismaMutationField('createOrder', {
       where: { owner: { id: ctx.user.id } }
     });
 
-    const totalPrice = pipe(
-      await map(cart, calculatePrice),
-      reduce<number, number>(add, 0)
-    );
-    const { paid } = await pipe(
+    const totalPrice = pipe(await map(cart, calculatePrice), fold(monoidSum));
+    const { id: stripeId, paid } = await pipe(
       await createSource(stripeToken),
       ({ id: source }) =>
         createCharge({
@@ -37,9 +34,9 @@ export const CreateOrder = prismaMutationField('createOrder', {
       });
     return ctx.prisma.createOrder({
       totalPrice,
+      stripeId,
       status: paid ? 'PAID' : 'FAILED',
       totalRefunded: 0,
-      totalTax: 0,
       owner: { connect: { id: ctx.user.id } },
       items: connect(cart)
     });

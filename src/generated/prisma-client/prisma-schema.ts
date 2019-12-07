@@ -445,10 +445,10 @@ type Order {
   updatedAt: DateTime!
   owner: User!
   items(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderItem!]
+  stripeId: String!
   status: OrderStatus!
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 type OrderConnection {
@@ -461,10 +461,10 @@ input OrderCreateInput {
   id: ID
   owner: UserCreateOneWithoutOrdersInput!
   items: OrderItemCreateManyWithoutOrderInput
+  stripeId: String!
   status: OrderStatus
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 input OrderCreateManyWithoutOwnerInput {
@@ -480,19 +480,19 @@ input OrderCreateOneWithoutItemsInput {
 input OrderCreateWithoutItemsInput {
   id: ID
   owner: UserCreateOneWithoutOrdersInput!
+  stripeId: String!
   status: OrderStatus
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 input OrderCreateWithoutOwnerInput {
   id: ID
   items: OrderItemCreateManyWithoutOrderInput
+  stripeId: String!
   status: OrderStatus
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 type OrderEdge {
@@ -770,24 +770,24 @@ enum OrderOrderByInput {
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
+  stripeId_ASC
+  stripeId_DESC
   status_ASC
   status_DESC
   totalPrice_ASC
   totalPrice_DESC
   totalRefunded_ASC
   totalRefunded_DESC
-  totalTax_ASC
-  totalTax_DESC
 }
 
 type OrderPreviousValues {
   id: ID!
   createdAt: DateTime!
   updatedAt: DateTime!
+  stripeId: String!
   status: OrderStatus!
   totalPrice: Float!
   totalRefunded: Float!
-  totalTax: Float!
 }
 
 input OrderScalarWhereInput {
@@ -821,6 +821,20 @@ input OrderScalarWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
+  stripeId: String
+  stripeId_not: String
+  stripeId_in: [String!]
+  stripeId_not_in: [String!]
+  stripeId_lt: String
+  stripeId_lte: String
+  stripeId_gt: String
+  stripeId_gte: String
+  stripeId_contains: String
+  stripeId_not_contains: String
+  stripeId_starts_with: String
+  stripeId_not_starts_with: String
+  stripeId_ends_with: String
+  stripeId_not_ends_with: String
   status: OrderStatus
   status_not: OrderStatus
   status_in: [OrderStatus!]
@@ -841,14 +855,6 @@ input OrderScalarWhereInput {
   totalRefunded_lte: Float
   totalRefunded_gt: Float
   totalRefunded_gte: Float
-  totalTax: Float
-  totalTax_not: Float
-  totalTax_in: [Float!]
-  totalTax_not_in: [Float!]
-  totalTax_lt: Float
-  totalTax_lte: Float
-  totalTax_gt: Float
-  totalTax_gte: Float
   AND: [OrderScalarWhereInput!]
   OR: [OrderScalarWhereInput!]
   NOT: [OrderScalarWhereInput!]
@@ -859,6 +865,7 @@ enum OrderStatus {
   PAID
   PREPARED
   FAILED
+  REFUNDED
 }
 
 type OrderSubscriptionPayload {
@@ -882,24 +889,24 @@ input OrderSubscriptionWhereInput {
 input OrderUpdateInput {
   owner: UserUpdateOneRequiredWithoutOrdersInput
   items: OrderItemUpdateManyWithoutOrderInput
+  stripeId: String
   status: OrderStatus
   totalPrice: Float
   totalRefunded: Float
-  totalTax: Float
 }
 
 input OrderUpdateManyDataInput {
+  stripeId: String
   status: OrderStatus
   totalPrice: Float
   totalRefunded: Float
-  totalTax: Float
 }
 
 input OrderUpdateManyMutationInput {
+  stripeId: String
   status: OrderStatus
   totalPrice: Float
   totalRefunded: Float
-  totalTax: Float
 }
 
 input OrderUpdateManyWithoutOwnerInput {
@@ -930,18 +937,18 @@ input OrderUpdateOneWithoutItemsInput {
 
 input OrderUpdateWithoutItemsDataInput {
   owner: UserUpdateOneRequiredWithoutOrdersInput
+  stripeId: String
   status: OrderStatus
   totalPrice: Float
   totalRefunded: Float
-  totalTax: Float
 }
 
 input OrderUpdateWithoutOwnerDataInput {
   items: OrderItemUpdateManyWithoutOrderInput
+  stripeId: String
   status: OrderStatus
   totalPrice: Float
   totalRefunded: Float
-  totalTax: Float
 }
 
 input OrderUpdateWithWhereUniqueWithoutOwnerInput {
@@ -995,6 +1002,20 @@ input OrderWhereInput {
   items_every: OrderItemWhereInput
   items_some: OrderItemWhereInput
   items_none: OrderItemWhereInput
+  stripeId: String
+  stripeId_not: String
+  stripeId_in: [String!]
+  stripeId_not_in: [String!]
+  stripeId_lt: String
+  stripeId_lte: String
+  stripeId_gt: String
+  stripeId_gte: String
+  stripeId_contains: String
+  stripeId_not_contains: String
+  stripeId_starts_with: String
+  stripeId_not_starts_with: String
+  stripeId_ends_with: String
+  stripeId_not_ends_with: String
   status: OrderStatus
   status_not: OrderStatus
   status_in: [OrderStatus!]
@@ -1015,14 +1036,6 @@ input OrderWhereInput {
   totalRefunded_lte: Float
   totalRefunded_gt: Float
   totalRefunded_gte: Float
-  totalTax: Float
-  totalTax_not: Float
-  totalTax_in: [Float!]
-  totalTax_not_in: [Float!]
-  totalTax_lt: Float
-  totalTax_lte: Float
-  totalTax_gt: Float
-  totalTax_gte: Float
   AND: [OrderWhereInput!]
   OR: [OrderWhereInput!]
   NOT: [OrderWhereInput!]
@@ -1973,6 +1986,7 @@ type User {
   cart(where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [OrderItem!]
   orders(where: OrderWhereInput, orderBy: OrderOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Order!]
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettings!
 }
 
@@ -1990,6 +2004,7 @@ input UserCreateInput {
   cart: OrderItemCreateManyWithoutOwnerInput
   orders: OrderCreateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsCreateOneWithoutUserInput!
 }
 
@@ -2015,6 +2030,7 @@ input UserCreateWithoutCartInput {
   password: String!
   orders: OrderCreateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsCreateOneWithoutUserInput!
 }
 
@@ -2026,6 +2042,7 @@ input UserCreateWithoutNotificationSettingsInput {
   cart: OrderItemCreateManyWithoutOwnerInput
   orders: OrderCreateManyWithoutOwnerInput
   role: Role
+  resetToken: String
 }
 
 input UserCreateWithoutOrdersInput {
@@ -2035,6 +2052,7 @@ input UserCreateWithoutOrdersInput {
   password: String!
   cart: OrderItemCreateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsCreateOneWithoutUserInput!
 }
 
@@ -2054,6 +2072,8 @@ enum UserOrderByInput {
   password_DESC
   role_ASC
   role_DESC
+  resetToken_ASC
+  resetToken_DESC
 }
 
 type UserPreviousValues {
@@ -2062,6 +2082,7 @@ type UserPreviousValues {
   phone: String!
   password: String!
   role: Role
+  resetToken: String
 }
 
 type UserSubscriptionPayload {
@@ -2089,6 +2110,7 @@ input UserUpdateInput {
   cart: OrderItemUpdateManyWithoutOwnerInput
   orders: OrderUpdateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsUpdateOneRequiredWithoutUserInput
 }
 
@@ -2097,6 +2119,7 @@ input UserUpdateManyMutationInput {
   phone: String
   password: String
   role: Role
+  resetToken: String
 }
 
 input UserUpdateOneRequiredWithoutOrdersInput {
@@ -2130,6 +2153,7 @@ input UserUpdateWithoutCartDataInput {
   password: String
   orders: OrderUpdateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsUpdateOneRequiredWithoutUserInput
 }
 
@@ -2140,6 +2164,7 @@ input UserUpdateWithoutNotificationSettingsDataInput {
   cart: OrderItemUpdateManyWithoutOwnerInput
   orders: OrderUpdateManyWithoutOwnerInput
   role: Role
+  resetToken: String
 }
 
 input UserUpdateWithoutOrdersDataInput {
@@ -2148,6 +2173,7 @@ input UserUpdateWithoutOrdersDataInput {
   password: String
   cart: OrderItemUpdateManyWithoutOwnerInput
   role: Role
+  resetToken: String
   notificationSettings: NotificationSettingsUpdateOneRequiredWithoutUserInput
 }
 
@@ -2233,6 +2259,20 @@ input UserWhereInput {
   role_not: Role
   role_in: [Role!]
   role_not_in: [Role!]
+  resetToken: String
+  resetToken_not: String
+  resetToken_in: [String!]
+  resetToken_not_in: [String!]
+  resetToken_lt: String
+  resetToken_lte: String
+  resetToken_gt: String
+  resetToken_gte: String
+  resetToken_contains: String
+  resetToken_not_contains: String
+  resetToken_starts_with: String
+  resetToken_not_starts_with: String
+  resetToken_ends_with: String
+  resetToken_not_ends_with: String
   notificationSettings: NotificationSettingsWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]

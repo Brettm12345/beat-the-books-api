@@ -1131,6 +1131,7 @@ type UserObject =
   | { name: 'cart', args?: UserCartArgs[] | false, alias?: string  } 
   | { name: 'orders', args?: UserOrdersArgs[] | false, alias?: string  } 
   | { name: 'role', args?: [] | false, alias?: string  } 
+  | { name: 'resetToken', args?: [] | false, alias?: string  } 
   | { name: 'notificationSettings', args?: [] | false, alias?: string  } 
 
 type UserFields =
@@ -1141,6 +1142,7 @@ type UserFields =
   | 'cart'
   | 'orders'
   | 'role'
+  | 'resetToken'
   | 'notificationSettings'
 
 
@@ -1234,6 +1236,14 @@ export interface UserFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Role | null> | prisma.Role | null
   }
+  resetToken: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
+  }
   notificationSettings: {
     type: 'NotificationSettings'
     args: {}
@@ -1259,10 +1269,10 @@ type OrderObject =
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
   | { name: 'owner', args?: [] | false, alias?: string  } 
   | { name: 'items', args?: OrderItemsArgs[] | false, alias?: string  } 
+  | { name: 'stripeId', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
   | { name: 'totalPrice', args?: [] | false, alias?: string  } 
   | { name: 'totalRefunded', args?: [] | false, alias?: string  } 
-  | { name: 'totalTax', args?: [] | false, alias?: string  } 
 
 type OrderFields =
   | 'id'
@@ -1270,10 +1280,10 @@ type OrderFields =
   | 'updatedAt'
   | 'owner'
   | 'items'
+  | 'stripeId'
   | 'status'
   | 'totalPrice'
   | 'totalRefunded'
-  | 'totalTax'
 
 
 type OrderItemsArgs =
@@ -1337,6 +1347,14 @@ export interface OrderFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.OrderItem[]> | prisma.OrderItem[]
   }
+  stripeId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
   status: {
     type: 'OrderStatus'
     args: {}
@@ -1359,14 +1377,6 @@ export interface OrderFieldDetails {
     resolve: undefined
   }
   totalRefunded: {
-    type: 'Float'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  totalTax: {
     type: 'Float'
     args: {}
     description: string
@@ -4166,19 +4176,19 @@ type OrderPreviousValuesObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
+  | { name: 'stripeId', args?: [] | false, alias?: string  } 
   | { name: 'status', args?: [] | false, alias?: string  } 
   | { name: 'totalPrice', args?: [] | false, alias?: string  } 
   | { name: 'totalRefunded', args?: [] | false, alias?: string  } 
-  | { name: 'totalTax', args?: [] | false, alias?: string  } 
 
 type OrderPreviousValuesFields =
   | 'id'
   | 'createdAt'
   | 'updatedAt'
+  | 'stripeId'
   | 'status'
   | 'totalPrice'
   | 'totalRefunded'
-  | 'totalTax'
 
 
 
@@ -4209,6 +4219,14 @@ export interface OrderPreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
+  stripeId: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
   status: {
     type: 'OrderStatus'
     args: {}
@@ -4231,14 +4249,6 @@ export interface OrderPreviousValuesFieldDetails {
     resolve: undefined
   }
   totalRefunded: {
-    type: 'Float'
-    args: {}
-    description: string
-    list: undefined
-    nullable: false
-    resolve: undefined
-  }
-  totalTax: {
     type: 'Float'
     args: {}
     description: string
@@ -4433,6 +4443,7 @@ type UserPreviousValuesObject =
   | { name: 'phone', args?: [] | false, alias?: string  } 
   | { name: 'password', args?: [] | false, alias?: string  } 
   | { name: 'role', args?: [] | false, alias?: string  } 
+  | { name: 'resetToken', args?: [] | false, alias?: string  } 
 
 type UserPreviousValuesFields =
   | 'id'
@@ -4440,6 +4451,7 @@ type UserPreviousValuesFields =
   | 'phone'
   | 'password'
   | 'role'
+  | 'resetToken'
 
 
 
@@ -4490,6 +4502,14 @@ export interface UserPreviousValuesFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Role | null> | prisma.Role | null
+  }
+  resetToken: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: undefined
   }
 }
   
@@ -5255,6 +5275,20 @@ export interface UserWhereInput {
   role_not?: prisma.Role | null
   role_in?: prisma.Role[]
   role_not_in?: prisma.Role[]
+  resetToken?: string | null
+  resetToken_not?: string | null
+  resetToken_in?: string[]
+  resetToken_not_in?: string[]
+  resetToken_lt?: string | null
+  resetToken_lte?: string | null
+  resetToken_gt?: string | null
+  resetToken_gte?: string | null
+  resetToken_contains?: string | null
+  resetToken_not_contains?: string | null
+  resetToken_starts_with?: string | null
+  resetToken_not_starts_with?: string | null
+  resetToken_ends_with?: string | null
+  resetToken_not_ends_with?: string | null
   notificationSettings?: NotificationSettingsWhereInput | null
   AND?: UserWhereInput[]
   OR?: UserWhereInput[]
@@ -5328,6 +5362,20 @@ export type UserWhereInputInputObject =
   | { name: 'role_not', alias?: string  } 
   | { name: 'role_in', alias?: string  } 
   | { name: 'role_not_in', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
+  | { name: 'resetToken_not', alias?: string  } 
+  | { name: 'resetToken_in', alias?: string  } 
+  | { name: 'resetToken_not_in', alias?: string  } 
+  | { name: 'resetToken_lt', alias?: string  } 
+  | { name: 'resetToken_lte', alias?: string  } 
+  | { name: 'resetToken_gt', alias?: string  } 
+  | { name: 'resetToken_gte', alias?: string  } 
+  | { name: 'resetToken_contains', alias?: string  } 
+  | { name: 'resetToken_not_contains', alias?: string  } 
+  | { name: 'resetToken_starts_with', alias?: string  } 
+  | { name: 'resetToken_not_starts_with', alias?: string  } 
+  | { name: 'resetToken_ends_with', alias?: string  } 
+  | { name: 'resetToken_not_ends_with', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
@@ -5368,6 +5416,20 @@ export interface OrderWhereInput {
   items_every?: OrderItemWhereInput | null
   items_some?: OrderItemWhereInput | null
   items_none?: OrderItemWhereInput | null
+  stripeId?: string | null
+  stripeId_not?: string | null
+  stripeId_in?: string[]
+  stripeId_not_in?: string[]
+  stripeId_lt?: string | null
+  stripeId_lte?: string | null
+  stripeId_gt?: string | null
+  stripeId_gte?: string | null
+  stripeId_contains?: string | null
+  stripeId_not_contains?: string | null
+  stripeId_starts_with?: string | null
+  stripeId_not_starts_with?: string | null
+  stripeId_ends_with?: string | null
+  stripeId_not_ends_with?: string | null
   status?: prisma.OrderStatus | null
   status_not?: prisma.OrderStatus | null
   status_in?: prisma.OrderStatus[]
@@ -5388,14 +5450,6 @@ export interface OrderWhereInput {
   totalRefunded_lte?: number | null
   totalRefunded_gt?: number | null
   totalRefunded_gte?: number | null
-  totalTax?: number | null
-  totalTax_not?: number | null
-  totalTax_in?: number[]
-  totalTax_not_in?: number[]
-  totalTax_lt?: number | null
-  totalTax_lte?: number | null
-  totalTax_gt?: number | null
-  totalTax_gte?: number | null
   AND?: OrderWhereInput[]
   OR?: OrderWhereInput[]
   NOT?: OrderWhereInput[]
@@ -5436,6 +5490,20 @@ export type OrderWhereInputInputObject =
   | { name: 'items_every', alias?: string  } 
   | { name: 'items_some', alias?: string  } 
   | { name: 'items_none', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
+  | { name: 'stripeId_not', alias?: string  } 
+  | { name: 'stripeId_in', alias?: string  } 
+  | { name: 'stripeId_not_in', alias?: string  } 
+  | { name: 'stripeId_lt', alias?: string  } 
+  | { name: 'stripeId_lte', alias?: string  } 
+  | { name: 'stripeId_gt', alias?: string  } 
+  | { name: 'stripeId_gte', alias?: string  } 
+  | { name: 'stripeId_contains', alias?: string  } 
+  | { name: 'stripeId_not_contains', alias?: string  } 
+  | { name: 'stripeId_starts_with', alias?: string  } 
+  | { name: 'stripeId_not_starts_with', alias?: string  } 
+  | { name: 'stripeId_ends_with', alias?: string  } 
+  | { name: 'stripeId_not_ends_with', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'status_not', alias?: string  } 
   | { name: 'status_in', alias?: string  } 
@@ -5456,14 +5524,6 @@ export type OrderWhereInputInputObject =
   | { name: 'totalRefunded_lte', alias?: string  } 
   | { name: 'totalRefunded_gt', alias?: string  } 
   | { name: 'totalRefunded_gte', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
-  | { name: 'totalTax_not', alias?: string  } 
-  | { name: 'totalTax_in', alias?: string  } 
-  | { name: 'totalTax_not_in', alias?: string  } 
-  | { name: 'totalTax_lt', alias?: string  } 
-  | { name: 'totalTax_lte', alias?: string  } 
-  | { name: 'totalTax_gt', alias?: string  } 
-  | { name: 'totalTax_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -5782,6 +5842,7 @@ export interface UserCreateWithoutCartInput {
   password?: string
   orders?: OrderCreateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsCreateOneWithoutUserInput
 }
 export type UserCreateWithoutCartInputInputObject =
@@ -5792,6 +5853,7 @@ export type UserCreateWithoutCartInputInputObject =
   | { name: 'password', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface OrderCreateManyWithoutOwnerInput {
@@ -5806,19 +5868,19 @@ export type OrderCreateManyWithoutOwnerInputInputObject =
 export interface OrderCreateWithoutOwnerInput {
   id?: string | null
   items?: OrderItemCreateManyWithoutOrderInput | null
+  stripeId?: string
   status?: prisma.OrderStatus | null
   totalPrice?: number
   totalRefunded?: number
-  totalTax?: number
 }
 export type OrderCreateWithoutOwnerInputInputObject =
   | Extract<keyof OrderCreateWithoutOwnerInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'items', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface OrderItemCreateManyWithoutOrderInput {
   create?: OrderItemCreateWithoutOrderInput[]
@@ -6018,19 +6080,19 @@ export type OrderCreateOneWithoutItemsInputInputObject =
 export interface OrderCreateWithoutItemsInput {
   id?: string | null
   owner?: UserCreateOneWithoutOrdersInput
+  stripeId?: string
   status?: prisma.OrderStatus | null
   totalPrice?: number
   totalRefunded?: number
-  totalTax?: number
 }
 export type OrderCreateWithoutItemsInputInputObject =
   | Extract<keyof OrderCreateWithoutItemsInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'owner', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface UserCreateOneWithoutOrdersInput {
   create?: UserCreateWithoutOrdersInput | null
@@ -6048,6 +6110,7 @@ export interface UserCreateWithoutOrdersInput {
   password?: string
   cart?: OrderItemCreateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsCreateOneWithoutUserInput
 }
 export type UserCreateWithoutOrdersInputInputObject =
@@ -6058,6 +6121,7 @@ export type UserCreateWithoutOrdersInputInputObject =
   | { name: 'password', alias?: string  } 
   | { name: 'cart', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface OrderItemCreateManyWithoutOwnerInput {
@@ -6212,6 +6276,7 @@ export interface UserUpdateWithoutCartDataInput {
   password?: string | null
   orders?: OrderUpdateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsUpdateOneRequiredWithoutUserInput | null
 }
 export type UserUpdateWithoutCartDataInputInputObject =
@@ -6221,6 +6286,7 @@ export type UserUpdateWithoutCartDataInputInputObject =
   | { name: 'password', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface OrderUpdateManyWithoutOwnerInput {
@@ -6257,18 +6323,18 @@ export type OrderUpdateWithWhereUniqueWithoutOwnerInputInputObject =
   
 export interface OrderUpdateWithoutOwnerDataInput {
   items?: OrderItemUpdateManyWithoutOrderInput | null
+  stripeId?: string | null
   status?: prisma.OrderStatus | null
   totalPrice?: number | null
   totalRefunded?: number | null
-  totalTax?: number | null
 }
 export type OrderUpdateWithoutOwnerDataInputInputObject =
   | Extract<keyof OrderUpdateWithoutOwnerDataInput, string>
   | { name: 'items', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface OrderItemUpdateManyWithoutOrderInput {
   create?: OrderItemCreateWithoutOrderInput[]
@@ -6935,6 +7001,20 @@ export interface OrderScalarWhereInput {
   updatedAt_lte?: string | null
   updatedAt_gt?: string | null
   updatedAt_gte?: string | null
+  stripeId?: string | null
+  stripeId_not?: string | null
+  stripeId_in?: string[]
+  stripeId_not_in?: string[]
+  stripeId_lt?: string | null
+  stripeId_lte?: string | null
+  stripeId_gt?: string | null
+  stripeId_gte?: string | null
+  stripeId_contains?: string | null
+  stripeId_not_contains?: string | null
+  stripeId_starts_with?: string | null
+  stripeId_not_starts_with?: string | null
+  stripeId_ends_with?: string | null
+  stripeId_not_ends_with?: string | null
   status?: prisma.OrderStatus | null
   status_not?: prisma.OrderStatus | null
   status_in?: prisma.OrderStatus[]
@@ -6955,14 +7035,6 @@ export interface OrderScalarWhereInput {
   totalRefunded_lte?: number | null
   totalRefunded_gt?: number | null
   totalRefunded_gte?: number | null
-  totalTax?: number | null
-  totalTax_not?: number | null
-  totalTax_in?: number[]
-  totalTax_not_in?: number[]
-  totalTax_lt?: number | null
-  totalTax_lte?: number | null
-  totalTax_gt?: number | null
-  totalTax_gte?: number | null
   AND?: OrderScalarWhereInput[]
   OR?: OrderScalarWhereInput[]
   NOT?: OrderScalarWhereInput[]
@@ -6999,6 +7071,20 @@ export type OrderScalarWhereInputInputObject =
   | { name: 'updatedAt_lte', alias?: string  } 
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
+  | { name: 'stripeId_not', alias?: string  } 
+  | { name: 'stripeId_in', alias?: string  } 
+  | { name: 'stripeId_not_in', alias?: string  } 
+  | { name: 'stripeId_lt', alias?: string  } 
+  | { name: 'stripeId_lte', alias?: string  } 
+  | { name: 'stripeId_gt', alias?: string  } 
+  | { name: 'stripeId_gte', alias?: string  } 
+  | { name: 'stripeId_contains', alias?: string  } 
+  | { name: 'stripeId_not_contains', alias?: string  } 
+  | { name: 'stripeId_starts_with', alias?: string  } 
+  | { name: 'stripeId_not_starts_with', alias?: string  } 
+  | { name: 'stripeId_ends_with', alias?: string  } 
+  | { name: 'stripeId_not_ends_with', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'status_not', alias?: string  } 
   | { name: 'status_in', alias?: string  } 
@@ -7019,14 +7105,6 @@ export type OrderScalarWhereInputInputObject =
   | { name: 'totalRefunded_lte', alias?: string  } 
   | { name: 'totalRefunded_gt', alias?: string  } 
   | { name: 'totalRefunded_gte', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
-  | { name: 'totalTax_not', alias?: string  } 
-  | { name: 'totalTax_in', alias?: string  } 
-  | { name: 'totalTax_not_in', alias?: string  } 
-  | { name: 'totalTax_lt', alias?: string  } 
-  | { name: 'totalTax_lte', alias?: string  } 
-  | { name: 'totalTax_gt', alias?: string  } 
-  | { name: 'totalTax_gte', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -7041,17 +7119,17 @@ export type OrderUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface OrderUpdateManyDataInput {
+  stripeId?: string | null
   status?: prisma.OrderStatus | null
   totalPrice?: number | null
   totalRefunded?: number | null
-  totalTax?: number | null
 }
 export type OrderUpdateManyDataInputInputObject =
   | Extract<keyof OrderUpdateManyDataInput, string>
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface NotificationSettingsUpdateOneRequiredWithoutUserInput {
   create?: NotificationSettingsCreateWithoutUserInput | null
@@ -7112,18 +7190,18 @@ export type OrderUpdateOneWithoutItemsInputInputObject =
   
 export interface OrderUpdateWithoutItemsDataInput {
   owner?: UserUpdateOneRequiredWithoutOrdersInput | null
+  stripeId?: string | null
   status?: prisma.OrderStatus | null
   totalPrice?: number | null
   totalRefunded?: number | null
-  totalTax?: number | null
 }
 export type OrderUpdateWithoutItemsDataInputInputObject =
   | Extract<keyof OrderUpdateWithoutItemsDataInput, string>
   | { name: 'owner', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface UserUpdateOneRequiredWithoutOrdersInput {
   create?: UserCreateWithoutOrdersInput | null
@@ -7144,6 +7222,7 @@ export interface UserUpdateWithoutOrdersDataInput {
   password?: string | null
   cart?: OrderItemUpdateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsUpdateOneRequiredWithoutUserInput | null
 }
 export type UserUpdateWithoutOrdersDataInputInputObject =
@@ -7153,6 +7232,7 @@ export type UserUpdateWithoutOrdersDataInputInputObject =
   | { name: 'password', alias?: string  } 
   | { name: 'cart', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface OrderItemUpdateManyWithoutOwnerInput {
@@ -7498,50 +7578,50 @@ export interface OrderCreateInput {
   id?: string | null
   owner?: UserCreateOneWithoutOrdersInput
   items?: OrderItemCreateManyWithoutOrderInput | null
+  stripeId?: string
   status?: prisma.OrderStatus | null
   totalPrice?: number
   totalRefunded?: number
-  totalTax?: number
 }
 export type OrderCreateInputInputObject =
   | Extract<keyof OrderCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'owner', alias?: string  } 
   | { name: 'items', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface OrderUpdateInput {
   owner?: UserUpdateOneRequiredWithoutOrdersInput | null
   items?: OrderItemUpdateManyWithoutOrderInput | null
+  stripeId?: string | null
   status?: prisma.OrderStatus | null
   totalPrice?: number | null
   totalRefunded?: number | null
-  totalTax?: number | null
 }
 export type OrderUpdateInputInputObject =
   | Extract<keyof OrderUpdateInput, string>
   | { name: 'owner', alias?: string  } 
   | { name: 'items', alias?: string  } 
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface OrderUpdateManyMutationInput {
+  stripeId?: string | null
   status?: prisma.OrderStatus | null
   totalPrice?: number | null
   totalRefunded?: number | null
-  totalTax?: number | null
 }
 export type OrderUpdateManyMutationInputInputObject =
   | Extract<keyof OrderUpdateManyMutationInput, string>
+  | { name: 'stripeId', alias?: string  } 
   | { name: 'status', alias?: string  } 
   | { name: 'totalPrice', alias?: string  } 
   | { name: 'totalRefunded', alias?: string  } 
-  | { name: 'totalTax', alias?: string  } 
   
 export interface OrderItemCreateInput {
   id?: string | null
@@ -7586,6 +7666,7 @@ export interface UserCreateInput {
   cart?: OrderItemCreateManyWithoutOwnerInput | null
   orders?: OrderCreateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsCreateOneWithoutUserInput
 }
 export type UserCreateInputInputObject =
@@ -7597,6 +7678,7 @@ export type UserCreateInputInputObject =
   | { name: 'cart', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface UserUpdateInput {
@@ -7606,6 +7688,7 @@ export interface UserUpdateInput {
   cart?: OrderItemUpdateManyWithoutOwnerInput | null
   orders?: OrderUpdateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
   notificationSettings?: NotificationSettingsUpdateOneRequiredWithoutUserInput | null
 }
 export type UserUpdateInputInputObject =
@@ -7616,6 +7699,7 @@ export type UserUpdateInputInputObject =
   | { name: 'cart', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   | { name: 'notificationSettings', alias?: string  } 
   
 export interface UserUpdateManyMutationInput {
@@ -7623,6 +7707,7 @@ export interface UserUpdateManyMutationInput {
   phone?: string | null
   password?: string | null
   role?: prisma.Role | null
+  resetToken?: string | null
 }
 export type UserUpdateManyMutationInputInputObject =
   | Extract<keyof UserUpdateManyMutationInput, string>
@@ -7630,6 +7715,7 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'phone', alias?: string  } 
   | { name: 'password', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   
 export interface NotificationSettingsCreateInput {
   id?: string | null
@@ -7661,6 +7747,7 @@ export interface UserCreateWithoutNotificationSettingsInput {
   cart?: OrderItemCreateManyWithoutOwnerInput | null
   orders?: OrderCreateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
 }
 export type UserCreateWithoutNotificationSettingsInputInputObject =
   | Extract<keyof UserCreateWithoutNotificationSettingsInput, string>
@@ -7671,6 +7758,7 @@ export type UserCreateWithoutNotificationSettingsInputInputObject =
   | { name: 'cart', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   
 export interface NotificationSettingsUpdateInput {
   email?: boolean | null
@@ -7707,6 +7795,7 @@ export interface UserUpdateWithoutNotificationSettingsDataInput {
   cart?: OrderItemUpdateManyWithoutOwnerInput | null
   orders?: OrderUpdateManyWithoutOwnerInput | null
   role?: prisma.Role | null
+  resetToken?: string | null
 }
 export type UserUpdateWithoutNotificationSettingsDataInputInputObject =
   | Extract<keyof UserUpdateWithoutNotificationSettingsDataInput, string>
@@ -7716,6 +7805,7 @@ export type UserUpdateWithoutNotificationSettingsDataInputInputObject =
   | { name: 'cart', alias?: string  } 
   | { name: 'orders', alias?: string  } 
   | { name: 'role', alias?: string  } 
+  | { name: 'resetToken', alias?: string  } 
   
 export interface UserUpsertWithoutNotificationSettingsInput {
   update?: UserUpdateWithoutNotificationSettingsDataInput
@@ -8021,6 +8111,7 @@ export type OrderStatusValues =
   | 'PAID'
   | 'PREPARED'
   | 'FAILED'
+  | 'REFUNDED'
   
 export type RoleValues =
   | 'ADMIN'
@@ -8060,14 +8151,14 @@ export type OrderOrderByInputValues =
   | 'createdAt_DESC'
   | 'updatedAt_ASC'
   | 'updatedAt_DESC'
+  | 'stripeId_ASC'
+  | 'stripeId_DESC'
   | 'status_ASC'
   | 'status_DESC'
   | 'totalPrice_ASC'
   | 'totalPrice_DESC'
   | 'totalRefunded_ASC'
   | 'totalRefunded_DESC'
-  | 'totalTax_ASC'
-  | 'totalTax_DESC'
   
 export type PredictionOrderByInputValues =
   | 'id_ASC'
@@ -8118,6 +8209,8 @@ export type UserOrderByInputValues =
   | 'password_DESC'
   | 'role_ASC'
   | 'role_DESC'
+  | 'resetToken_ASC'
+  | 'resetToken_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

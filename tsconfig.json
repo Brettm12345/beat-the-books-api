@@ -14,7 +14,8 @@
       "@generated/*": ["src/generated/*"],
       "@util/*": ["src/util/*"],
       "@context": ["src/context.ts"]
-    }
+    },
+    "plugins": [{ "transform": "ts-optchain/transform" }]
   },
   "exclude": ["node_modules", "prisma/seed.ts"],
   "include": ["src/**/*.ts", ".webpack/*.ts"]

@@ -10,8 +10,8 @@ export const DELETE_ME_MUTATION = gql`
 `;
 
 export const CHANGE_PASSWORD_MUTATION = gql`
-  mutation($newPassword: String!, $oldPassword: String!) {
-    changePassword(newPassword: $newPassword, oldPassword: $oldPassword) {
+  mutation($password: String!) {
+    changePassword(password: $password) {
       user {
         email
         phone

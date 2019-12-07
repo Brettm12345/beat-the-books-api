@@ -1,4 +1,4 @@
-import { chain, shield } from 'graphql-shield';
+import { allow, chain, shield } from 'graphql-shield';
 
 import {
   addToCartInput,
@@ -16,6 +16,7 @@ export const permissions = shield({
     createOrder: isAuthenticated,
     createPrediction: chain(isEditor, createPredictionInput),
     deleteMe: isAuthenticated,
+    forgotPassword: allow,
     login: loginInput,
     removeFromCart: isAuthenticated,
     signup: signupInput,

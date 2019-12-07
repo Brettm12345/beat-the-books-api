@@ -21,19 +21,17 @@ export const Signup = mutationField('signup', {
   },
   resolve: async (
     _,
-    { email, password: passwordPlainText, phone, notificationSettings },
+    { email, password: passwordInput, phone, notificationSettings },
     ctx
   ) =>
-    pipe(
-      await hash(passwordPlainText, 10),
-      password =>
-        ctx.prisma
-          .createUser({
-            email,
-            password,
-            phone,
-            notificationSettings: { create: notificationSettings }
-          })
-          .then(getAuthPayload)
+    pipe(await hash(passwordInput, 10), password =>
+      ctx.prisma
+        .createUser({
+          email,
+          password,
+          phone,
+          notificationSettings: { create: notificationSettings }
+        })
+        .then(getAuthPayload)
     )
 });
