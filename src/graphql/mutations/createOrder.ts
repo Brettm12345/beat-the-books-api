@@ -1,8 +1,8 @@
-import { map } from 'blend-promise-utils';
 import { fold, monoidSum } from 'fp-ts/lib/Monoid';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { stringArg } from 'nexus';
 
+import { mapPromise } from '@util/fp';
 import { prismaMutationField } from '@util/nexus';
 import { connect } from '@util/prisma';
 import { calculatePrice, createCharge, createSource } from '@util/stripe';
@@ -13,31 +13,29 @@ export const CreateOrder = prismaMutationField('createOrder', {
     stripeToken: stringArg()
   },
   resolve: async (_, { stripeToken }, ctx) => {
-    const cart = await ctx.prisma.orderItems({
-      where: { owner: { id: ctx.user.id } }
+    const {
+      prisma,
+      user: { id, email }
+    } = ctx;
+    const cart = await prisma.orderItems({
+      where: { owner: { id } }
     });
-
-    const totalPrice = pipe(await map(cart, calculatePrice), fold(monoidSum));
+    const totalPrice = pipe(await mapPromise(calculatePrice), fold(monoidSum));
     const { id: stripeId, paid } = await pipe(
       await createSource(stripeToken),
-      ({ id: source }) =>
-        createCharge({
-          source,
-          amount: totalPrice,
-          email: ctx.user.email
-        })
+      createCharge(totalPrice, email)
     );
     if (paid)
-      await ctx.prisma.updateUser({
-        where: { id: ctx.user.id },
+      await prisma.updateUser({
+        where: { id },
         data: { cart: { set: null } }
       });
-    return ctx.prisma.createOrder({
+    return prisma.createOrder({
       totalPrice,
       stripeId,
       status: paid ? 'PAID' : 'FAILED',
       totalRefunded: 0,
-      owner: { connect: { id: ctx.user.id } },
+      owner: { connect: { id } },
       items: connect(cart)
     });
   }

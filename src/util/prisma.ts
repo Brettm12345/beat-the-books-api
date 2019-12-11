@@ -1,19 +1,17 @@
-import { map, pick } from 'ramda';
+import { map, project } from 'ramda';
 
 interface Node {
   id: string;
 }
 
-const pickId = <T extends Node>(item: T) => pick(['id'], item);
-
-const getIds = map(pickId);
-
 type Key = 'connect' | 'disconnect' | 'delete';
 
 const setItems = (key: Key) => <T extends Node>(items: T[]) => ({
-  [key]: getIds(items)
+  [key]: project(['id'], items)
 });
 
-export const connect = setItems('connect');
-export const disconnect = setItems('disconnect');
-export const deleteItems = setItems('delete');
+export const [connect, disconnect, deleteItems] = map(setItems)([
+  'connect',
+  'disconnect',
+  'delete'
+]);

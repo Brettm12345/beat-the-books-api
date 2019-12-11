@@ -27,7 +27,7 @@ const notificationSettings = object()
   .nullable()
   .notRequired();
 
-export const signupInput = inputRule(({ object }) =>
+export const signupInput = inputRule()(() =>
   object()
     .shape({
       email: email.required(),
@@ -38,7 +38,7 @@ export const signupInput = inputRule(({ object }) =>
     .noUnknown()
 );
 
-export const loginInput = inputRule(({ object }) =>
+export const loginInput = inputRule()(() =>
   object().shape({
     email: email.nullable().notRequired(),
     phone: phone.nullable().notRequired(),
@@ -46,14 +46,14 @@ export const loginInput = inputRule(({ object }) =>
   })
 );
 
-export const addToCartInput = inputRule(({ object, string }) =>
+export const addToCartInput = inputRule()(() =>
   object().shape({
     expireAt: currentDate.required(),
     packageName: string().required()
   })
 );
 
-export const createPredictionInput = inputRule(({ object, string }) =>
+export const createPredictionInput = inputRule()(() =>
   object()
     .shape({
       away: teamKey.required(),

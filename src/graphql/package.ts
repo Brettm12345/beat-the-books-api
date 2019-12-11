@@ -15,9 +15,8 @@ export const Package = prismaObjectType<'Package'>({
         })
       },
       resolve: async (parent, { toDate }, ctx) =>
-        pipe(
-          await ctx.prisma.package({ id: parent.id }).price(),
-          price => (toDate ? price * dayjs().diff(dayjs(toDate), 'day') : price)
+        pipe(await ctx.prisma.package({ id: parent.id }).price(), price =>
+          toDate ? price * dayjs().diff(dayjs(toDate), 'day') : price
         )
     });
   }

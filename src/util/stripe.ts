@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import { curry } from 'ramda';
 import Stripe from 'stripe';
 
 import { OrderItem, prisma } from '@generated/prisma-client';
@@ -14,23 +15,19 @@ export const createSource = (token: string) =>
     type: 'card'
   });
 
-interface CreateChargeOptions {
-  source: string;
-  amount: number;
-  email: string;
-}
-
-export const createCharge = async ({
-  source,
-  amount,
-  email
-}: CreateChargeOptions) =>
-  stripe.charges.create({
-    source,
-    amount,
-    currency,
-    receipt_email: email
-  });
+export const createCharge = curry(
+  async (
+    amount: number,
+    email: string,
+    { id: source }: Stripe.sources.ISource
+  ) =>
+    stripe.charges.create({
+      source,
+      amount,
+      currency,
+      receipt_email: email
+    })
+);
 
 export const calculatePrice = async ({ id, expireAt }: OrderItem) => {
   const price = await prisma

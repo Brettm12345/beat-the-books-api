@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server-errors';
 import { hash } from 'bcrypt';
-import { chain, fold, fromNullable } from 'fp-ts/lib/Option';
+import { chain, fold, some } from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { mutationField, stringArg } from 'nexus';
 
@@ -14,7 +14,7 @@ export const ChangePassword = mutationField('changePassword', {
   },
   resolve: async (_, { password: newPassword, token }, ctx) =>
     pipe(
-      fromNullable(token),
+      some(token),
       chain(getUserId),
       fold(
         () => {

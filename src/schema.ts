@@ -1,11 +1,14 @@
 import { applyMiddleware } from 'graphql-middleware';
 import { makePrismaSchema } from 'nexus-prisma';
 import { join } from 'path';
+import { curryN } from 'ramda';
 
 import datamodelInfo from './generated/nexus-prisma';
 import { prisma } from './generated/prisma-client';
 import * as types from './graphql';
 import { permissions } from './permissions';
+
+const dirname = curryN(2, join)(__dirname);
 
 const schema = makePrismaSchema({
   types,
@@ -17,15 +20,15 @@ const schema = makePrismaSchema({
     sources: [
       {
         alias: 'ctx',
-        source: join(__dirname, 'context.ts')
+        source: dirname('context.ts')
       }
     ],
     contextType: 'ctx.Context'
   },
-  shouldGenerateArtifacts: process.env.NODE_ENV === 'development',
+  shouldGenerateArtifacts: false,
   outputs: {
-    schema: join(__dirname, './generated/schema.graphql'),
-    typegen: join(__dirname, './generated/nexus.ts')
+    schema: dirname('./generated/schema.graphql'),
+    typegen: dirname('./generated/nexus.ts')
   },
   nonNullDefaults: {
     input: true
