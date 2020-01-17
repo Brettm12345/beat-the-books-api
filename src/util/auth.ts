@@ -1,9 +1,13 @@
-import { chain, fromNullable, getOrElse, map } from 'fp-ts/lib/Option';
+import * as O from 'fp-ts/lib/Option';
+import * as T from 'fp-ts/lib/Task';
+import { Task, task } from 'fp-ts/lib/Task';
+import { Option, option } from 'fp-ts/lib/Option';
 import { pipe } from 'fp-ts/lib/pipeable';
-import { sign, verify } from 'jsonwebtoken';
-import { replace } from 'ramda';
-import { oc } from 'ts-optchain';
+import { flow } from 'fp-ts/lib/function';
+import { prop } from 'fp-ts-ramda';
+import jwt, { sign } from 'jsonwebtoken';
 
+import { lookup, replace } from '@util/fp';
 import { User, prisma } from '@generated/prisma-client';
 
 export const APP_SECRET = 'appsecret321';
@@ -12,39 +16,40 @@ interface Token {
   userId: string;
 }
 
+type Verify = (str: string) => Option<Token>;
+const verify: Verify = str =>
+  pipe(jwt.verify(str, APP_SECRET) as Token | null, O.fromNullable);
+
 export interface AuthPayload {
   token: string;
   user: User;
 }
 
-interface AuthHeaders {
-  Authorization?: string;
-}
-
-const parseToken = replace('Bearer ', '');
-
-const getToken = (headers: AuthHeaders) =>
-  pipe(fromNullable(headers.Authorization), map(parseToken));
-
-export const getUserId = (token: string) =>
-  pipe(
-    verify(token, APP_SECRET) as Token | null,
-    verified => oc(verified).userId(),
-    fromNullable
-  );
-
 export const getResetToken = ({ id }: User): string =>
-  sign({ userId: id }, APP_SECRET, { expiresIn: '1h' });
+  sign({ userId: id }, APP_SECRET, { algorithm: 'RS256', expiresIn: '1 day' });
 
 export const getAuthPayload = (user: User): AuthPayload => ({
   user,
   token: sign({ userId: user.id }, APP_SECRET)
 });
 
-export const getUser = async (headers: AuthHeaders) =>
-  pipe(
-    getToken(headers),
-    chain(getUserId),
-    getOrElse(() => ''),
-    id => prisma.user({ id })
-  );
+type GetToken = (headers: Record<string, string>) => Option<string>;
+const getToken: GetToken = flow(
+  lookup('Authorization'),
+  O.map(replace('Bearer ', ''))
+);
+
+type GetUserId = (token: string) => Option<string>;
+export const getUserId: GetUserId = flow(verify, O.map(prop('userId')));
+
+export const findUser = (id: string): Task<Option<User>> =>
+  pipe(() => prisma.user({ id }), T.map(O.fromNullable));
+
+type GetUser = (headers: Record<string, string>) => Task<Option<User>>;
+export const getUser: GetUser = flow(
+  getToken,
+  O.chain(getUserId),
+  O.map(findUser),
+  option.sequence(task),
+  T.map(O.flatten)
+);

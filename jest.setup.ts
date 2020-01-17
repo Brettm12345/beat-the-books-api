@@ -46,7 +46,7 @@ const setup = async () => {
     status: 'PAID',
     totalPrice: 400,
     totalRefunded: 0,
-    totalTax: 0,
+    stripeId: '',
     owner: {
       connect: { id: userId }
     },

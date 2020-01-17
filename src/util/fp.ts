@@ -1,8 +1,9 @@
-import { map } from 'blend-promise-utils';
-import { flip } from 'fp-ts/lib/function';
-import { curryN } from 'ramda';
+import * as R from 'fp-ts/lib/Record';
+import { Option } from 'fp-ts/lib/Option';
 
-/**
- * Maps a function that returns a promose
- */
-export const mapPromise = curryN(2, flip(map));
+export const replace = (searchValue: string, replacement: string) => (
+  str: string
+) => str.replace(searchValue, replacement);
+
+type Lookup = <A>(k: string) => (r: Record<string, A>) => Option<A>;
+export const lookup: Lookup = k => r => R.lookup(k, r);

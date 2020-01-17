@@ -1,11 +1,14 @@
 import { fold, monoidSum } from 'fp-ts/lib/Monoid';
+import { array, map } from 'fp-ts/lib/Array';
+import * as T from 'fp-ts/lib/Task';
 import { pipe } from 'fp-ts/lib/pipeable';
 import { stringArg } from 'nexus';
 
-import { mapPromise } from '@util/fp';
 import { prismaMutationField } from '@util/nexus';
 import { connect } from '@util/prisma';
 import { calculatePrice, createCharge, createSource } from '@util/stripe';
+
+const { task } = T;
 
 export const CreateOrder = prismaMutationField('createOrder', {
   type: 'Order',
@@ -20,11 +23,16 @@ export const CreateOrder = prismaMutationField('createOrder', {
     const cart = await prisma.orderItems({
       where: { owner: { id } }
     });
-    const totalPrice = pipe(await mapPromise(calculatePrice), fold(monoidSum));
+    const totalPrice = await pipe(
+      cart,
+      map(calculatePrice),
+      array.sequence(task),
+      T.map(fold(monoidSum))
+    )();
     const { id: stripeId, paid } = await pipe(
-      await createSource(stripeToken),
-      createCharge(totalPrice, email)
-    );
+      createSource(stripeToken),
+      T.chain(createCharge(totalPrice, email))
+    )();
     if (paid)
       await prisma.updateUser({
         where: { id },

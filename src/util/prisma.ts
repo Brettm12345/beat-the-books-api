@@ -1,4 +1,6 @@
-import { map, project } from 'ramda';
+import { map } from 'fp-ts/lib/Array';
+import { prop } from 'fp-ts-ramda';
+import { pipe } from 'fp-ts/lib/pipeable';
 
 interface Node {
   id: string;
@@ -7,11 +9,10 @@ interface Node {
 type Key = 'connect' | 'disconnect' | 'delete';
 
 const setItems = (key: Key) => <T extends Node>(items: T[]) => ({
-  [key]: project(['id'], items)
+  [key]: map(prop('id'))(items)
 });
 
-export const [connect, disconnect, deleteItems] = map(setItems)([
-  'connect',
-  'disconnect',
-  'delete'
-]);
+export const [connect, disconnect, deleteItems] = pipe(
+  ['connect', 'disconnect', 'delete'],
+  map(setItems)
+);

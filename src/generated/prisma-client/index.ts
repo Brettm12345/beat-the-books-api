@@ -384,18 +384,6 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type PredictionOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "startDate_ASC"
-  | "startDate_DESC"
-  | "name_ASC"
-  | "name_DESC";
-
 export type OrderStatus =
   | "SUBMITTED"
   | "PAID"
@@ -439,7 +427,17 @@ export type OrderOrderByInput =
   | "totalRefunded_ASC"
   | "totalRefunded_DESC";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export type PredictionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "startDate_ASC"
+  | "startDate_DESC"
+  | "name_ASC"
+  | "name_DESC";
 
 export type TeamOrderByInput =
   | "id_ASC"
@@ -481,331 +479,12 @@ export type UserOrderByInput =
   | "resetToken_ASC"
   | "resetToken_DESC";
 
-export interface OrderItemUpdateWithoutOrderDataInput {
-  expireAt?: Maybe<DateTimeInput>;
-  owner?: Maybe<UserUpdateOneWithoutCartInput>;
-  package?: Maybe<PackageUpdateOneRequiredWithoutOrderItemsInput>;
-}
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type LeagueWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   name?: Maybe<String>;
 }>;
-
-export interface TeamUpdateWithoutLeagueDataInput {
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-}
-
-export interface OrderWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  owner?: Maybe<UserWhereInput>;
-  items_every?: Maybe<OrderItemWhereInput>;
-  items_some?: Maybe<OrderItemWhereInput>;
-  items_none?: Maybe<OrderItemWhereInput>;
-  stripeId?: Maybe<String>;
-  stripeId_not?: Maybe<String>;
-  stripeId_in?: Maybe<String[] | String>;
-  stripeId_not_in?: Maybe<String[] | String>;
-  stripeId_lt?: Maybe<String>;
-  stripeId_lte?: Maybe<String>;
-  stripeId_gt?: Maybe<String>;
-  stripeId_gte?: Maybe<String>;
-  stripeId_contains?: Maybe<String>;
-  stripeId_not_contains?: Maybe<String>;
-  stripeId_starts_with?: Maybe<String>;
-  stripeId_not_starts_with?: Maybe<String>;
-  stripeId_ends_with?: Maybe<String>;
-  stripeId_not_ends_with?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  status_not?: Maybe<OrderStatus>;
-  status_in?: Maybe<OrderStatus[] | OrderStatus>;
-  status_not_in?: Maybe<OrderStatus[] | OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-  totalRefunded_not?: Maybe<Float>;
-  totalRefunded_in?: Maybe<Float[] | Float>;
-  totalRefunded_not_in?: Maybe<Float[] | Float>;
-  totalRefunded_lt?: Maybe<Float>;
-  totalRefunded_lte?: Maybe<Float>;
-  totalRefunded_gt?: Maybe<Float>;
-  totalRefunded_gte?: Maybe<Float>;
-  AND?: Maybe<OrderWhereInput[] | OrderWhereInput>;
-  OR?: Maybe<OrderWhereInput[] | OrderWhereInput>;
-  NOT?: Maybe<OrderWhereInput[] | OrderWhereInput>;
-}
-
-export interface OrderCreateOneWithoutItemsInput {
-  create?: Maybe<OrderCreateWithoutItemsInput>;
-  connect?: Maybe<OrderWhereUniqueInput>;
-}
-
-export interface NotificationSettingsCreateInput {
-  id?: Maybe<ID_Input>;
-  email?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-  user?: Maybe<UserCreateOneWithoutNotificationSettingsInput>;
-}
-
-export interface OrderCreateWithoutItemsInput {
-  id?: Maybe<ID_Input>;
-  owner: UserCreateOneWithoutOrdersInput;
-  stripeId: String;
-  status?: Maybe<OrderStatus>;
-  totalPrice: Float;
-  totalRefunded: Float;
-}
-
-export interface TeamUpsertWithWhereUniqueWithoutLeagueInput {
-  where: TeamWhereUniqueInput;
-  update: TeamUpdateWithoutLeagueDataInput;
-  create: TeamCreateWithoutLeagueInput;
-}
-
-export interface UserCreateOneWithoutOrdersInput {
-  create?: Maybe<UserCreateWithoutOrdersInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<UserWhereInput>;
-  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
-}
-
-export interface UserCreateWithoutOrdersInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  phone: String;
-  password: String;
-  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
-}
-
-export interface OrderItemWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  expireAt?: Maybe<DateTimeInput>;
-  expireAt_not?: Maybe<DateTimeInput>;
-  expireAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  expireAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  expireAt_lt?: Maybe<DateTimeInput>;
-  expireAt_lte?: Maybe<DateTimeInput>;
-  expireAt_gt?: Maybe<DateTimeInput>;
-  expireAt_gte?: Maybe<DateTimeInput>;
-  owner?: Maybe<UserWhereInput>;
-  order?: Maybe<OrderWhereInput>;
-  package?: Maybe<PackageWhereInput>;
-  AND?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
-  OR?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
-  NOT?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
-}
-
-export interface OrderItemCreateManyWithoutOwnerInput {
-  create?: Maybe<
-    OrderItemCreateWithoutOwnerInput[] | OrderItemCreateWithoutOwnerInput
-  >;
-  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-}
-
-export interface PackageSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PackageWhereInput>;
-  AND?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
-  OR?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
-  NOT?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
-}
-
-export interface OrderItemCreateWithoutOwnerInput {
-  id?: Maybe<ID_Input>;
-  expireAt: DateTimeInput;
-  order?: Maybe<OrderCreateOneWithoutItemsInput>;
-  package: PackageCreateOneWithoutOrderItemsInput;
-}
-
-export interface OrderItemSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<OrderItemWhereInput>;
-  AND?: Maybe<
-    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
-  >;
-}
-
-export interface LeagueUpdateInput {
-  name?: Maybe<String>;
-  sport?: Maybe<String>;
-  seasonEndDate?: Maybe<DateTimeInput>;
-  packages?: Maybe<PackageUpdateManyWithoutLeagueInput>;
-  teams?: Maybe<TeamUpdateManyWithoutLeagueInput>;
-}
-
-export interface LeagueWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  sport?: Maybe<String>;
-  sport_not?: Maybe<String>;
-  sport_in?: Maybe<String[] | String>;
-  sport_not_in?: Maybe<String[] | String>;
-  sport_lt?: Maybe<String>;
-  sport_lte?: Maybe<String>;
-  sport_gt?: Maybe<String>;
-  sport_gte?: Maybe<String>;
-  sport_contains?: Maybe<String>;
-  sport_not_contains?: Maybe<String>;
-  sport_starts_with?: Maybe<String>;
-  sport_not_starts_with?: Maybe<String>;
-  sport_ends_with?: Maybe<String>;
-  sport_not_ends_with?: Maybe<String>;
-  seasonEndDate?: Maybe<DateTimeInput>;
-  seasonEndDate_not?: Maybe<DateTimeInput>;
-  seasonEndDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  seasonEndDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  seasonEndDate_lt?: Maybe<DateTimeInput>;
-  seasonEndDate_lte?: Maybe<DateTimeInput>;
-  seasonEndDate_gt?: Maybe<DateTimeInput>;
-  seasonEndDate_gte?: Maybe<DateTimeInput>;
-  packages_every?: Maybe<PackageWhereInput>;
-  packages_some?: Maybe<PackageWhereInput>;
-  packages_none?: Maybe<PackageWhereInput>;
-  teams_every?: Maybe<TeamWhereInput>;
-  teams_some?: Maybe<TeamWhereInput>;
-  teams_none?: Maybe<TeamWhereInput>;
-  AND?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
-  OR?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
-  NOT?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
-}
-
-export interface PackageUpdateManyWithoutLeagueInput {
-  create?: Maybe<
-    PackageCreateWithoutLeagueInput[] | PackageCreateWithoutLeagueInput
-  >;
-  delete?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
-  connect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
-  set?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
-  disconnect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
-  update?: Maybe<
-    | PackageUpdateWithWhereUniqueWithoutLeagueInput[]
-    | PackageUpdateWithWhereUniqueWithoutLeagueInput
-  >;
-  upsert?: Maybe<
-    | PackageUpsertWithWhereUniqueWithoutLeagueInput[]
-    | PackageUpsertWithWhereUniqueWithoutLeagueInput
-  >;
-  deleteMany?: Maybe<PackageScalarWhereInput[] | PackageScalarWhereInput>;
-  updateMany?: Maybe<
-    | PackageUpdateManyWithWhereNestedInput[]
-    | PackageUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface LeagueSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<LeagueWhereInput>;
-  AND?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
-  OR?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
-  NOT?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
-}
-
-export interface PackageUpdateWithWhereUniqueWithoutLeagueInput {
-  where: PackageWhereUniqueInput;
-  data: PackageUpdateWithoutLeagueDataInput;
-}
 
 export interface PackageWhereInput {
   id?: Maybe<ID_Input>;
@@ -884,423 +563,7 @@ export interface PackageWhereInput {
   NOT?: Maybe<PackageWhereInput[] | PackageWhereInput>;
 }
 
-export interface PackageUpdateWithoutLeagueDataInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
-  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
-}
-
-export interface UserCreateInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  phone: String;
-  password: String;
-  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
-  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
-}
-
-export interface OrderItemUpdateManyWithoutPackageInput {
-  create?: Maybe<
-    OrderItemCreateWithoutPackageInput[] | OrderItemCreateWithoutPackageInput
-  >;
-  delete?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  set?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  disconnect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  update?: Maybe<
-    | OrderItemUpdateWithWhereUniqueWithoutPackageInput[]
-    | OrderItemUpdateWithWhereUniqueWithoutPackageInput
-  >;
-  upsert?: Maybe<
-    | OrderItemUpsertWithWhereUniqueWithoutPackageInput[]
-    | OrderItemUpsertWithWhereUniqueWithoutPackageInput
-  >;
-  deleteMany?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
-  updateMany?: Maybe<
-    | OrderItemUpdateManyWithWhereNestedInput[]
-    | OrderItemUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface TeamUpdateInput {
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-  league?: Maybe<LeagueUpdateOneRequiredWithoutTeamsInput>;
-}
-
-export interface OrderItemUpdateWithWhereUniqueWithoutPackageInput {
-  where: OrderItemWhereUniqueInput;
-  data: OrderItemUpdateWithoutPackageDataInput;
-}
-
-export interface PredictionUpdateManyMutationInput {
-  startDate?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-}
-
-export interface OrderItemUpdateWithoutPackageDataInput {
-  expireAt?: Maybe<DateTimeInput>;
-  owner?: Maybe<UserUpdateOneWithoutCartInput>;
-  order?: Maybe<OrderUpdateOneWithoutItemsInput>;
-}
-
-export interface PackageUpdateWithoutPredictionsDataInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
-  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
-}
-
-export interface UserUpdateOneWithoutCartInput {
-  create?: Maybe<UserCreateWithoutCartInput>;
-  update?: Maybe<UserUpdateWithoutCartDataInput>;
-  upsert?: Maybe<UserUpsertWithoutCartInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export type OrderWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface UserUpdateWithoutCartDataInput {
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  password?: Maybe<String>;
-  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-  notificationSettings?: Maybe<
-    NotificationSettingsUpdateOneRequiredWithoutUserInput
-  >;
-}
-
-export interface PackageCreateWithoutPredictionsInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  description?: Maybe<String>;
-  price: Float;
-  image?: Maybe<String>;
-  league: LeagueCreateOneWithoutPackagesInput;
-  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
-}
-
-export interface OrderUpdateManyWithoutOwnerInput {
-  create?: Maybe<OrderCreateWithoutOwnerInput[] | OrderCreateWithoutOwnerInput>;
-  delete?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
-  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
-  set?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
-  disconnect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
-  update?: Maybe<
-    | OrderUpdateWithWhereUniqueWithoutOwnerInput[]
-    | OrderUpdateWithWhereUniqueWithoutOwnerInput
-  >;
-  upsert?: Maybe<
-    | OrderUpsertWithWhereUniqueWithoutOwnerInput[]
-    | OrderUpsertWithWhereUniqueWithoutOwnerInput
-  >;
-  deleteMany?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
-  updateMany?: Maybe<
-    OrderUpdateManyWithWhereNestedInput[] | OrderUpdateManyWithWhereNestedInput
-  >;
-}
-
-export type OrderItemWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface OrderUpdateWithWhereUniqueWithoutOwnerInput {
-  where: OrderWhereUniqueInput;
-  data: OrderUpdateWithoutOwnerDataInput;
-}
-
-export interface PackageUpdateManyMutationInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-}
-
-export interface OrderUpdateWithoutOwnerDataInput {
-  items?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
-  stripeId?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-}
-
-export type PackageWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  name?: Maybe<String>;
-}>;
-
-export interface OrderItemUpdateManyWithoutOrderInput {
-  create?: Maybe<
-    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
-  >;
-  delete?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  set?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  disconnect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-  update?: Maybe<
-    | OrderItemUpdateWithWhereUniqueWithoutOrderInput[]
-    | OrderItemUpdateWithWhereUniqueWithoutOrderInput
-  >;
-  upsert?: Maybe<
-    | OrderItemUpsertWithWhereUniqueWithoutOrderInput[]
-    | OrderItemUpsertWithWhereUniqueWithoutOrderInput
-  >;
-  deleteMany?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
-  updateMany?: Maybe<
-    | OrderItemUpdateManyWithWhereNestedInput[]
-    | OrderItemUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface OrderItemUpdateManyMutationInput {
-  expireAt?: Maybe<DateTimeInput>;
-}
-
-export interface OrderItemUpdateWithWhereUniqueWithoutOrderInput {
-  where: OrderItemWhereUniqueInput;
-  data: OrderItemUpdateWithoutOrderDataInput;
-}
-
-export type PredictionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface UserCreateOneWithoutNotificationSettingsInput {
-  create?: Maybe<UserCreateWithoutNotificationSettingsInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface OrderUpdateManyMutationInput {
-  stripeId?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-}
-
-export interface PackageUpdateOneRequiredWithoutOrderItemsInput {
-  create?: Maybe<PackageCreateWithoutOrderItemsInput>;
-  update?: Maybe<PackageUpdateWithoutOrderItemsDataInput>;
-  upsert?: Maybe<PackageUpsertWithoutOrderItemsInput>;
-  connect?: Maybe<PackageWhereUniqueInput>;
-}
-
-export type TeamWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-}>;
-
-export interface PackageUpdateWithoutOrderItemsDataInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
-  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
-}
-
-export interface NotificationSettingsUpdateManyMutationInput {
-  email?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-}
-
-export interface LeagueUpdateOneRequiredWithoutPackagesInput {
-  create?: Maybe<LeagueCreateWithoutPackagesInput>;
-  update?: Maybe<LeagueUpdateWithoutPackagesDataInput>;
-  upsert?: Maybe<LeagueUpsertWithoutPackagesInput>;
-  connect?: Maybe<LeagueWhereUniqueInput>;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-}>;
-
-export interface LeagueUpdateWithoutPackagesDataInput {
-  name?: Maybe<String>;
-  sport?: Maybe<String>;
-  seasonEndDate?: Maybe<DateTimeInput>;
-  teams?: Maybe<TeamUpdateManyWithoutLeagueInput>;
-}
-
-export interface UserUpdateOneWithoutNotificationSettingsInput {
-  create?: Maybe<UserCreateWithoutNotificationSettingsInput>;
-  update?: Maybe<UserUpdateWithoutNotificationSettingsDataInput>;
-  upsert?: Maybe<UserUpsertWithoutNotificationSettingsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface TeamUpdateManyWithoutLeagueInput {
-  create?: Maybe<TeamCreateWithoutLeagueInput[] | TeamCreateWithoutLeagueInput>;
-  delete?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
-  connect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
-  set?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
-  disconnect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
-  update?: Maybe<
-    | TeamUpdateWithWhereUniqueWithoutLeagueInput[]
-    | TeamUpdateWithWhereUniqueWithoutLeagueInput
-  >;
-  upsert?: Maybe<
-    | TeamUpsertWithWhereUniqueWithoutLeagueInput[]
-    | TeamUpsertWithWhereUniqueWithoutLeagueInput
-  >;
-  deleteMany?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
-  updateMany?: Maybe<
-    TeamUpdateManyWithWhereNestedInput[] | TeamUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface UserCreateWithoutNotificationSettingsInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  phone: String;
-  password: String;
-  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
-  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-}
-
-export interface TeamUpdateWithWhereUniqueWithoutLeagueInput {
-  where: TeamWhereUniqueInput;
-  data: TeamUpdateWithoutLeagueDataInput;
-}
-
-export interface LeagueCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  sport: String;
-  seasonEndDate: DateTimeInput;
-  packages?: Maybe<PackageCreateManyWithoutLeagueInput>;
-  teams?: Maybe<TeamCreateManyWithoutLeagueInput>;
-}
-
-export interface NotificationSettingsWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  email?: Maybe<Boolean>;
-  email_not?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-  phone_not?: Maybe<Boolean>;
-  user?: Maybe<UserWhereInput>;
-  AND?: Maybe<
-    NotificationSettingsWhereInput[] | NotificationSettingsWhereInput
-  >;
-  OR?: Maybe<NotificationSettingsWhereInput[] | NotificationSettingsWhereInput>;
-  NOT?: Maybe<
-    NotificationSettingsWhereInput[] | NotificationSettingsWhereInput
-  >;
-}
-
-export interface PackageCreateWithoutLeagueInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  description?: Maybe<String>;
-  price: Float;
-  image?: Maybe<String>;
-  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
-  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
-}
-
-export interface PredictionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  startDate?: Maybe<DateTimeInput>;
-  startDate_not?: Maybe<DateTimeInput>;
-  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_lt?: Maybe<DateTimeInput>;
-  startDate_lte?: Maybe<DateTimeInput>;
-  startDate_gt?: Maybe<DateTimeInput>;
-  startDate_gte?: Maybe<DateTimeInput>;
-  package?: Maybe<PackageWhereInput>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  home?: Maybe<TeamWhereInput>;
-  away?: Maybe<TeamWhereInput>;
-  winner?: Maybe<TeamWhereInput>;
-  AND?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
-  OR?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
-  NOT?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
-}
-
-export interface OrderItemCreateWithoutPackageInput {
-  id?: Maybe<ID_Input>;
-  expireAt: DateTimeInput;
-  owner?: Maybe<UserCreateOneWithoutCartInput>;
-  order?: Maybe<OrderCreateOneWithoutItemsInput>;
-}
-
-export interface TeamScalarWhereInput {
+export interface LeagueWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1329,198 +592,37 @@ export interface TeamScalarWhereInput {
   name_not_starts_with?: Maybe<String>;
   name_ends_with?: Maybe<String>;
   name_not_ends_with?: Maybe<String>;
-  key?: Maybe<String>;
-  key_not?: Maybe<String>;
-  key_in?: Maybe<String[] | String>;
-  key_not_in?: Maybe<String[] | String>;
-  key_lt?: Maybe<String>;
-  key_lte?: Maybe<String>;
-  key_gt?: Maybe<String>;
-  key_gte?: Maybe<String>;
-  key_contains?: Maybe<String>;
-  key_not_contains?: Maybe<String>;
-  key_starts_with?: Maybe<String>;
-  key_not_starts_with?: Maybe<String>;
-  key_ends_with?: Maybe<String>;
-  key_not_ends_with?: Maybe<String>;
-  AND?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
-  OR?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
-  NOT?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
-}
-
-export interface UserCreateWithoutCartInput {
-  id?: Maybe<ID_Input>;
-  email: String;
-  phone: String;
-  password: String;
-  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
-}
-
-export interface TeamUpdateManyWithWhereNestedInput {
-  where: TeamScalarWhereInput;
-  data: TeamUpdateManyDataInput;
-}
-
-export interface OrderCreateWithoutOwnerInput {
-  id?: Maybe<ID_Input>;
-  items?: Maybe<OrderItemCreateManyWithoutOrderInput>;
-  stripeId: String;
-  status?: Maybe<OrderStatus>;
-  totalPrice: Float;
-  totalRefunded: Float;
-}
-
-export interface TeamUpdateManyDataInput {
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-}
-
-export interface OrderItemCreateWithoutOrderInput {
-  id?: Maybe<ID_Input>;
-  expireAt: DateTimeInput;
-  owner?: Maybe<UserCreateOneWithoutCartInput>;
-  package: PackageCreateOneWithoutOrderItemsInput;
-}
-
-export interface LeagueUpsertWithoutPackagesInput {
-  update: LeagueUpdateWithoutPackagesDataInput;
-  create: LeagueCreateWithoutPackagesInput;
-}
-
-export interface PackageCreateWithoutOrderItemsInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  description?: Maybe<String>;
-  price: Float;
-  image?: Maybe<String>;
-  league: LeagueCreateOneWithoutPackagesInput;
-  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
-}
-
-export interface PredictionUpdateManyWithoutPackageInput {
-  create?: Maybe<
-    PredictionCreateWithoutPackageInput[] | PredictionCreateWithoutPackageInput
-  >;
-  delete?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
-  connect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
-  set?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
-  disconnect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
-  update?: Maybe<
-    | PredictionUpdateWithWhereUniqueWithoutPackageInput[]
-    | PredictionUpdateWithWhereUniqueWithoutPackageInput
-  >;
-  upsert?: Maybe<
-    | PredictionUpsertWithWhereUniqueWithoutPackageInput[]
-    | PredictionUpsertWithWhereUniqueWithoutPackageInput
-  >;
-  deleteMany?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
-  updateMany?: Maybe<
-    | PredictionUpdateManyWithWhereNestedInput[]
-    | PredictionUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface LeagueCreateWithoutPackagesInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  sport: String;
-  seasonEndDate: DateTimeInput;
-  teams?: Maybe<TeamCreateManyWithoutLeagueInput>;
-}
-
-export interface PredictionUpdateWithWhereUniqueWithoutPackageInput {
-  where: PredictionWhereUniqueInput;
-  data: PredictionUpdateWithoutPackageDataInput;
-}
-
-export interface TeamCreateWithoutLeagueInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  key: String;
-}
-
-export interface PredictionUpdateWithoutPackageDataInput {
-  startDate?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-  home?: Maybe<TeamUpdateOneRequiredInput>;
-  away?: Maybe<TeamUpdateOneRequiredInput>;
-  winner?: Maybe<TeamUpdateOneRequiredInput>;
-}
-
-export interface PredictionCreateWithoutPackageInput {
-  id?: Maybe<ID_Input>;
-  startDate: DateTimeInput;
-  name: String;
-  home: TeamCreateOneInput;
-  away: TeamCreateOneInput;
-  winner: TeamCreateOneInput;
-}
-
-export interface TeamUpdateOneRequiredInput {
-  create?: Maybe<TeamCreateInput>;
-  update?: Maybe<TeamUpdateDataInput>;
-  upsert?: Maybe<TeamUpsertNestedInput>;
-  connect?: Maybe<TeamWhereUniqueInput>;
-}
-
-export interface TeamCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  key: String;
-  league: LeagueCreateOneWithoutTeamsInput;
-}
-
-export interface TeamUpdateDataInput {
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-  league?: Maybe<LeagueUpdateOneRequiredWithoutTeamsInput>;
-}
-
-export interface LeagueCreateWithoutTeamsInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  sport: String;
-  seasonEndDate: DateTimeInput;
-  packages?: Maybe<PackageCreateManyWithoutLeagueInput>;
-}
-
-export interface LeagueUpdateOneRequiredWithoutTeamsInput {
-  create?: Maybe<LeagueCreateWithoutTeamsInput>;
-  update?: Maybe<LeagueUpdateWithoutTeamsDataInput>;
-  upsert?: Maybe<LeagueUpsertWithoutTeamsInput>;
-  connect?: Maybe<LeagueWhereUniqueInput>;
-}
-
-export interface NotificationSettingsCreateWithoutUserInput {
-  id?: Maybe<ID_Input>;
-  email?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-}
-
-export interface LeagueUpdateWithoutTeamsDataInput {
-  name?: Maybe<String>;
   sport?: Maybe<String>;
+  sport_not?: Maybe<String>;
+  sport_in?: Maybe<String[] | String>;
+  sport_not_in?: Maybe<String[] | String>;
+  sport_lt?: Maybe<String>;
+  sport_lte?: Maybe<String>;
+  sport_gt?: Maybe<String>;
+  sport_gte?: Maybe<String>;
+  sport_contains?: Maybe<String>;
+  sport_not_contains?: Maybe<String>;
+  sport_starts_with?: Maybe<String>;
+  sport_not_starts_with?: Maybe<String>;
+  sport_ends_with?: Maybe<String>;
+  sport_not_ends_with?: Maybe<String>;
   seasonEndDate?: Maybe<DateTimeInput>;
-  packages?: Maybe<PackageUpdateManyWithoutLeagueInput>;
-}
-
-export interface TeamSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TeamWhereInput>;
-  AND?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
-  OR?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
-  NOT?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
-}
-
-export interface LeagueUpsertWithoutTeamsInput {
-  update: LeagueUpdateWithoutTeamsDataInput;
-  create: LeagueCreateWithoutTeamsInput;
+  seasonEndDate_not?: Maybe<DateTimeInput>;
+  seasonEndDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  seasonEndDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  seasonEndDate_lt?: Maybe<DateTimeInput>;
+  seasonEndDate_lte?: Maybe<DateTimeInput>;
+  seasonEndDate_gt?: Maybe<DateTimeInput>;
+  seasonEndDate_gte?: Maybe<DateTimeInput>;
+  packages_every?: Maybe<PackageWhereInput>;
+  packages_some?: Maybe<PackageWhereInput>;
+  packages_none?: Maybe<PackageWhereInput>;
+  teams_every?: Maybe<TeamWhereInput>;
+  teams_some?: Maybe<TeamWhereInput>;
+  teams_none?: Maybe<TeamWhereInput>;
+  AND?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
+  OR?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
+  NOT?: Maybe<LeagueWhereInput[] | LeagueWhereInput>;
 }
 
 export interface TeamWhereInput {
@@ -1572,163 +674,7 @@ export interface TeamWhereInput {
   NOT?: Maybe<TeamWhereInput[] | TeamWhereInput>;
 }
 
-export interface TeamUpsertNestedInput {
-  update: TeamUpdateDataInput;
-  create: TeamCreateInput;
-}
-
-export interface NotificationSettingsSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<NotificationSettingsWhereInput>;
-  AND?: Maybe<
-    | NotificationSettingsSubscriptionWhereInput[]
-    | NotificationSettingsSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    | NotificationSettingsSubscriptionWhereInput[]
-    | NotificationSettingsSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    | NotificationSettingsSubscriptionWhereInput[]
-    | NotificationSettingsSubscriptionWhereInput
-  >;
-}
-
-export interface PredictionUpsertWithWhereUniqueWithoutPackageInput {
-  where: PredictionWhereUniqueInput;
-  update: PredictionUpdateWithoutPackageDataInput;
-  create: PredictionCreateWithoutPackageInput;
-}
-
-export interface UserUpdateInput {
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  password?: Maybe<String>;
-  cart?: Maybe<OrderItemUpdateManyWithoutOwnerInput>;
-  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
-  notificationSettings?: Maybe<
-    NotificationSettingsUpdateOneRequiredWithoutUserInput
-  >;
-}
-
-export interface PredictionScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  startDate?: Maybe<DateTimeInput>;
-  startDate_not?: Maybe<DateTimeInput>;
-  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  startDate_lt?: Maybe<DateTimeInput>;
-  startDate_lte?: Maybe<DateTimeInput>;
-  startDate_gt?: Maybe<DateTimeInput>;
-  startDate_gte?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  AND?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
-  OR?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
-  NOT?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
-}
-
-export type NotificationSettingsWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
-
-export interface PredictionUpdateManyWithWhereNestedInput {
-  where: PredictionScalarWhereInput;
-  data: PredictionUpdateManyDataInput;
-}
-
-export interface PackageUpdateOneRequiredWithoutPredictionsInput {
-  create?: Maybe<PackageCreateWithoutPredictionsInput>;
-  update?: Maybe<PackageUpdateWithoutPredictionsDataInput>;
-  upsert?: Maybe<PackageUpsertWithoutPredictionsInput>;
-  connect?: Maybe<PackageWhereUniqueInput>;
-}
-
-export interface PredictionUpdateManyDataInput {
-  startDate?: Maybe<DateTimeInput>;
-  name?: Maybe<String>;
-}
-
-export interface PackageCreateOneWithoutPredictionsInput {
-  create?: Maybe<PackageCreateWithoutPredictionsInput>;
-  connect?: Maybe<PackageWhereUniqueInput>;
-}
-
-export interface PackageUpsertWithoutOrderItemsInput {
-  update: PackageUpdateWithoutOrderItemsDataInput;
-  create: PackageCreateWithoutOrderItemsInput;
-}
-
-export interface PackageUpdateInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
-  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
-  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
-}
-
-export interface OrderItemUpsertWithWhereUniqueWithoutOrderInput {
-  where: OrderItemWhereUniqueInput;
-  update: OrderItemUpdateWithoutOrderDataInput;
-  create: OrderItemCreateWithoutOrderInput;
-}
-
-export interface OrderItemUpdateInput {
-  expireAt?: Maybe<DateTimeInput>;
-  owner?: Maybe<UserUpdateOneWithoutCartInput>;
-  order?: Maybe<OrderUpdateOneWithoutItemsInput>;
-  package?: Maybe<PackageUpdateOneRequiredWithoutOrderItemsInput>;
-}
-
-export interface OrderItemScalarWhereInput {
+export interface OrderItemWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -1751,179 +697,12 @@ export interface OrderItemScalarWhereInput {
   expireAt_lte?: Maybe<DateTimeInput>;
   expireAt_gt?: Maybe<DateTimeInput>;
   expireAt_gte?: Maybe<DateTimeInput>;
-  AND?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
-  OR?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
-  NOT?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
-}
-
-export interface OrderUpdateInput {
-  owner?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
-  items?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
-  stripeId?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-}
-
-export interface OrderItemUpdateManyWithWhereNestedInput {
-  where: OrderItemScalarWhereInput;
-  data: OrderItemUpdateManyDataInput;
-}
-
-export interface UserUpsertWithoutNotificationSettingsInput {
-  update: UserUpdateWithoutNotificationSettingsDataInput;
-  create: UserCreateWithoutNotificationSettingsInput;
-}
-
-export interface OrderItemUpdateManyDataInput {
-  expireAt?: Maybe<DateTimeInput>;
-}
-
-export interface NotificationSettingsUpdateInput {
-  email?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-  user?: Maybe<UserUpdateOneWithoutNotificationSettingsInput>;
-}
-
-export interface OrderUpsertWithWhereUniqueWithoutOwnerInput {
-  where: OrderWhereUniqueInput;
-  update: OrderUpdateWithoutOwnerDataInput;
-  create: OrderCreateWithoutOwnerInput;
-}
-
-export interface PackageCreateManyWithoutLeagueInput {
-  create?: Maybe<
-    PackageCreateWithoutLeagueInput[] | PackageCreateWithoutLeagueInput
-  >;
-  connect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
-}
-
-export interface OrderScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  stripeId?: Maybe<String>;
-  stripeId_not?: Maybe<String>;
-  stripeId_in?: Maybe<String[] | String>;
-  stripeId_not_in?: Maybe<String[] | String>;
-  stripeId_lt?: Maybe<String>;
-  stripeId_lte?: Maybe<String>;
-  stripeId_gt?: Maybe<String>;
-  stripeId_gte?: Maybe<String>;
-  stripeId_contains?: Maybe<String>;
-  stripeId_not_contains?: Maybe<String>;
-  stripeId_starts_with?: Maybe<String>;
-  stripeId_not_starts_with?: Maybe<String>;
-  stripeId_ends_with?: Maybe<String>;
-  stripeId_not_ends_with?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  status_not?: Maybe<OrderStatus>;
-  status_in?: Maybe<OrderStatus[] | OrderStatus>;
-  status_not_in?: Maybe<OrderStatus[] | OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalPrice_not?: Maybe<Float>;
-  totalPrice_in?: Maybe<Float[] | Float>;
-  totalPrice_not_in?: Maybe<Float[] | Float>;
-  totalPrice_lt?: Maybe<Float>;
-  totalPrice_lte?: Maybe<Float>;
-  totalPrice_gt?: Maybe<Float>;
-  totalPrice_gte?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-  totalRefunded_not?: Maybe<Float>;
-  totalRefunded_in?: Maybe<Float[] | Float>;
-  totalRefunded_not_in?: Maybe<Float[] | Float>;
-  totalRefunded_lt?: Maybe<Float>;
-  totalRefunded_lte?: Maybe<Float>;
-  totalRefunded_gt?: Maybe<Float>;
-  totalRefunded_gte?: Maybe<Float>;
-  AND?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
-  OR?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
-  NOT?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
-}
-
-export interface UserCreateOneWithoutCartInput {
-  create?: Maybe<UserCreateWithoutCartInput>;
-  connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface OrderUpdateManyWithWhereNestedInput {
-  where: OrderScalarWhereInput;
-  data: OrderUpdateManyDataInput;
-}
-
-export interface OrderItemCreateManyWithoutOrderInput {
-  create?: Maybe<
-    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
-  >;
-  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
-}
-
-export interface OrderUpdateManyDataInput {
-  stripeId?: Maybe<String>;
-  status?: Maybe<OrderStatus>;
-  totalPrice?: Maybe<Float>;
-  totalRefunded?: Maybe<Float>;
-}
-
-export interface LeagueCreateOneWithoutPackagesInput {
-  create?: Maybe<LeagueCreateWithoutPackagesInput>;
-  connect?: Maybe<LeagueWhereUniqueInput>;
-}
-
-export interface NotificationSettingsUpdateOneRequiredWithoutUserInput {
-  create?: Maybe<NotificationSettingsCreateWithoutUserInput>;
-  update?: Maybe<NotificationSettingsUpdateWithoutUserDataInput>;
-  upsert?: Maybe<NotificationSettingsUpsertWithoutUserInput>;
-  connect?: Maybe<NotificationSettingsWhereUniqueInput>;
-}
-
-export interface PredictionCreateManyWithoutPackageInput {
-  create?: Maybe<
-    PredictionCreateWithoutPackageInput[] | PredictionCreateWithoutPackageInput
-  >;
-  connect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
-}
-
-export interface NotificationSettingsUpdateWithoutUserDataInput {
-  email?: Maybe<Boolean>;
-  phone?: Maybe<Boolean>;
-}
-
-export interface LeagueCreateOneWithoutTeamsInput {
-  create?: Maybe<LeagueCreateWithoutTeamsInput>;
-  connect?: Maybe<LeagueWhereUniqueInput>;
-}
-
-export interface NotificationSettingsUpsertWithoutUserInput {
-  update: NotificationSettingsUpdateWithoutUserDataInput;
-  create: NotificationSettingsCreateWithoutUserInput;
+  owner?: Maybe<UserWhereInput>;
+  order?: Maybe<OrderWhereInput>;
+  package?: Maybe<PackageWhereInput>;
+  AND?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
+  OR?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
+  NOT?: Maybe<OrderItemWhereInput[] | OrderItemWhereInput>;
 }
 
 export interface UserWhereInput {
@@ -2013,20 +792,1022 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
+export interface OrderWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  owner?: Maybe<UserWhereInput>;
+  items_every?: Maybe<OrderItemWhereInput>;
+  items_some?: Maybe<OrderItemWhereInput>;
+  items_none?: Maybe<OrderItemWhereInput>;
+  stripeId?: Maybe<String>;
+  stripeId_not?: Maybe<String>;
+  stripeId_in?: Maybe<String[] | String>;
+  stripeId_not_in?: Maybe<String[] | String>;
+  stripeId_lt?: Maybe<String>;
+  stripeId_lte?: Maybe<String>;
+  stripeId_gt?: Maybe<String>;
+  stripeId_gte?: Maybe<String>;
+  stripeId_contains?: Maybe<String>;
+  stripeId_not_contains?: Maybe<String>;
+  stripeId_starts_with?: Maybe<String>;
+  stripeId_not_starts_with?: Maybe<String>;
+  stripeId_ends_with?: Maybe<String>;
+  stripeId_not_ends_with?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  status_not?: Maybe<OrderStatus>;
+  status_in?: Maybe<OrderStatus[] | OrderStatus>;
+  status_not_in?: Maybe<OrderStatus[] | OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
+  totalRefunded_not?: Maybe<Float>;
+  totalRefunded_in?: Maybe<Float[] | Float>;
+  totalRefunded_not_in?: Maybe<Float[] | Float>;
+  totalRefunded_lt?: Maybe<Float>;
+  totalRefunded_lte?: Maybe<Float>;
+  totalRefunded_gt?: Maybe<Float>;
+  totalRefunded_gte?: Maybe<Float>;
+  AND?: Maybe<OrderWhereInput[] | OrderWhereInput>;
+  OR?: Maybe<OrderWhereInput[] | OrderWhereInput>;
+  NOT?: Maybe<OrderWhereInput[] | OrderWhereInput>;
+}
+
+export interface NotificationSettingsWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  email?: Maybe<Boolean>;
+  email_not?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+  phone_not?: Maybe<Boolean>;
+  user?: Maybe<UserWhereInput>;
+  AND?: Maybe<
+    NotificationSettingsWhereInput[] | NotificationSettingsWhereInput
+  >;
+  OR?: Maybe<NotificationSettingsWhereInput[] | NotificationSettingsWhereInput>;
+  NOT?: Maybe<
+    NotificationSettingsWhereInput[] | NotificationSettingsWhereInput
+  >;
+}
+
+export interface PredictionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  package?: Maybe<PackageWhereInput>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  home?: Maybe<TeamWhereInput>;
+  away?: Maybe<TeamWhereInput>;
+  winner?: Maybe<TeamWhereInput>;
+  AND?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
+  OR?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
+  NOT?: Maybe<PredictionWhereInput[] | PredictionWhereInput>;
+}
+
+export type NotificationSettingsWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type OrderWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type OrderItemWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type PackageWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  name?: Maybe<String>;
+}>;
+
+export type PredictionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
+
+export type TeamWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+}>;
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+}>;
+
+export interface LeagueCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  sport: String;
+  seasonEndDate: DateTimeInput;
+  packages?: Maybe<PackageCreateManyWithoutLeagueInput>;
+  teams?: Maybe<TeamCreateManyWithoutLeagueInput>;
+}
+
+export interface PackageCreateManyWithoutLeagueInput {
+  create?: Maybe<
+    PackageCreateWithoutLeagueInput[] | PackageCreateWithoutLeagueInput
+  >;
+  connect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
+}
+
+export interface PackageCreateWithoutLeagueInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  description?: Maybe<String>;
+  price: Float;
+  image?: Maybe<String>;
+  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
+  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
+}
+
+export interface OrderItemCreateManyWithoutPackageInput {
+  create?: Maybe<
+    OrderItemCreateWithoutPackageInput[] | OrderItemCreateWithoutPackageInput
+  >;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+}
+
+export interface OrderItemCreateWithoutPackageInput {
+  id?: Maybe<ID_Input>;
+  expireAt: DateTimeInput;
+  owner?: Maybe<UserCreateOneWithoutCartInput>;
+  order?: Maybe<OrderCreateOneWithoutItemsInput>;
+}
+
+export interface UserCreateOneWithoutCartInput {
+  create?: Maybe<UserCreateWithoutCartInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutCartInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  phone: String;
+  password: String;
+  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
+}
+
+export interface OrderCreateManyWithoutOwnerInput {
+  create?: Maybe<OrderCreateWithoutOwnerInput[] | OrderCreateWithoutOwnerInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+}
+
+export interface OrderCreateWithoutOwnerInput {
+  id?: Maybe<ID_Input>;
+  items?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  stripeId: String;
+  status?: Maybe<OrderStatus>;
+  totalPrice: Float;
+  totalRefunded: Float;
+}
+
+export interface OrderItemCreateManyWithoutOrderInput {
+  create?: Maybe<
+    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
+  >;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+}
+
+export interface OrderItemCreateWithoutOrderInput {
+  id?: Maybe<ID_Input>;
+  expireAt: DateTimeInput;
+  owner?: Maybe<UserCreateOneWithoutCartInput>;
+  package: PackageCreateOneWithoutOrderItemsInput;
+}
+
+export interface PackageCreateOneWithoutOrderItemsInput {
+  create?: Maybe<PackageCreateWithoutOrderItemsInput>;
+  connect?: Maybe<PackageWhereUniqueInput>;
+}
+
+export interface PackageCreateWithoutOrderItemsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  description?: Maybe<String>;
+  price: Float;
+  image?: Maybe<String>;
+  league: LeagueCreateOneWithoutPackagesInput;
+  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
+}
+
+export interface LeagueCreateOneWithoutPackagesInput {
+  create?: Maybe<LeagueCreateWithoutPackagesInput>;
+  connect?: Maybe<LeagueWhereUniqueInput>;
+}
+
+export interface LeagueCreateWithoutPackagesInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  sport: String;
+  seasonEndDate: DateTimeInput;
+  teams?: Maybe<TeamCreateManyWithoutLeagueInput>;
+}
+
+export interface TeamCreateManyWithoutLeagueInput {
+  create?: Maybe<TeamCreateWithoutLeagueInput[] | TeamCreateWithoutLeagueInput>;
+  connect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
+}
+
+export interface TeamCreateWithoutLeagueInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  key: String;
+}
+
+export interface PredictionCreateManyWithoutPackageInput {
+  create?: Maybe<
+    PredictionCreateWithoutPackageInput[] | PredictionCreateWithoutPackageInput
+  >;
+  connect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
+}
+
+export interface PredictionCreateWithoutPackageInput {
+  id?: Maybe<ID_Input>;
+  startDate: DateTimeInput;
+  name: String;
+  home: TeamCreateOneInput;
+  away: TeamCreateOneInput;
+  winner: TeamCreateOneInput;
+}
+
+export interface TeamCreateOneInput {
+  create?: Maybe<TeamCreateInput>;
+  connect?: Maybe<TeamWhereUniqueInput>;
+}
+
+export interface TeamCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  key: String;
+  league: LeagueCreateOneWithoutTeamsInput;
+}
+
+export interface LeagueCreateOneWithoutTeamsInput {
+  create?: Maybe<LeagueCreateWithoutTeamsInput>;
+  connect?: Maybe<LeagueWhereUniqueInput>;
+}
+
+export interface LeagueCreateWithoutTeamsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  sport: String;
+  seasonEndDate: DateTimeInput;
+  packages?: Maybe<PackageCreateManyWithoutLeagueInput>;
+}
+
+export interface NotificationSettingsCreateOneWithoutUserInput {
+  create?: Maybe<NotificationSettingsCreateWithoutUserInput>;
+  connect?: Maybe<NotificationSettingsWhereUniqueInput>;
+}
+
+export interface NotificationSettingsCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  email?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+}
+
+export interface OrderCreateOneWithoutItemsInput {
+  create?: Maybe<OrderCreateWithoutItemsInput>;
+  connect?: Maybe<OrderWhereUniqueInput>;
+}
+
+export interface OrderCreateWithoutItemsInput {
+  id?: Maybe<ID_Input>;
+  owner: UserCreateOneWithoutOrdersInput;
+  stripeId: String;
+  status?: Maybe<OrderStatus>;
+  totalPrice: Float;
+  totalRefunded: Float;
+}
+
+export interface UserCreateOneWithoutOrdersInput {
+  create?: Maybe<UserCreateWithoutOrdersInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutOrdersInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  phone: String;
+  password: String;
+  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
+}
+
+export interface OrderItemCreateManyWithoutOwnerInput {
+  create?: Maybe<
+    OrderItemCreateWithoutOwnerInput[] | OrderItemCreateWithoutOwnerInput
+  >;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+}
+
+export interface OrderItemCreateWithoutOwnerInput {
+  id?: Maybe<ID_Input>;
+  expireAt: DateTimeInput;
+  order?: Maybe<OrderCreateOneWithoutItemsInput>;
+  package: PackageCreateOneWithoutOrderItemsInput;
+}
+
+export interface LeagueUpdateInput {
+  name?: Maybe<String>;
+  sport?: Maybe<String>;
+  seasonEndDate?: Maybe<DateTimeInput>;
+  packages?: Maybe<PackageUpdateManyWithoutLeagueInput>;
+  teams?: Maybe<TeamUpdateManyWithoutLeagueInput>;
+}
+
+export interface PackageUpdateManyWithoutLeagueInput {
+  create?: Maybe<
+    PackageCreateWithoutLeagueInput[] | PackageCreateWithoutLeagueInput
+  >;
+  delete?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
+  connect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
+  set?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
+  disconnect?: Maybe<PackageWhereUniqueInput[] | PackageWhereUniqueInput>;
+  update?: Maybe<
+    | PackageUpdateWithWhereUniqueWithoutLeagueInput[]
+    | PackageUpdateWithWhereUniqueWithoutLeagueInput
+  >;
+  upsert?: Maybe<
+    | PackageUpsertWithWhereUniqueWithoutLeagueInput[]
+    | PackageUpsertWithWhereUniqueWithoutLeagueInput
+  >;
+  deleteMany?: Maybe<PackageScalarWhereInput[] | PackageScalarWhereInput>;
+  updateMany?: Maybe<
+    | PackageUpdateManyWithWhereNestedInput[]
+    | PackageUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PackageUpdateWithWhereUniqueWithoutLeagueInput {
+  where: PackageWhereUniqueInput;
+  data: PackageUpdateWithoutLeagueDataInput;
+}
+
+export interface PackageUpdateWithoutLeagueDataInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
+  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
+  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
+}
+
+export interface OrderItemUpdateManyWithoutPackageInput {
+  create?: Maybe<
+    OrderItemCreateWithoutPackageInput[] | OrderItemCreateWithoutPackageInput
+  >;
+  delete?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  set?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  disconnect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  update?: Maybe<
+    | OrderItemUpdateWithWhereUniqueWithoutPackageInput[]
+    | OrderItemUpdateWithWhereUniqueWithoutPackageInput
+  >;
+  upsert?: Maybe<
+    | OrderItemUpsertWithWhereUniqueWithoutPackageInput[]
+    | OrderItemUpsertWithWhereUniqueWithoutPackageInput
+  >;
+  deleteMany?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  updateMany?: Maybe<
+    | OrderItemUpdateManyWithWhereNestedInput[]
+    | OrderItemUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface OrderItemUpdateWithWhereUniqueWithoutPackageInput {
+  where: OrderItemWhereUniqueInput;
+  data: OrderItemUpdateWithoutPackageDataInput;
+}
+
+export interface OrderItemUpdateWithoutPackageDataInput {
+  expireAt?: Maybe<DateTimeInput>;
+  owner?: Maybe<UserUpdateOneWithoutCartInput>;
+  order?: Maybe<OrderUpdateOneWithoutItemsInput>;
+}
+
+export interface UserUpdateOneWithoutCartInput {
+  create?: Maybe<UserCreateWithoutCartInput>;
+  update?: Maybe<UserUpdateWithoutCartDataInput>;
+  upsert?: Maybe<UserUpsertWithoutCartInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutCartDataInput {
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  password?: Maybe<String>;
+  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+  notificationSettings?: Maybe<
+    NotificationSettingsUpdateOneRequiredWithoutUserInput
+  >;
+}
+
+export interface OrderUpdateManyWithoutOwnerInput {
+  create?: Maybe<OrderCreateWithoutOwnerInput[] | OrderCreateWithoutOwnerInput>;
+  delete?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  set?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  disconnect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
+  update?: Maybe<
+    | OrderUpdateWithWhereUniqueWithoutOwnerInput[]
+    | OrderUpdateWithWhereUniqueWithoutOwnerInput
+  >;
+  upsert?: Maybe<
+    | OrderUpsertWithWhereUniqueWithoutOwnerInput[]
+    | OrderUpsertWithWhereUniqueWithoutOwnerInput
+  >;
+  deleteMany?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  updateMany?: Maybe<
+    OrderUpdateManyWithWhereNestedInput[] | OrderUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface OrderUpdateWithWhereUniqueWithoutOwnerInput {
+  where: OrderWhereUniqueInput;
+  data: OrderUpdateWithoutOwnerDataInput;
+}
+
+export interface OrderUpdateWithoutOwnerDataInput {
+  items?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  stripeId?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
+}
+
+export interface OrderItemUpdateManyWithoutOrderInput {
+  create?: Maybe<
+    OrderItemCreateWithoutOrderInput[] | OrderItemCreateWithoutOrderInput
+  >;
+  delete?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  set?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  disconnect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+  update?: Maybe<
+    | OrderItemUpdateWithWhereUniqueWithoutOrderInput[]
+    | OrderItemUpdateWithWhereUniqueWithoutOrderInput
+  >;
+  upsert?: Maybe<
+    | OrderItemUpsertWithWhereUniqueWithoutOrderInput[]
+    | OrderItemUpsertWithWhereUniqueWithoutOrderInput
+  >;
+  deleteMany?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  updateMany?: Maybe<
+    | OrderItemUpdateManyWithWhereNestedInput[]
+    | OrderItemUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface OrderItemUpdateWithWhereUniqueWithoutOrderInput {
+  where: OrderItemWhereUniqueInput;
+  data: OrderItemUpdateWithoutOrderDataInput;
+}
+
+export interface OrderItemUpdateWithoutOrderDataInput {
+  expireAt?: Maybe<DateTimeInput>;
+  owner?: Maybe<UserUpdateOneWithoutCartInput>;
+  package?: Maybe<PackageUpdateOneRequiredWithoutOrderItemsInput>;
+}
+
+export interface PackageUpdateOneRequiredWithoutOrderItemsInput {
+  create?: Maybe<PackageCreateWithoutOrderItemsInput>;
+  update?: Maybe<PackageUpdateWithoutOrderItemsDataInput>;
+  upsert?: Maybe<PackageUpsertWithoutOrderItemsInput>;
+  connect?: Maybe<PackageWhereUniqueInput>;
+}
+
+export interface PackageUpdateWithoutOrderItemsDataInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
+  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
+  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
+}
+
+export interface LeagueUpdateOneRequiredWithoutPackagesInput {
+  create?: Maybe<LeagueCreateWithoutPackagesInput>;
+  update?: Maybe<LeagueUpdateWithoutPackagesDataInput>;
+  upsert?: Maybe<LeagueUpsertWithoutPackagesInput>;
+  connect?: Maybe<LeagueWhereUniqueInput>;
+}
+
+export interface LeagueUpdateWithoutPackagesDataInput {
+  name?: Maybe<String>;
+  sport?: Maybe<String>;
+  seasonEndDate?: Maybe<DateTimeInput>;
+  teams?: Maybe<TeamUpdateManyWithoutLeagueInput>;
+}
+
+export interface TeamUpdateManyWithoutLeagueInput {
+  create?: Maybe<TeamCreateWithoutLeagueInput[] | TeamCreateWithoutLeagueInput>;
+  delete?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
+  connect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
+  set?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
+  disconnect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
+  update?: Maybe<
+    | TeamUpdateWithWhereUniqueWithoutLeagueInput[]
+    | TeamUpdateWithWhereUniqueWithoutLeagueInput
+  >;
+  upsert?: Maybe<
+    | TeamUpsertWithWhereUniqueWithoutLeagueInput[]
+    | TeamUpsertWithWhereUniqueWithoutLeagueInput
+  >;
+  deleteMany?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
+  updateMany?: Maybe<
+    TeamUpdateManyWithWhereNestedInput[] | TeamUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface TeamUpdateWithWhereUniqueWithoutLeagueInput {
+  where: TeamWhereUniqueInput;
+  data: TeamUpdateWithoutLeagueDataInput;
+}
+
+export interface TeamUpdateWithoutLeagueDataInput {
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+}
+
+export interface TeamUpsertWithWhereUniqueWithoutLeagueInput {
+  where: TeamWhereUniqueInput;
+  update: TeamUpdateWithoutLeagueDataInput;
+  create: TeamCreateWithoutLeagueInput;
+}
+
+export interface TeamScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  key?: Maybe<String>;
+  key_not?: Maybe<String>;
+  key_in?: Maybe<String[] | String>;
+  key_not_in?: Maybe<String[] | String>;
+  key_lt?: Maybe<String>;
+  key_lte?: Maybe<String>;
+  key_gt?: Maybe<String>;
+  key_gte?: Maybe<String>;
+  key_contains?: Maybe<String>;
+  key_not_contains?: Maybe<String>;
+  key_starts_with?: Maybe<String>;
+  key_not_starts_with?: Maybe<String>;
+  key_ends_with?: Maybe<String>;
+  key_not_ends_with?: Maybe<String>;
+  AND?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
+  OR?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
+  NOT?: Maybe<TeamScalarWhereInput[] | TeamScalarWhereInput>;
+}
+
+export interface TeamUpdateManyWithWhereNestedInput {
+  where: TeamScalarWhereInput;
+  data: TeamUpdateManyDataInput;
+}
+
+export interface TeamUpdateManyDataInput {
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+}
+
+export interface LeagueUpsertWithoutPackagesInput {
+  update: LeagueUpdateWithoutPackagesDataInput;
+  create: LeagueCreateWithoutPackagesInput;
+}
+
+export interface PredictionUpdateManyWithoutPackageInput {
+  create?: Maybe<
+    PredictionCreateWithoutPackageInput[] | PredictionCreateWithoutPackageInput
+  >;
+  delete?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
+  connect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
+  set?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
+  disconnect?: Maybe<PredictionWhereUniqueInput[] | PredictionWhereUniqueInput>;
+  update?: Maybe<
+    | PredictionUpdateWithWhereUniqueWithoutPackageInput[]
+    | PredictionUpdateWithWhereUniqueWithoutPackageInput
+  >;
+  upsert?: Maybe<
+    | PredictionUpsertWithWhereUniqueWithoutPackageInput[]
+    | PredictionUpsertWithWhereUniqueWithoutPackageInput
+  >;
+  deleteMany?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
+  updateMany?: Maybe<
+    | PredictionUpdateManyWithWhereNestedInput[]
+    | PredictionUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface PredictionUpdateWithWhereUniqueWithoutPackageInput {
+  where: PredictionWhereUniqueInput;
+  data: PredictionUpdateWithoutPackageDataInput;
+}
+
+export interface PredictionUpdateWithoutPackageDataInput {
+  startDate?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+  home?: Maybe<TeamUpdateOneRequiredInput>;
+  away?: Maybe<TeamUpdateOneRequiredInput>;
+  winner?: Maybe<TeamUpdateOneRequiredInput>;
+}
+
+export interface TeamUpdateOneRequiredInput {
+  create?: Maybe<TeamCreateInput>;
+  update?: Maybe<TeamUpdateDataInput>;
+  upsert?: Maybe<TeamUpsertNestedInput>;
+  connect?: Maybe<TeamWhereUniqueInput>;
+}
+
+export interface TeamUpdateDataInput {
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+  league?: Maybe<LeagueUpdateOneRequiredWithoutTeamsInput>;
+}
+
+export interface LeagueUpdateOneRequiredWithoutTeamsInput {
+  create?: Maybe<LeagueCreateWithoutTeamsInput>;
+  update?: Maybe<LeagueUpdateWithoutTeamsDataInput>;
+  upsert?: Maybe<LeagueUpsertWithoutTeamsInput>;
+  connect?: Maybe<LeagueWhereUniqueInput>;
+}
+
+export interface LeagueUpdateWithoutTeamsDataInput {
+  name?: Maybe<String>;
+  sport?: Maybe<String>;
+  seasonEndDate?: Maybe<DateTimeInput>;
+  packages?: Maybe<PackageUpdateManyWithoutLeagueInput>;
+}
+
+export interface LeagueUpsertWithoutTeamsInput {
+  update: LeagueUpdateWithoutTeamsDataInput;
+  create: LeagueCreateWithoutTeamsInput;
+}
+
+export interface TeamUpsertNestedInput {
+  update: TeamUpdateDataInput;
+  create: TeamCreateInput;
+}
+
+export interface PredictionUpsertWithWhereUniqueWithoutPackageInput {
+  where: PredictionWhereUniqueInput;
+  update: PredictionUpdateWithoutPackageDataInput;
+  create: PredictionCreateWithoutPackageInput;
+}
+
+export interface PredictionScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  startDate?: Maybe<DateTimeInput>;
+  startDate_not?: Maybe<DateTimeInput>;
+  startDate_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  startDate_lt?: Maybe<DateTimeInput>;
+  startDate_lte?: Maybe<DateTimeInput>;
+  startDate_gt?: Maybe<DateTimeInput>;
+  startDate_gte?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  AND?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
+  OR?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
+  NOT?: Maybe<PredictionScalarWhereInput[] | PredictionScalarWhereInput>;
+}
+
+export interface PredictionUpdateManyWithWhereNestedInput {
+  where: PredictionScalarWhereInput;
+  data: PredictionUpdateManyDataInput;
+}
+
+export interface PredictionUpdateManyDataInput {
+  startDate?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+}
+
+export interface PackageUpsertWithoutOrderItemsInput {
+  update: PackageUpdateWithoutOrderItemsDataInput;
+  create: PackageCreateWithoutOrderItemsInput;
+}
+
+export interface OrderItemUpsertWithWhereUniqueWithoutOrderInput {
+  where: OrderItemWhereUniqueInput;
+  update: OrderItemUpdateWithoutOrderDataInput;
+  create: OrderItemCreateWithoutOrderInput;
+}
+
+export interface OrderItemScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  expireAt?: Maybe<DateTimeInput>;
+  expireAt_not?: Maybe<DateTimeInput>;
+  expireAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  expireAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  expireAt_lt?: Maybe<DateTimeInput>;
+  expireAt_lte?: Maybe<DateTimeInput>;
+  expireAt_gt?: Maybe<DateTimeInput>;
+  expireAt_gte?: Maybe<DateTimeInput>;
+  AND?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  OR?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+  NOT?: Maybe<OrderItemScalarWhereInput[] | OrderItemScalarWhereInput>;
+}
+
+export interface OrderItemUpdateManyWithWhereNestedInput {
+  where: OrderItemScalarWhereInput;
+  data: OrderItemUpdateManyDataInput;
+}
+
+export interface OrderItemUpdateManyDataInput {
+  expireAt?: Maybe<DateTimeInput>;
+}
+
+export interface OrderUpsertWithWhereUniqueWithoutOwnerInput {
+  where: OrderWhereUniqueInput;
+  update: OrderUpdateWithoutOwnerDataInput;
+  create: OrderCreateWithoutOwnerInput;
+}
+
+export interface OrderScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  stripeId?: Maybe<String>;
+  stripeId_not?: Maybe<String>;
+  stripeId_in?: Maybe<String[] | String>;
+  stripeId_not_in?: Maybe<String[] | String>;
+  stripeId_lt?: Maybe<String>;
+  stripeId_lte?: Maybe<String>;
+  stripeId_gt?: Maybe<String>;
+  stripeId_gte?: Maybe<String>;
+  stripeId_contains?: Maybe<String>;
+  stripeId_not_contains?: Maybe<String>;
+  stripeId_starts_with?: Maybe<String>;
+  stripeId_not_starts_with?: Maybe<String>;
+  stripeId_ends_with?: Maybe<String>;
+  stripeId_not_ends_with?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  status_not?: Maybe<OrderStatus>;
+  status_in?: Maybe<OrderStatus[] | OrderStatus>;
+  status_not_in?: Maybe<OrderStatus[] | OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalPrice_not?: Maybe<Float>;
+  totalPrice_in?: Maybe<Float[] | Float>;
+  totalPrice_not_in?: Maybe<Float[] | Float>;
+  totalPrice_lt?: Maybe<Float>;
+  totalPrice_lte?: Maybe<Float>;
+  totalPrice_gt?: Maybe<Float>;
+  totalPrice_gte?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
+  totalRefunded_not?: Maybe<Float>;
+  totalRefunded_in?: Maybe<Float[] | Float>;
+  totalRefunded_not_in?: Maybe<Float[] | Float>;
+  totalRefunded_lt?: Maybe<Float>;
+  totalRefunded_lte?: Maybe<Float>;
+  totalRefunded_gt?: Maybe<Float>;
+  totalRefunded_gte?: Maybe<Float>;
+  AND?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  OR?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+  NOT?: Maybe<OrderScalarWhereInput[] | OrderScalarWhereInput>;
+}
+
+export interface OrderUpdateManyWithWhereNestedInput {
+  where: OrderScalarWhereInput;
+  data: OrderUpdateManyDataInput;
+}
+
+export interface OrderUpdateManyDataInput {
+  stripeId?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
+}
+
+export interface NotificationSettingsUpdateOneRequiredWithoutUserInput {
+  create?: Maybe<NotificationSettingsCreateWithoutUserInput>;
+  update?: Maybe<NotificationSettingsUpdateWithoutUserDataInput>;
+  upsert?: Maybe<NotificationSettingsUpsertWithoutUserInput>;
+  connect?: Maybe<NotificationSettingsWhereUniqueInput>;
+}
+
+export interface NotificationSettingsUpdateWithoutUserDataInput {
+  email?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+}
+
+export interface NotificationSettingsUpsertWithoutUserInput {
+  update: NotificationSettingsUpdateWithoutUserDataInput;
+  create: NotificationSettingsCreateWithoutUserInput;
+}
+
 export interface UserUpsertWithoutCartInput {
   update: UserUpdateWithoutCartDataInput;
   create: UserCreateWithoutCartInput;
-}
-
-export interface OrderSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<OrderWhereInput>;
-  AND?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
-  OR?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
-  NOT?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
 }
 
 export interface OrderUpdateOneWithoutItemsInput {
@@ -2038,11 +1819,6 @@ export interface OrderUpdateOneWithoutItemsInput {
   connect?: Maybe<OrderWhereUniqueInput>;
 }
 
-export interface TeamUpdateManyMutationInput {
-  name?: Maybe<String>;
-  key?: Maybe<String>;
-}
-
 export interface OrderUpdateWithoutItemsDataInput {
   owner?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
   stripeId?: Maybe<String>;
@@ -2051,31 +1827,11 @@ export interface OrderUpdateWithoutItemsDataInput {
   totalRefunded?: Maybe<Float>;
 }
 
-export interface PredictionUpdateInput {
-  startDate?: Maybe<DateTimeInput>;
-  package?: Maybe<PackageUpdateOneRequiredWithoutPredictionsInput>;
-  name?: Maybe<String>;
-  home?: Maybe<TeamUpdateOneRequiredInput>;
-  away?: Maybe<TeamUpdateOneRequiredInput>;
-  winner?: Maybe<TeamUpdateOneRequiredInput>;
-}
-
 export interface UserUpdateOneRequiredWithoutOrdersInput {
   create?: Maybe<UserCreateWithoutOrdersInput>;
   update?: Maybe<UserUpdateWithoutOrdersDataInput>;
   upsert?: Maybe<UserUpsertWithoutOrdersInput>;
   connect?: Maybe<UserWhereUniqueInput>;
-}
-
-export interface PackageCreateInput {
-  id?: Maybe<ID_Input>;
-  name: String;
-  description?: Maybe<String>;
-  price: Float;
-  image?: Maybe<String>;
-  league: LeagueCreateOneWithoutPackagesInput;
-  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
-  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
 }
 
 export interface UserUpdateWithoutOrdersDataInput {
@@ -2088,16 +1844,6 @@ export interface UserUpdateWithoutOrdersDataInput {
   notificationSettings?: Maybe<
     NotificationSettingsUpdateOneRequiredWithoutUserInput
   >;
-}
-
-export interface OrderCreateInput {
-  id?: Maybe<ID_Input>;
-  owner: UserCreateOneWithoutOrdersInput;
-  items?: Maybe<OrderItemCreateManyWithoutOrderInput>;
-  stripeId: String;
-  status?: Maybe<OrderStatus>;
-  totalPrice: Float;
-  totalRefunded: Float;
 }
 
 export interface OrderItemUpdateManyWithoutOwnerInput {
@@ -2123,19 +1869,9 @@ export interface OrderItemUpdateManyWithoutOwnerInput {
   >;
 }
 
-export interface OrderCreateManyWithoutOwnerInput {
-  create?: Maybe<OrderCreateWithoutOwnerInput[] | OrderCreateWithoutOwnerInput>;
-  connect?: Maybe<OrderWhereUniqueInput[] | OrderWhereUniqueInput>;
-}
-
 export interface OrderItemUpdateWithWhereUniqueWithoutOwnerInput {
   where: OrderItemWhereUniqueInput;
   data: OrderItemUpdateWithoutOwnerDataInput;
-}
-
-export interface TeamCreateManyWithoutLeagueInput {
-  create?: Maybe<TeamCreateWithoutLeagueInput[] | TeamCreateWithoutLeagueInput>;
-  connect?: Maybe<TeamWhereUniqueInput[] | TeamWhereUniqueInput>;
 }
 
 export interface OrderItemUpdateWithoutOwnerDataInput {
@@ -2144,23 +1880,10 @@ export interface OrderItemUpdateWithoutOwnerDataInput {
   package?: Maybe<PackageUpdateOneRequiredWithoutOrderItemsInput>;
 }
 
-export interface NotificationSettingsCreateOneWithoutUserInput {
-  create?: Maybe<NotificationSettingsCreateWithoutUserInput>;
-  connect?: Maybe<NotificationSettingsWhereUniqueInput>;
-}
-
 export interface OrderItemUpsertWithWhereUniqueWithoutOwnerInput {
   where: OrderItemWhereUniqueInput;
   update: OrderItemUpdateWithoutOwnerDataInput;
   create: OrderItemCreateWithoutOwnerInput;
-}
-
-export interface UserUpdateManyMutationInput {
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  password?: Maybe<String>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
 }
 
 export interface UserUpsertWithoutOrdersInput {
@@ -2168,29 +1891,9 @@ export interface UserUpsertWithoutOrdersInput {
   create: UserCreateWithoutOrdersInput;
 }
 
-export interface PredictionCreateInput {
-  id?: Maybe<ID_Input>;
-  startDate: DateTimeInput;
-  package: PackageCreateOneWithoutPredictionsInput;
-  name: String;
-  home: TeamCreateOneInput;
-  away: TeamCreateOneInput;
-  winner: TeamCreateOneInput;
-}
-
 export interface OrderUpsertWithoutItemsInput {
   update: OrderUpdateWithoutItemsDataInput;
   create: OrderCreateWithoutItemsInput;
-}
-
-export interface UserUpdateWithoutNotificationSettingsDataInput {
-  email?: Maybe<String>;
-  phone?: Maybe<String>;
-  password?: Maybe<String>;
-  cart?: Maybe<OrderItemUpdateManyWithoutOwnerInput>;
-  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
-  role?: Maybe<Role>;
-  resetToken?: Maybe<String>;
 }
 
 export interface OrderItemUpsertWithWhereUniqueWithoutPackageInput {
@@ -2199,50 +1902,10 @@ export interface OrderItemUpsertWithWhereUniqueWithoutPackageInput {
   create: OrderItemCreateWithoutPackageInput;
 }
 
-export interface PackageCreateOneWithoutOrderItemsInput {
-  create?: Maybe<PackageCreateWithoutOrderItemsInput>;
-  connect?: Maybe<PackageWhereUniqueInput>;
-}
-
 export interface PackageUpsertWithWhereUniqueWithoutLeagueInput {
   where: PackageWhereUniqueInput;
   update: PackageUpdateWithoutLeagueDataInput;
   create: PackageCreateWithoutLeagueInput;
-}
-
-export interface PredictionSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<PredictionWhereInput>;
-  AND?: Maybe<
-    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
-  >;
-}
-
-export interface LeagueUpdateManyMutationInput {
-  name?: Maybe<String>;
-  sport?: Maybe<String>;
-  seasonEndDate?: Maybe<DateTimeInput>;
-}
-
-export interface PackageUpdateManyDataInput {
-  name?: Maybe<String>;
-  description?: Maybe<String>;
-  price?: Maybe<Float>;
-  image?: Maybe<String>;
-}
-
-export interface PackageUpdateManyWithWhereNestedInput {
-  where: PackageScalarWhereInput;
-  data: PackageUpdateManyDataInput;
 }
 
 export interface PackageScalarWhereInput {
@@ -2315,21 +1978,106 @@ export interface PackageScalarWhereInput {
   NOT?: Maybe<PackageScalarWhereInput[] | PackageScalarWhereInput>;
 }
 
-export interface PackageUpsertWithoutPredictionsInput {
-  update: PackageUpdateWithoutPredictionsDataInput;
-  create: PackageCreateWithoutPredictionsInput;
+export interface PackageUpdateManyWithWhereNestedInput {
+  where: PackageScalarWhereInput;
+  data: PackageUpdateManyDataInput;
 }
 
-export interface TeamCreateOneInput {
-  create?: Maybe<TeamCreateInput>;
-  connect?: Maybe<TeamWhereUniqueInput>;
+export interface PackageUpdateManyDataInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
 }
 
-export interface OrderItemCreateManyWithoutPackageInput {
-  create?: Maybe<
-    OrderItemCreateWithoutPackageInput[] | OrderItemCreateWithoutPackageInput
-  >;
-  connect?: Maybe<OrderItemWhereUniqueInput[] | OrderItemWhereUniqueInput>;
+export interface LeagueUpdateManyMutationInput {
+  name?: Maybe<String>;
+  sport?: Maybe<String>;
+  seasonEndDate?: Maybe<DateTimeInput>;
+}
+
+export interface NotificationSettingsCreateInput {
+  id?: Maybe<ID_Input>;
+  email?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+  user?: Maybe<UserCreateOneWithoutNotificationSettingsInput>;
+}
+
+export interface UserCreateOneWithoutNotificationSettingsInput {
+  create?: Maybe<UserCreateWithoutNotificationSettingsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutNotificationSettingsInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  phone: String;
+  password: String;
+  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
+  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+}
+
+export interface NotificationSettingsUpdateInput {
+  email?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+  user?: Maybe<UserUpdateOneWithoutNotificationSettingsInput>;
+}
+
+export interface UserUpdateOneWithoutNotificationSettingsInput {
+  create?: Maybe<UserCreateWithoutNotificationSettingsInput>;
+  update?: Maybe<UserUpdateWithoutNotificationSettingsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutNotificationSettingsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutNotificationSettingsDataInput {
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  password?: Maybe<String>;
+  cart?: Maybe<OrderItemUpdateManyWithoutOwnerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+}
+
+export interface UserUpsertWithoutNotificationSettingsInput {
+  update: UserUpdateWithoutNotificationSettingsDataInput;
+  create: UserCreateWithoutNotificationSettingsInput;
+}
+
+export interface NotificationSettingsUpdateManyMutationInput {
+  email?: Maybe<Boolean>;
+  phone?: Maybe<Boolean>;
+}
+
+export interface OrderCreateInput {
+  id?: Maybe<ID_Input>;
+  owner: UserCreateOneWithoutOrdersInput;
+  items?: Maybe<OrderItemCreateManyWithoutOrderInput>;
+  stripeId: String;
+  status?: Maybe<OrderStatus>;
+  totalPrice: Float;
+  totalRefunded: Float;
+}
+
+export interface OrderUpdateInput {
+  owner?: Maybe<UserUpdateOneRequiredWithoutOrdersInput>;
+  items?: Maybe<OrderItemUpdateManyWithoutOrderInput>;
+  stripeId?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
+}
+
+export interface OrderUpdateManyMutationInput {
+  stripeId?: Maybe<String>;
+  status?: Maybe<OrderStatus>;
+  totalPrice?: Maybe<Float>;
+  totalRefunded?: Maybe<Float>;
 }
 
 export interface OrderItemCreateInput {
@@ -2340,331 +2088,346 @@ export interface OrderItemCreateInput {
   package: PackageCreateOneWithoutOrderItemsInput;
 }
 
+export interface OrderItemUpdateInput {
+  expireAt?: Maybe<DateTimeInput>;
+  owner?: Maybe<UserUpdateOneWithoutCartInput>;
+  order?: Maybe<OrderUpdateOneWithoutItemsInput>;
+  package?: Maybe<PackageUpdateOneRequiredWithoutOrderItemsInput>;
+}
+
+export interface OrderItemUpdateManyMutationInput {
+  expireAt?: Maybe<DateTimeInput>;
+}
+
+export interface PackageCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  description?: Maybe<String>;
+  price: Float;
+  image?: Maybe<String>;
+  league: LeagueCreateOneWithoutPackagesInput;
+  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
+  predictions?: Maybe<PredictionCreateManyWithoutPackageInput>;
+}
+
+export interface PackageUpdateInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
+  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
+  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
+  predictions?: Maybe<PredictionUpdateManyWithoutPackageInput>;
+}
+
+export interface PackageUpdateManyMutationInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
+}
+
+export interface PredictionCreateInput {
+  id?: Maybe<ID_Input>;
+  startDate: DateTimeInput;
+  package: PackageCreateOneWithoutPredictionsInput;
+  name: String;
+  home: TeamCreateOneInput;
+  away: TeamCreateOneInput;
+  winner: TeamCreateOneInput;
+}
+
+export interface PackageCreateOneWithoutPredictionsInput {
+  create?: Maybe<PackageCreateWithoutPredictionsInput>;
+  connect?: Maybe<PackageWhereUniqueInput>;
+}
+
+export interface PackageCreateWithoutPredictionsInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  description?: Maybe<String>;
+  price: Float;
+  image?: Maybe<String>;
+  league: LeagueCreateOneWithoutPackagesInput;
+  orderItems?: Maybe<OrderItemCreateManyWithoutPackageInput>;
+}
+
+export interface PredictionUpdateInput {
+  startDate?: Maybe<DateTimeInput>;
+  package?: Maybe<PackageUpdateOneRequiredWithoutPredictionsInput>;
+  name?: Maybe<String>;
+  home?: Maybe<TeamUpdateOneRequiredInput>;
+  away?: Maybe<TeamUpdateOneRequiredInput>;
+  winner?: Maybe<TeamUpdateOneRequiredInput>;
+}
+
+export interface PackageUpdateOneRequiredWithoutPredictionsInput {
+  create?: Maybe<PackageCreateWithoutPredictionsInput>;
+  update?: Maybe<PackageUpdateWithoutPredictionsDataInput>;
+  upsert?: Maybe<PackageUpsertWithoutPredictionsInput>;
+  connect?: Maybe<PackageWhereUniqueInput>;
+}
+
+export interface PackageUpdateWithoutPredictionsDataInput {
+  name?: Maybe<String>;
+  description?: Maybe<String>;
+  price?: Maybe<Float>;
+  image?: Maybe<String>;
+  league?: Maybe<LeagueUpdateOneRequiredWithoutPackagesInput>;
+  orderItems?: Maybe<OrderItemUpdateManyWithoutPackageInput>;
+}
+
+export interface PackageUpsertWithoutPredictionsInput {
+  update: PackageUpdateWithoutPredictionsDataInput;
+  create: PackageCreateWithoutPredictionsInput;
+}
+
+export interface PredictionUpdateManyMutationInput {
+  startDate?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+}
+
+export interface TeamUpdateInput {
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+  league?: Maybe<LeagueUpdateOneRequiredWithoutTeamsInput>;
+}
+
+export interface TeamUpdateManyMutationInput {
+  name?: Maybe<String>;
+  key?: Maybe<String>;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  email: String;
+  phone: String;
+  password: String;
+  cart?: Maybe<OrderItemCreateManyWithoutOwnerInput>;
+  orders?: Maybe<OrderCreateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+  notificationSettings: NotificationSettingsCreateOneWithoutUserInput;
+}
+
+export interface UserUpdateInput {
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  password?: Maybe<String>;
+  cart?: Maybe<OrderItemUpdateManyWithoutOwnerInput>;
+  orders?: Maybe<OrderUpdateManyWithoutOwnerInput>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+  notificationSettings?: Maybe<
+    NotificationSettingsUpdateOneRequiredWithoutUserInput
+  >;
+}
+
+export interface UserUpdateManyMutationInput {
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  password?: Maybe<String>;
+  role?: Maybe<Role>;
+  resetToken?: Maybe<String>;
+}
+
+export interface LeagueSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<LeagueWhereInput>;
+  AND?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
+  OR?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
+  NOT?: Maybe<LeagueSubscriptionWhereInput[] | LeagueSubscriptionWhereInput>;
+}
+
+export interface NotificationSettingsSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<NotificationSettingsWhereInput>;
+  AND?: Maybe<
+    | NotificationSettingsSubscriptionWhereInput[]
+    | NotificationSettingsSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | NotificationSettingsSubscriptionWhereInput[]
+    | NotificationSettingsSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | NotificationSettingsSubscriptionWhereInput[]
+    | NotificationSettingsSubscriptionWhereInput
+  >;
+}
+
+export interface OrderSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<OrderWhereInput>;
+  AND?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+  OR?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+  NOT?: Maybe<OrderSubscriptionWhereInput[] | OrderSubscriptionWhereInput>;
+}
+
+export interface OrderItemSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<OrderItemWhereInput>;
+  AND?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    OrderItemSubscriptionWhereInput[] | OrderItemSubscriptionWhereInput
+  >;
+}
+
+export interface PackageSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PackageWhereInput>;
+  AND?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
+  OR?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
+  NOT?: Maybe<PackageSubscriptionWhereInput[] | PackageSubscriptionWhereInput>;
+}
+
+export interface PredictionSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<PredictionWhereInput>;
+  AND?: Maybe<
+    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    PredictionSubscriptionWhereInput[] | PredictionSubscriptionWhereInput
+  >;
+}
+
+export interface TeamSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TeamWhereInput>;
+  AND?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
+  OR?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
+  NOT?: Maybe<TeamSubscriptionWhereInput[] | TeamSubscriptionWhereInput>;
+}
+
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+}
+
 export interface NodeNode {
   id: ID_Output;
 }
 
-export interface UserPreviousValues {
-  id: ID_Output;
-  email: String;
-  phone: String;
-  password: String;
-  role?: Role;
-  resetToken?: String;
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<String>;
-  phone: () => Promise<String>;
-  password: () => Promise<String>;
-  role: () => Promise<Role>;
-  resetToken: () => Promise<String>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  role: () => Promise<AsyncIterator<Role>>;
-  resetToken: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TeamPreviousValues {
+export interface League {
   id: ID_Output;
   name: String;
-  key: String;
+  sport: String;
+  seasonEndDate: DateTimeOutput;
 }
 
-export interface TeamPreviousValuesPromise
-  extends Promise<TeamPreviousValues>,
-    Fragmentable {
+export interface LeaguePromise extends Promise<League>, Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  key: () => Promise<String>;
+  sport: () => Promise<String>;
+  seasonEndDate: () => Promise<DateTimeOutput>;
+  packages: <T = FragmentableArray<Package>>(args?: {
+    where?: PackageWhereInput;
+    orderBy?: PackageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  teams: <T = FragmentableArray<Team>>(args?: {
+    where?: TeamWhereInput;
+    orderBy?: TeamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface TeamPreviousValuesSubscription
-  extends Promise<AsyncIterator<TeamPreviousValues>>,
+export interface LeagueSubscription
+  extends Promise<AsyncIterator<League>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
-  key: () => Promise<AsyncIterator<String>>;
+  sport: () => Promise<AsyncIterator<String>>;
+  seasonEndDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  packages: <T = Promise<AsyncIterator<PackageSubscription>>>(args?: {
+    where?: PackageWhereInput;
+    orderBy?: PackageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  teams: <T = Promise<AsyncIterator<TeamSubscription>>>(args?: {
+    where?: TeamWhereInput;
+    orderBy?: TeamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
-export interface PredictionPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  startDate: DateTimeOutput;
-  name: String;
-}
-
-export interface PredictionPreviousValuesPromise
-  extends Promise<PredictionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  startDate: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
-}
-
-export interface PredictionPreviousValuesSubscription
-  extends Promise<AsyncIterator<PredictionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  name: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateLeague {
-  count: Int;
-}
-
-export interface AggregateLeaguePromise
-  extends Promise<AggregateLeague>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateLeagueSubscription
-  extends Promise<AsyncIterator<AggregateLeague>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface LeagueEdge {
-  node: League;
-  cursor: String;
-}
-
-export interface LeagueEdgePromise extends Promise<LeagueEdge>, Fragmentable {
-  node: <T = LeaguePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface LeagueEdgeSubscription
-  extends Promise<AsyncIterator<LeagueEdge>>,
-    Fragmentable {
-  node: <T = LeagueSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
-}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface LeagueConnection {
-  pageInfo: PageInfo;
-  edges: LeagueEdge[];
-}
-
-export interface LeagueConnectionPromise
-  extends Promise<LeagueConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<LeagueEdge>>() => T;
-  aggregate: <T = AggregateLeaguePromise>() => T;
-}
-
-export interface LeagueConnectionSubscription
-  extends Promise<AsyncIterator<LeagueConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<LeagueEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateLeagueSubscription>() => T;
-}
-
-export interface AggregateTeam {
-  count: Int;
-}
-
-export interface AggregateTeamPromise
-  extends Promise<AggregateTeam>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTeamSubscription
-  extends Promise<AsyncIterator<AggregateTeam>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TeamSubscriptionPayload {
-  mutation: MutationType;
-  node: Team;
-  updatedFields: String[];
-  previousValues: TeamPreviousValues;
-}
-
-export interface TeamSubscriptionPayloadPromise
-  extends Promise<TeamSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TeamPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TeamPreviousValuesPromise>() => T;
-}
-
-export interface TeamSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TeamSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TeamSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TeamPreviousValuesSubscription>() => T;
-}
-
-export interface TeamConnection {
-  pageInfo: PageInfo;
-  edges: TeamEdge[];
-}
-
-export interface TeamConnectionPromise
-  extends Promise<TeamConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TeamEdge>>() => T;
-  aggregate: <T = AggregateTeamPromise>() => T;
-}
-
-export interface TeamConnectionSubscription
-  extends Promise<AsyncIterator<TeamConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TeamEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTeamSubscription>() => T;
-}
-
-export interface Team {
-  id: ID_Output;
-  name: String;
-  key: String;
-}
-
-export interface TeamPromise extends Promise<Team>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  key: () => Promise<String>;
-  league: <T = LeaguePromise>() => T;
-}
-
-export interface TeamSubscription
-  extends Promise<AsyncIterator<Team>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  key: () => Promise<AsyncIterator<String>>;
-  league: <T = LeagueSubscription>() => T;
-}
-
-export interface TeamNullablePromise
-  extends Promise<Team | null>,
+export interface LeagueNullablePromise
+  extends Promise<League | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-  key: () => Promise<String>;
-  league: <T = LeaguePromise>() => T;
-}
-
-export interface PredictionEdge {
-  node: Prediction;
-  cursor: String;
-}
-
-export interface PredictionEdgePromise
-  extends Promise<PredictionEdge>,
-    Fragmentable {
-  node: <T = PredictionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PredictionEdgeSubscription
-  extends Promise<AsyncIterator<PredictionEdge>>,
-    Fragmentable {
-  node: <T = PredictionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  sport: () => Promise<String>;
+  seasonEndDate: () => Promise<DateTimeOutput>;
+  packages: <T = FragmentableArray<Package>>(args?: {
+    where?: PackageWhereInput;
+    orderBy?: PackageOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  teams: <T = FragmentableArray<Team>>(args?: {
+    where?: TeamWhereInput;
+    orderBy?: TeamOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
 }
 
 export interface Package {
@@ -2760,652 +2523,37 @@ export interface PackageNullablePromise
   }) => T;
 }
 
-export interface AggregatePackage {
-  count: Int;
-}
-
-export interface AggregatePackagePromise
-  extends Promise<AggregatePackage>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePackageSubscription
-  extends Promise<AsyncIterator<AggregatePackage>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface LeagueSubscriptionPayload {
-  mutation: MutationType;
-  node: League;
-  updatedFields: String[];
-  previousValues: LeaguePreviousValues;
-}
-
-export interface LeagueSubscriptionPayloadPromise
-  extends Promise<LeagueSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = LeaguePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = LeaguePreviousValuesPromise>() => T;
-}
-
-export interface LeagueSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<LeagueSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = LeagueSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = LeaguePreviousValuesSubscription>() => T;
-}
-
-export interface PackageConnection {
-  pageInfo: PageInfo;
-  edges: PackageEdge[];
-}
-
-export interface PackageConnectionPromise
-  extends Promise<PackageConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PackageEdge>>() => T;
-  aggregate: <T = AggregatePackagePromise>() => T;
-}
-
-export interface PackageConnectionSubscription
-  extends Promise<AsyncIterator<PackageConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PackageEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePackageSubscription>() => T;
-}
-
-export interface LeaguePreviousValues {
-  id: ID_Output;
-  name: String;
-  sport: String;
-  seasonEndDate: DateTimeOutput;
-}
-
-export interface LeaguePreviousValuesPromise
-  extends Promise<LeaguePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  sport: () => Promise<String>;
-  seasonEndDate: () => Promise<DateTimeOutput>;
-}
-
-export interface LeaguePreviousValuesSubscription
-  extends Promise<AsyncIterator<LeaguePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  sport: () => Promise<AsyncIterator<String>>;
-  seasonEndDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface OrderItemEdge {
-  node: OrderItem;
-  cursor: String;
-}
-
-export interface OrderItemEdgePromise
-  extends Promise<OrderItemEdge>,
-    Fragmentable {
-  node: <T = OrderItemPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface OrderItemEdgeSubscription
-  extends Promise<AsyncIterator<OrderItemEdge>>,
-    Fragmentable {
-  node: <T = OrderItemSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Prediction {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  startDate: DateTimeOutput;
-  name: String;
-}
-
-export interface PredictionPromise extends Promise<Prediction>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  startDate: () => Promise<DateTimeOutput>;
-  package: <T = PackagePromise>() => T;
-  name: () => Promise<String>;
-  home: <T = TeamPromise>() => T;
-  away: <T = TeamPromise>() => T;
-  winner: <T = TeamPromise>() => T;
-}
-
-export interface PredictionSubscription
-  extends Promise<AsyncIterator<Prediction>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  package: <T = PackageSubscription>() => T;
-  name: () => Promise<AsyncIterator<String>>;
-  home: <T = TeamSubscription>() => T;
-  away: <T = TeamSubscription>() => T;
-  winner: <T = TeamSubscription>() => T;
-}
-
-export interface PredictionNullablePromise
-  extends Promise<Prediction | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  startDate: () => Promise<DateTimeOutput>;
-  package: <T = PackagePromise>() => T;
-  name: () => Promise<String>;
-  home: <T = TeamPromise>() => T;
-  away: <T = TeamPromise>() => T;
-  winner: <T = TeamPromise>() => T;
-}
-
-export interface AggregateOrder {
-  count: Int;
-}
-
-export interface AggregateOrderPromise
-  extends Promise<AggregateOrder>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateOrderSubscription
-  extends Promise<AsyncIterator<AggregateOrder>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface NotificationSettingsSubscriptionPayload {
-  mutation: MutationType;
-  node: NotificationSettings;
-  updatedFields: String[];
-  previousValues: NotificationSettingsPreviousValues;
-}
-
-export interface NotificationSettingsSubscriptionPayloadPromise
-  extends Promise<NotificationSettingsSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = NotificationSettingsPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = NotificationSettingsPreviousValuesPromise>() => T;
-}
-
-export interface NotificationSettingsSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<NotificationSettingsSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = NotificationSettingsSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = NotificationSettingsPreviousValuesSubscription>() => T;
-}
-
-export interface OrderConnection {
-  pageInfo: PageInfo;
-  edges: OrderEdge[];
-}
-
-export interface OrderConnectionPromise
-  extends Promise<OrderConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<OrderEdge>>() => T;
-  aggregate: <T = AggregateOrderPromise>() => T;
-}
-
-export interface OrderConnectionSubscription
-  extends Promise<AsyncIterator<OrderConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<OrderEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateOrderSubscription>() => T;
-}
-
-export interface NotificationSettingsPreviousValues {
-  id: ID_Output;
-  email: Boolean;
-  phone: Boolean;
-}
-
-export interface NotificationSettingsPreviousValuesPromise
-  extends Promise<NotificationSettingsPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<Boolean>;
-  phone: () => Promise<Boolean>;
-}
-
-export interface NotificationSettingsPreviousValuesSubscription
-  extends Promise<AsyncIterator<NotificationSettingsPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<Boolean>>;
-  phone: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface NotificationSettingsEdge {
-  node: NotificationSettings;
-  cursor: String;
-}
-
-export interface NotificationSettingsEdgePromise
-  extends Promise<NotificationSettingsEdge>,
-    Fragmentable {
-  node: <T = NotificationSettingsPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface NotificationSettingsEdgeSubscription
-  extends Promise<AsyncIterator<NotificationSettingsEdge>>,
-    Fragmentable {
-  node: <T = NotificationSettingsSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface NotificationSettings {
-  id: ID_Output;
-  email: Boolean;
-  phone: Boolean;
-}
-
-export interface NotificationSettingsPromise
-  extends Promise<NotificationSettings>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<Boolean>;
-  phone: () => Promise<Boolean>;
-  user: <T = UserPromise>() => T;
-}
-
-export interface NotificationSettingsSubscription
-  extends Promise<AsyncIterator<NotificationSettings>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  email: () => Promise<AsyncIterator<Boolean>>;
-  phone: () => Promise<AsyncIterator<Boolean>>;
-  user: <T = UserSubscription>() => T;
-}
-
-export interface NotificationSettingsNullablePromise
-  extends Promise<NotificationSettings | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  email: () => Promise<Boolean>;
-  phone: () => Promise<Boolean>;
-  user: <T = UserPromise>() => T;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface OrderSubscriptionPayload {
-  mutation: MutationType;
-  node: Order;
-  updatedFields: String[];
-  previousValues: OrderPreviousValues;
-}
-
-export interface OrderSubscriptionPayloadPromise
-  extends Promise<OrderSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = OrderPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = OrderPreviousValuesPromise>() => T;
-}
-
-export interface OrderSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<OrderSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = OrderSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = OrderPreviousValuesSubscription>() => T;
-}
-
-export interface League {
-  id: ID_Output;
-  name: String;
-  sport: String;
-  seasonEndDate: DateTimeOutput;
-}
-
-export interface LeaguePromise extends Promise<League>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  sport: () => Promise<String>;
-  seasonEndDate: () => Promise<DateTimeOutput>;
-  packages: <T = FragmentableArray<Package>>(args?: {
-    where?: PackageWhereInput;
-    orderBy?: PackageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  teams: <T = FragmentableArray<Team>>(args?: {
-    where?: TeamWhereInput;
-    orderBy?: TeamOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface LeagueSubscription
-  extends Promise<AsyncIterator<League>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  sport: () => Promise<AsyncIterator<String>>;
-  seasonEndDate: () => Promise<AsyncIterator<DateTimeOutput>>;
-  packages: <T = Promise<AsyncIterator<PackageSubscription>>>(args?: {
-    where?: PackageWhereInput;
-    orderBy?: PackageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  teams: <T = Promise<AsyncIterator<TeamSubscription>>>(args?: {
-    where?: TeamWhereInput;
-    orderBy?: TeamOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface LeagueNullablePromise
-  extends Promise<League | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  sport: () => Promise<String>;
-  seasonEndDate: () => Promise<DateTimeOutput>;
-  packages: <T = FragmentableArray<Package>>(args?: {
-    where?: PackageWhereInput;
-    orderBy?: PackageOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  teams: <T = FragmentableArray<Team>>(args?: {
-    where?: TeamWhereInput;
-    orderBy?: TeamOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-}
-
-export interface OrderPreviousValues {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  stripeId: String;
-  status: OrderStatus;
-  totalPrice: Float;
-  totalRefunded: Float;
-}
-
-export interface OrderPreviousValuesPromise
-  extends Promise<OrderPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  stripeId: () => Promise<String>;
-  status: () => Promise<OrderStatus>;
-  totalPrice: () => Promise<Float>;
-  totalRefunded: () => Promise<Float>;
-}
-
-export interface OrderPreviousValuesSubscription
-  extends Promise<AsyncIterator<OrderPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  stripeId: () => Promise<AsyncIterator<String>>;
-  status: () => Promise<AsyncIterator<OrderStatus>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-  totalRefunded: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface AggregatePrediction {
-  count: Int;
-}
-
-export interface AggregatePredictionPromise
-  extends Promise<AggregatePrediction>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregatePredictionSubscription
-  extends Promise<AsyncIterator<AggregatePrediction>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Order {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-  stripeId: String;
-  status: OrderStatus;
-  totalPrice: Float;
-  totalRefunded: Float;
-}
-
-export interface OrderPromise extends Promise<Order>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  owner: <T = UserPromise>() => T;
-  items: <T = FragmentableArray<OrderItem>>(args?: {
-    where?: OrderItemWhereInput;
-    orderBy?: OrderItemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  stripeId: () => Promise<String>;
-  status: () => Promise<OrderStatus>;
-  totalPrice: () => Promise<Float>;
-  totalRefunded: () => Promise<Float>;
-}
-
-export interface OrderSubscription
-  extends Promise<AsyncIterator<Order>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  owner: <T = UserSubscription>() => T;
-  items: <T = Promise<AsyncIterator<OrderItemSubscription>>>(args?: {
-    where?: OrderItemWhereInput;
-    orderBy?: OrderItemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  stripeId: () => Promise<AsyncIterator<String>>;
-  status: () => Promise<AsyncIterator<OrderStatus>>;
-  totalPrice: () => Promise<AsyncIterator<Float>>;
-  totalRefunded: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface OrderNullablePromise
-  extends Promise<Order | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  owner: <T = UserPromise>() => T;
-  items: <T = FragmentableArray<OrderItem>>(args?: {
-    where?: OrderItemWhereInput;
-    orderBy?: OrderItemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  stripeId: () => Promise<String>;
-  status: () => Promise<OrderStatus>;
-  totalPrice: () => Promise<Float>;
-  totalRefunded: () => Promise<Float>;
-}
-
-export interface PackageEdge {
-  node: Package;
-  cursor: String;
-}
-
-export interface PackageEdgePromise extends Promise<PackageEdge>, Fragmentable {
-  node: <T = PackagePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PackageEdgeSubscription
-  extends Promise<AsyncIterator<PackageEdge>>,
-    Fragmentable {
-  node: <T = PackageSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface OrderItemSubscriptionPayload {
-  mutation: MutationType;
-  node: OrderItem;
-  updatedFields: String[];
-  previousValues: OrderItemPreviousValues;
-}
-
-export interface OrderItemSubscriptionPayloadPromise
-  extends Promise<OrderItemSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = OrderItemPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = OrderItemPreviousValuesPromise>() => T;
-}
-
-export interface OrderItemSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<OrderItemSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = OrderItemSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = OrderItemPreviousValuesSubscription>() => T;
-}
-
-export interface OrderItemConnection {
-  pageInfo: PageInfo;
-  edges: OrderItemEdge[];
-}
-
-export interface OrderItemConnectionPromise
-  extends Promise<OrderItemConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<OrderItemEdge>>() => T;
-  aggregate: <T = AggregateOrderItemPromise>() => T;
-}
-
-export interface OrderItemConnectionSubscription
-  extends Promise<AsyncIterator<OrderItemConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<OrderItemEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateOrderItemSubscription>() => T;
-}
-
-export interface OrderItemPreviousValues {
+export interface OrderItem {
   id: ID_Output;
   expireAt: DateTimeOutput;
 }
 
-export interface OrderItemPreviousValuesPromise
-  extends Promise<OrderItemPreviousValues>,
-    Fragmentable {
+export interface OrderItemPromise extends Promise<OrderItem>, Fragmentable {
   id: () => Promise<ID_Output>;
   expireAt: () => Promise<DateTimeOutput>;
+  owner: <T = UserPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  package: <T = PackagePromise>() => T;
 }
 
-export interface OrderItemPreviousValuesSubscription
-  extends Promise<AsyncIterator<OrderItemPreviousValues>>,
+export interface OrderItemSubscription
+  extends Promise<AsyncIterator<OrderItem>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   expireAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  owner: <T = UserSubscription>() => T;
+  order: <T = OrderSubscription>() => T;
+  package: <T = PackageSubscription>() => T;
 }
 
-export interface AggregateNotificationSettings {
-  count: Int;
-}
-
-export interface AggregateNotificationSettingsPromise
-  extends Promise<AggregateNotificationSettings>,
+export interface OrderItemNullablePromise
+  extends Promise<OrderItem | null>,
     Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateNotificationSettingsSubscription
-  extends Promise<AsyncIterator<AggregateNotificationSettings>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<ID_Output>;
+  expireAt: () => Promise<DateTimeOutput>;
+  owner: <T = UserPromise>() => T;
+  order: <T = OrderPromise>() => T;
+  package: <T = PackagePromise>() => T;
 }
 
 export interface User {
@@ -3505,21 +2653,489 @@ export interface UserNullablePromise
   notificationSettings: <T = NotificationSettingsPromise>() => T;
 }
 
-export interface UserEdge {
-  node: User;
+export interface Order {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  stripeId: String;
+  status: OrderStatus;
+  totalPrice: Float;
+  totalRefunded: Float;
+}
+
+export interface OrderPromise extends Promise<Order>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  owner: <T = UserPromise>() => T;
+  items: <T = FragmentableArray<OrderItem>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<String>;
+  status: () => Promise<OrderStatus>;
+  totalPrice: () => Promise<Float>;
+  totalRefunded: () => Promise<Float>;
+}
+
+export interface OrderSubscription
+  extends Promise<AsyncIterator<Order>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  owner: <T = UserSubscription>() => T;
+  items: <T = Promise<AsyncIterator<OrderItemSubscription>>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<AsyncIterator<String>>;
+  status: () => Promise<AsyncIterator<OrderStatus>>;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+  totalRefunded: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface OrderNullablePromise
+  extends Promise<Order | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  owner: <T = UserPromise>() => T;
+  items: <T = FragmentableArray<OrderItem>>(args?: {
+    where?: OrderItemWhereInput;
+    orderBy?: OrderItemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  stripeId: () => Promise<String>;
+  status: () => Promise<OrderStatus>;
+  totalPrice: () => Promise<Float>;
+  totalRefunded: () => Promise<Float>;
+}
+
+export interface NotificationSettings {
+  id: ID_Output;
+  email: Boolean;
+  phone: Boolean;
+}
+
+export interface NotificationSettingsPromise
+  extends Promise<NotificationSettings>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<Boolean>;
+  phone: () => Promise<Boolean>;
+  user: <T = UserPromise>() => T;
+}
+
+export interface NotificationSettingsSubscription
+  extends Promise<AsyncIterator<NotificationSettings>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<Boolean>>;
+  phone: () => Promise<AsyncIterator<Boolean>>;
+  user: <T = UserSubscription>() => T;
+}
+
+export interface NotificationSettingsNullablePromise
+  extends Promise<NotificationSettings | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<Boolean>;
+  phone: () => Promise<Boolean>;
+  user: <T = UserPromise>() => T;
+}
+
+export interface Prediction {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  startDate: DateTimeOutput;
+  name: String;
+}
+
+export interface PredictionPromise extends Promise<Prediction>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  startDate: () => Promise<DateTimeOutput>;
+  package: <T = PackagePromise>() => T;
+  name: () => Promise<String>;
+  home: <T = TeamPromise>() => T;
+  away: <T = TeamPromise>() => T;
+  winner: <T = TeamPromise>() => T;
+}
+
+export interface PredictionSubscription
+  extends Promise<AsyncIterator<Prediction>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  package: <T = PackageSubscription>() => T;
+  name: () => Promise<AsyncIterator<String>>;
+  home: <T = TeamSubscription>() => T;
+  away: <T = TeamSubscription>() => T;
+  winner: <T = TeamSubscription>() => T;
+}
+
+export interface PredictionNullablePromise
+  extends Promise<Prediction | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  startDate: () => Promise<DateTimeOutput>;
+  package: <T = PackagePromise>() => T;
+  name: () => Promise<String>;
+  home: <T = TeamPromise>() => T;
+  away: <T = TeamPromise>() => T;
+  winner: <T = TeamPromise>() => T;
+}
+
+export interface Team {
+  id: ID_Output;
+  name: String;
+  key: String;
+}
+
+export interface TeamPromise extends Promise<Team>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  key: () => Promise<String>;
+  league: <T = LeaguePromise>() => T;
+}
+
+export interface TeamSubscription
+  extends Promise<AsyncIterator<Team>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  key: () => Promise<AsyncIterator<String>>;
+  league: <T = LeagueSubscription>() => T;
+}
+
+export interface TeamNullablePromise
+  extends Promise<Team | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  key: () => Promise<String>;
+  league: <T = LeaguePromise>() => T;
+}
+
+export interface LeagueConnection {
+  pageInfo: PageInfo;
+  edges: LeagueEdge[];
+}
+
+export interface LeagueConnectionPromise
+  extends Promise<LeagueConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<LeagueEdge>>() => T;
+  aggregate: <T = AggregateLeaguePromise>() => T;
+}
+
+export interface LeagueConnectionSubscription
+  extends Promise<AsyncIterator<LeagueConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<LeagueEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateLeagueSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface LeagueEdge {
+  node: League;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface LeagueEdgePromise extends Promise<LeagueEdge>, Fragmentable {
+  node: <T = LeaguePromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface LeagueEdgeSubscription
+  extends Promise<AsyncIterator<LeagueEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = LeagueSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateLeague {
+  count: Int;
+}
+
+export interface AggregateLeaguePromise
+  extends Promise<AggregateLeague>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateLeagueSubscription
+  extends Promise<AsyncIterator<AggregateLeague>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface NotificationSettingsConnection {
+  pageInfo: PageInfo;
+  edges: NotificationSettingsEdge[];
+}
+
+export interface NotificationSettingsConnectionPromise
+  extends Promise<NotificationSettingsConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<NotificationSettingsEdge>>() => T;
+  aggregate: <T = AggregateNotificationSettingsPromise>() => T;
+}
+
+export interface NotificationSettingsConnectionSubscription
+  extends Promise<AsyncIterator<NotificationSettingsConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<NotificationSettingsEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateNotificationSettingsSubscription>() => T;
+}
+
+export interface NotificationSettingsEdge {
+  node: NotificationSettings;
+  cursor: String;
+}
+
+export interface NotificationSettingsEdgePromise
+  extends Promise<NotificationSettingsEdge>,
+    Fragmentable {
+  node: <T = NotificationSettingsPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface NotificationSettingsEdgeSubscription
+  extends Promise<AsyncIterator<NotificationSettingsEdge>>,
+    Fragmentable {
+  node: <T = NotificationSettingsSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateNotificationSettings {
+  count: Int;
+}
+
+export interface AggregateNotificationSettingsPromise
+  extends Promise<AggregateNotificationSettings>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateNotificationSettingsSubscription
+  extends Promise<AsyncIterator<AggregateNotificationSettings>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface OrderConnection {
+  pageInfo: PageInfo;
+  edges: OrderEdge[];
+}
+
+export interface OrderConnectionPromise
+  extends Promise<OrderConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<OrderEdge>>() => T;
+  aggregate: <T = AggregateOrderPromise>() => T;
+}
+
+export interface OrderConnectionSubscription
+  extends Promise<AsyncIterator<OrderConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<OrderEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateOrderSubscription>() => T;
+}
+
+export interface OrderEdge {
+  node: Order;
+  cursor: String;
+}
+
+export interface OrderEdgePromise extends Promise<OrderEdge>, Fragmentable {
+  node: <T = OrderPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface OrderEdgeSubscription
+  extends Promise<AsyncIterator<OrderEdge>>,
+    Fragmentable {
+  node: <T = OrderSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateOrder {
+  count: Int;
+}
+
+export interface AggregateOrderPromise
+  extends Promise<AggregateOrder>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateOrderSubscription
+  extends Promise<AsyncIterator<AggregateOrder>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface OrderItemConnection {
+  pageInfo: PageInfo;
+  edges: OrderItemEdge[];
+}
+
+export interface OrderItemConnectionPromise
+  extends Promise<OrderItemConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<OrderItemEdge>>() => T;
+  aggregate: <T = AggregateOrderItemPromise>() => T;
+}
+
+export interface OrderItemConnectionSubscription
+  extends Promise<AsyncIterator<OrderItemConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<OrderItemEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateOrderItemSubscription>() => T;
+}
+
+export interface OrderItemEdge {
+  node: OrderItem;
+  cursor: String;
+}
+
+export interface OrderItemEdgePromise
+  extends Promise<OrderItemEdge>,
+    Fragmentable {
+  node: <T = OrderItemPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface OrderItemEdgeSubscription
+  extends Promise<AsyncIterator<OrderItemEdge>>,
+    Fragmentable {
+  node: <T = OrderItemSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateOrderItem {
+  count: Int;
+}
+
+export interface AggregateOrderItemPromise
+  extends Promise<AggregateOrderItem>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateOrderItemSubscription
+  extends Promise<AsyncIterator<AggregateOrderItem>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PackageConnection {
+  pageInfo: PageInfo;
+  edges: PackageEdge[];
+}
+
+export interface PackageConnectionPromise
+  extends Promise<PackageConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PackageEdge>>() => T;
+  aggregate: <T = AggregatePackagePromise>() => T;
+}
+
+export interface PackageConnectionSubscription
+  extends Promise<AsyncIterator<PackageConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PackageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePackageSubscription>() => T;
+}
+
+export interface PackageEdge {
+  node: Package;
+  cursor: String;
+}
+
+export interface PackageEdgePromise extends Promise<PackageEdge>, Fragmentable {
+  node: <T = PackagePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PackageEdgeSubscription
+  extends Promise<AsyncIterator<PackageEdge>>,
+    Fragmentable {
+  node: <T = PackageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePackage {
+  count: Int;
+}
+
+export interface AggregatePackagePromise
+  extends Promise<AggregatePackage>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePackageSubscription
+  extends Promise<AsyncIterator<AggregatePackage>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface PredictionConnection {
@@ -3543,62 +3159,388 @@ export interface PredictionConnectionSubscription
   aggregate: <T = AggregatePredictionSubscription>() => T;
 }
 
-export interface PredictionSubscriptionPayload {
-  mutation: MutationType;
+export interface PredictionEdge {
   node: Prediction;
-  updatedFields: String[];
-  previousValues: PredictionPreviousValues;
+  cursor: String;
 }
 
-export interface PredictionSubscriptionPayloadPromise
-  extends Promise<PredictionSubscriptionPayload>,
+export interface PredictionEdgePromise
+  extends Promise<PredictionEdge>,
+    Fragmentable {
+  node: <T = PredictionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PredictionEdgeSubscription
+  extends Promise<AsyncIterator<PredictionEdge>>,
+    Fragmentable {
+  node: <T = PredictionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePrediction {
+  count: Int;
+}
+
+export interface AggregatePredictionPromise
+  extends Promise<AggregatePrediction>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePredictionSubscription
+  extends Promise<AsyncIterator<AggregatePrediction>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TeamConnection {
+  pageInfo: PageInfo;
+  edges: TeamEdge[];
+}
+
+export interface TeamConnectionPromise
+  extends Promise<TeamConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TeamEdge>>() => T;
+  aggregate: <T = AggregateTeamPromise>() => T;
+}
+
+export interface TeamConnectionSubscription
+  extends Promise<AsyncIterator<TeamConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TeamEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTeamSubscription>() => T;
+}
+
+export interface TeamEdge {
+  node: Team;
+  cursor: String;
+}
+
+export interface TeamEdgePromise extends Promise<TeamEdge>, Fragmentable {
+  node: <T = TeamPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TeamEdgeSubscription
+  extends Promise<AsyncIterator<TeamEdge>>,
+    Fragmentable {
+  node: <T = TeamSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTeam {
+  count: Int;
+}
+
+export interface AggregateTeamPromise
+  extends Promise<AggregateTeam>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTeamSubscription
+  extends Promise<AsyncIterator<AggregateTeam>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface LeagueSubscriptionPayload {
+  mutation: MutationType;
+  node: League;
+  updatedFields: String[];
+  previousValues: LeaguePreviousValues;
+}
+
+export interface LeagueSubscriptionPayloadPromise
+  extends Promise<LeagueSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = PredictionPromise>() => T;
+  node: <T = LeaguePromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = PredictionPreviousValuesPromise>() => T;
+  previousValues: <T = LeaguePreviousValuesPromise>() => T;
 }
 
-export interface PredictionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PredictionSubscriptionPayload>>,
+export interface LeagueSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<LeagueSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PredictionSubscription>() => T;
+  node: <T = LeagueSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PredictionPreviousValuesSubscription>() => T;
+  previousValues: <T = LeaguePreviousValuesSubscription>() => T;
 }
 
-export interface OrderItem {
+export interface LeaguePreviousValues {
+  id: ID_Output;
+  name: String;
+  sport: String;
+  seasonEndDate: DateTimeOutput;
+}
+
+export interface LeaguePreviousValuesPromise
+  extends Promise<LeaguePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  sport: () => Promise<String>;
+  seasonEndDate: () => Promise<DateTimeOutput>;
+}
+
+export interface LeaguePreviousValuesSubscription
+  extends Promise<AsyncIterator<LeaguePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  sport: () => Promise<AsyncIterator<String>>;
+  seasonEndDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface NotificationSettingsSubscriptionPayload {
+  mutation: MutationType;
+  node: NotificationSettings;
+  updatedFields: String[];
+  previousValues: NotificationSettingsPreviousValues;
+}
+
+export interface NotificationSettingsSubscriptionPayloadPromise
+  extends Promise<NotificationSettingsSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = NotificationSettingsPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = NotificationSettingsPreviousValuesPromise>() => T;
+}
+
+export interface NotificationSettingsSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<NotificationSettingsSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = NotificationSettingsSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = NotificationSettingsPreviousValuesSubscription>() => T;
+}
+
+export interface NotificationSettingsPreviousValues {
+  id: ID_Output;
+  email: Boolean;
+  phone: Boolean;
+}
+
+export interface NotificationSettingsPreviousValuesPromise
+  extends Promise<NotificationSettingsPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<Boolean>;
+  phone: () => Promise<Boolean>;
+}
+
+export interface NotificationSettingsPreviousValuesSubscription
+  extends Promise<AsyncIterator<NotificationSettingsPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<Boolean>>;
+  phone: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface OrderSubscriptionPayload {
+  mutation: MutationType;
+  node: Order;
+  updatedFields: String[];
+  previousValues: OrderPreviousValues;
+}
+
+export interface OrderSubscriptionPayloadPromise
+  extends Promise<OrderSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = OrderPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = OrderPreviousValuesPromise>() => T;
+}
+
+export interface OrderSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<OrderSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = OrderSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = OrderPreviousValuesSubscription>() => T;
+}
+
+export interface OrderPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  stripeId: String;
+  status: OrderStatus;
+  totalPrice: Float;
+  totalRefunded: Float;
+}
+
+export interface OrderPreviousValuesPromise
+  extends Promise<OrderPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  stripeId: () => Promise<String>;
+  status: () => Promise<OrderStatus>;
+  totalPrice: () => Promise<Float>;
+  totalRefunded: () => Promise<Float>;
+}
+
+export interface OrderPreviousValuesSubscription
+  extends Promise<AsyncIterator<OrderPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  stripeId: () => Promise<AsyncIterator<String>>;
+  status: () => Promise<AsyncIterator<OrderStatus>>;
+  totalPrice: () => Promise<AsyncIterator<Float>>;
+  totalRefunded: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface OrderItemSubscriptionPayload {
+  mutation: MutationType;
+  node: OrderItem;
+  updatedFields: String[];
+  previousValues: OrderItemPreviousValues;
+}
+
+export interface OrderItemSubscriptionPayloadPromise
+  extends Promise<OrderItemSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = OrderItemPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = OrderItemPreviousValuesPromise>() => T;
+}
+
+export interface OrderItemSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<OrderItemSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = OrderItemSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = OrderItemPreviousValuesSubscription>() => T;
+}
+
+export interface OrderItemPreviousValues {
   id: ID_Output;
   expireAt: DateTimeOutput;
 }
 
-export interface OrderItemPromise extends Promise<OrderItem>, Fragmentable {
+export interface OrderItemPreviousValuesPromise
+  extends Promise<OrderItemPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
   expireAt: () => Promise<DateTimeOutput>;
-  owner: <T = UserPromise>() => T;
-  order: <T = OrderPromise>() => T;
-  package: <T = PackagePromise>() => T;
 }
 
-export interface OrderItemSubscription
-  extends Promise<AsyncIterator<OrderItem>>,
+export interface OrderItemPreviousValuesSubscription
+  extends Promise<AsyncIterator<OrderItemPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   expireAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  owner: <T = UserSubscription>() => T;
-  order: <T = OrderSubscription>() => T;
-  package: <T = PackageSubscription>() => T;
 }
 
-export interface OrderItemNullablePromise
-  extends Promise<OrderItem | null>,
+export interface PackageSubscriptionPayload {
+  mutation: MutationType;
+  node: Package;
+  updatedFields: String[];
+  previousValues: PackagePreviousValues;
+}
+
+export interface PackageSubscriptionPayloadPromise
+  extends Promise<PackageSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  expireAt: () => Promise<DateTimeOutput>;
-  owner: <T = UserPromise>() => T;
-  order: <T = OrderPromise>() => T;
-  package: <T = PackagePromise>() => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = PackagePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PackagePreviousValuesPromise>() => T;
+}
+
+export interface PackageSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PackageSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PackageSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PackagePreviousValuesSubscription>() => T;
 }
 
 export interface PackagePreviousValues {
@@ -3629,110 +3571,161 @@ export interface PackagePreviousValuesSubscription
   image: () => Promise<AsyncIterator<String>>;
 }
 
-export interface PackageSubscriptionPayload {
+export interface PredictionSubscriptionPayload {
   mutation: MutationType;
-  node: Package;
+  node: Prediction;
   updatedFields: String[];
-  previousValues: PackagePreviousValues;
+  previousValues: PredictionPreviousValues;
 }
 
-export interface PackageSubscriptionPayloadPromise
-  extends Promise<PackageSubscriptionPayload>,
+export interface PredictionSubscriptionPayloadPromise
+  extends Promise<PredictionSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = PackagePromise>() => T;
+  node: <T = PredictionPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = PackagePreviousValuesPromise>() => T;
+  previousValues: <T = PredictionPreviousValuesPromise>() => T;
 }
 
-export interface PackageSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PackageSubscriptionPayload>>,
+export interface PredictionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PredictionSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PackageSubscription>() => T;
+  node: <T = PredictionSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PackagePreviousValuesSubscription>() => T;
+  previousValues: <T = PredictionPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateOrderItem {
-  count: Int;
+export interface PredictionPreviousValues {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+  startDate: DateTimeOutput;
+  name: String;
 }
 
-export interface AggregateOrderItemPromise
-  extends Promise<AggregateOrderItem>,
+export interface PredictionPreviousValuesPromise
+  extends Promise<PredictionPreviousValues>,
     Fragmentable {
-  count: () => Promise<Int>;
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  startDate: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
 }
 
-export interface AggregateOrderItemSubscription
-  extends Promise<AsyncIterator<AggregateOrderItem>>,
+export interface PredictionPreviousValuesSubscription
+  extends Promise<AsyncIterator<PredictionPreviousValues>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  startDate: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
 }
 
-export interface TeamEdge {
+export interface TeamSubscriptionPayload {
+  mutation: MutationType;
   node: Team;
-  cursor: String;
+  updatedFields: String[];
+  previousValues: TeamPreviousValues;
 }
 
-export interface TeamEdgePromise extends Promise<TeamEdge>, Fragmentable {
+export interface TeamSubscriptionPayloadPromise
+  extends Promise<TeamSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
   node: <T = TeamPromise>() => T;
-  cursor: () => Promise<String>;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TeamPreviousValuesPromise>() => T;
 }
 
-export interface TeamEdgeSubscription
-  extends Promise<AsyncIterator<TeamEdge>>,
+export interface TeamSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TeamSubscriptionPayload>>,
     Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = TeamSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TeamPreviousValuesSubscription>() => T;
 }
 
-export interface NotificationSettingsConnection {
-  pageInfo: PageInfo;
-  edges: NotificationSettingsEdge[];
+export interface TeamPreviousValues {
+  id: ID_Output;
+  name: String;
+  key: String;
 }
 
-export interface NotificationSettingsConnectionPromise
-  extends Promise<NotificationSettingsConnection>,
+export interface TeamPreviousValuesPromise
+  extends Promise<TeamPreviousValues>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<NotificationSettingsEdge>>() => T;
-  aggregate: <T = AggregateNotificationSettingsPromise>() => T;
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  key: () => Promise<String>;
 }
 
-export interface NotificationSettingsConnectionSubscription
-  extends Promise<AsyncIterator<NotificationSettingsConnection>>,
+export interface TeamPreviousValuesSubscription
+  extends Promise<AsyncIterator<TeamPreviousValues>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<NotificationSettingsEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregateNotificationSettingsSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  key: () => Promise<AsyncIterator<String>>;
 }
 
-export interface OrderEdge {
-  node: Order;
-  cursor: String;
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface OrderEdgePromise extends Promise<OrderEdge>, Fragmentable {
-  node: <T = OrderPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface OrderEdgeSubscription
-  extends Promise<AsyncIterator<OrderEdge>>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  node: <T = OrderSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-/*
-The `Boolean` scalar type represents `true` or `false`.
-*/
-export type Boolean = boolean;
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
 
-export type Long = string;
+export interface UserPreviousValues {
+  id: ID_Output;
+  email: String;
+  phone: String;
+  password: String;
+  role?: Role;
+  resetToken?: String;
+}
+
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  password: () => Promise<String>;
+  role: () => Promise<Role>;
+  resetToken: () => Promise<String>;
+}
+
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<Role>>;
+  resetToken: () => Promise<AsyncIterator<String>>;
+}
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -3741,9 +3734,9 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type Int = number;
+export type String = string;
 
 /*
 DateTime scalar input type, allowing Date
@@ -3761,9 +3754,16 @@ The `Float` scalar type represents signed double-precision fractional values as 
 export type Float = number;
 
 /*
-The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+The `Boolean` scalar type represents `true` or `false`.
 */
-export type String = string;
+export type Boolean = boolean;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+export type Long = string;
 
 /**
  * Model Metadata
