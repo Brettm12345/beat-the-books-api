@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "apollo-server-errors": "^2.3.3",
-    "apollo-server-lambda": "^2.9.6",
+    "apollo-server-lambda": "^2.14.2",
     "apollo-server-testing": "^2.9.6",
     "bcrypt": "^3.0.6",
     "dayjs": "^1.8.16",
