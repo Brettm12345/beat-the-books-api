@@ -20,7 +20,7 @@
     "apollo-server-errors": "^2.3.3",
     "apollo-server-lambda": "^2.9.6",
     "apollo-server-testing": "^2.9.6",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "dayjs": "^1.8.16",
     "fp-ts": "^2.1.0",
     "fp-ts-ramda": "^0.1.7",
