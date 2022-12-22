@@ -28,7 +28,7 @@
     "graphql-config": "^2.2.1",
     "graphql-middleware": "^4.0.1",
     "graphql-shield": "^7.0.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "module-alias": "^2.2.2",
     "monocle-ts": "^2.0.1",
     "nexus": "0.11.7",
